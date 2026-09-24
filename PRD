@@ -1,0 +1,135 @@
+Problem statement
+Context
+The organization's Business Continuity Management (BCM) program currently includes modules for Business Impact Analysis (BIA), Business Continuity Planning (BCP), Crisis Management, and Testing. These modules address business-side continuity planning, incident response, and exercise management. However, there is no dedicated module to plan, document, test, and execute the technical IT recovery of applications and infrastructure that these business processes depend on.
+
+Problem
+IT disaster recovery planning today is fragmented and largely disconnected from the rest of the BCM program:
+
+RTO/RPO defined during BIA are not systematically linked to the technical systems that must meet them.
+DR runbooks are maintained outside the BCM ecosystem, with no version control, ownership tracking, or approval workflow.
+There is no reliable way to determine which applications have a current, tested, approved DR plan.
+DR testing is not consistently scheduled or tracked, and results are not tied back to plan status.
+There is no centralized reporting on IT recovery readiness for standards like ISO 22301 / ISO 27031, or audit purposes.
+Note: Crisis Management already has a working plan-invocation mechanism (currently used for BCP plans). Whether DR plans can use this same mechanism without new integration work, or require an extension, is an open item — see Section 10 (Open questions) and Section 7.5.
+
+Impact
+Increased risk of extended downtime during an actual disaster.
+Inability to verify IT recovery capability against business-expected RTO/RPO.
+Duplicated, inconsistent recovery documentation.
+Audit and compliance exposure.
+Slower, uncoordinated incident response.
+2. Objective
+Introduce an ITDR module within the BCM application that:
+
+Inherits RTO/RPO and process-to-application mapping from BIA.
+Provides a structured environment to build, version, and approve technical DR runbooks.
+Integrates with the existing Testing module (as a distinct DR Test type) for scheduled testing and re-certification.
+Structures DR plan data so it is linkage-compatible with Crisis Management's existing plan-invocation mechanism, deferring a decision on any new integration work until that mechanism's extensibility is assessed (see Section 7.5 and Section 10).
+Surfaces a readiness dashboard and audit-ready reporting.
+3. Scope boundary
+ITDR owns the technical recovery plan and asset/dependency data. It does not duplicate:
+
+The business-side continuity plan (owned by BCP)
+The incident/crisis workflow (owned by Crisis Management)
+The test scheduling/execution engine (owned by the Testing module)
+It integrates with each of these rather than replacing them.
+
+4. Goals and success metrics
+Goal	Success metric
+Every critical application has a current DR plan	% of Tier 1/2 applications with an approved, non-expired DR plan
+DR plans are actually validated	% of DR plans tested within policy window (e.g., last 12 months)
+Recovery meets business expectations	% of tested plans meeting target RTO/RPO
+Faster, more coordinated real incident response	Time from incident declaration to DR plan invocation
+Audit-readiness	Time to produce a compliance report (target: on-demand, not manual compilation)
+5. Non-goals
+ITDR will not replace or duplicate the BCP module's business continuity plans.
+ITDR will not build a separate incident/crisis declaration workflow.
+ITDR will not build a separate test-scheduling engine — it extends the existing Testing module.
+ITDR will not manage general IT asset lifecycle/CMDB functions beyond what's needed for DR planning (it references, not replaces, the CMDB).
+Deferred for this phase: building new Crisis Management integration plumbing. Crisis Management already has a plan-invocation mechanism for BCP plans; whether it needs to be extended for DR plans depends on how that mechanism is built (see Section 7.5). This will be revisited once that is confirmed.
+6. Users and personas
+Persona	Role in ITDR
+BCM Admin / DR Coordinator	Sets up asset inventory, dependency mapping, ownership, oversees lifecycle
+Plan Owner (IT/App owner)	Builds and maintains the DR runbook for their application(s)
+Test Manager	Schedules and executes DR Tests via the Testing module
+Incident Commander	Invokes DR plans during a real crisis, via Crisis Management
+Executive / Auditor	Views readiness dashboards and compliance reports
+7. Functional requirements
+7.1 Foundational data
+ID	Requirement
+FR-1	System shall maintain an IT asset & application inventory, either natively or via CMDB/ServiceNow sync.
+FR-2	System shall allow mapping of business processes to applications, and applications to underlying infrastructure/dependencies.
+FR-3	System shall inherit RTO/RPO per process/application from the BIA module automatically.
+FR-4	System shall allow authorized users to override inherited RTO/RPO at the application level, with a reason/justification logged.
+FR-5	System shall allow definition of a recovery strategy per application or tier (hot site, warm site, cloud DR, backup-restore).
+FR-6	System shall allow assignment of a primary and backup Plan Owner per application/recovery unit.
+7.2 DR plan (runbook) builder
+ID	Requirement
+FR-7	System shall provide DR plan templates by recovery tier (e.g., Tier 1/2/3).
+FR-8	System shall allow Plan Owners to author step-by-step recovery procedures, including prerequisites and rollback steps.
+FR-9	System shall allow attachment of supporting documentation (network diagrams, configuration backups, vendor SLAs).
+FR-10	System shall capture recovery team and escalation contacts per plan.
+FR-11	System shall support a review/approval workflow before a plan is published.
+FR-12	System shall version every published plan and maintain a full audit trail of changes.
+FR-13	System shall support a plan-owner acknowledgment/notification flow when a plan is assigned.
+7.3 Testing integration
+ID	Requirement
+FR-14	System shall integrate with the existing Testing module by registering DR Test as a distinct test type, alongside BCP Test.
+FR-15	System shall automatically trigger creation of a DR Test record in the Testing module when a DR plan is published or becomes due for re-certification.
+FR-16	DR Test records shall carry DR-specific fields: target RTO/RPO, actual RTO/RPO achieved, exercise mode (tabletop/simulation/full failover), and runbook step pass/fail.
+FR-17	Test results shall flow back from the Testing module to update the DR plan's readiness/re-certification status in ITDR automatically.
+FR-18	A failed test or unmet RTO/RPO shall automatically flag the DR plan for remediation/update.
+7.4 Maintenance & lifecycle
+ID	Requirement
+FR-19	System shall flag DR plans as stale when they exceed the policy-defined review/test window.
+FR-20	System shall send automated reminders to Plan Owners for re-certification.
+FR-21	Updated plans shall re-enter the approval workflow before being re-published.
+7.5 Crisis Management integration — deferred, status: pending assessment
+Crisis Management already has a working mechanism to look up and invoke plans during a declared incident, currently used for BCP plans. Before scoping new integration work, it needs to be confirmed whether that mechanism is:
+
+Generic — it looks up "any plan linked to the affected process/asset," regardless of source module. In this case, DR plans simply need to be linked using the same structure as BCP plans, and no new integration work is required.
+BCP-specific — it is hardcoded to only look up BCP plans. In this case, a scoped extension is needed to add ITDR as a second plan source.
+The requirements below are captured for future scoping and are not committed for this phase:
+
+ID	Requirement	Status
+FR-22	System shall expose an interface allowing Crisis Management to query which DR plans are associated with a declared incident's affected systems.	Deferred — pending assessment
+FR-23	Incident Commanders shall be able to invoke one or more DR plans directly from within the Crisis Management interface.	Deferred — pending assessment
+FR-24	Plan invocation shall trigger notifications through Crisis Management's existing notification/alerting channel (no separate ITDR notification system).	Deferred — pending assessment
+FR-25	Recovery teams shall be able to check off runbook steps in real time during an active invocation, with timestamps logged.	Deferred — pending assessment
+FR-26	Upon incident closure, actual recovery time/steps shall be automatically compared against target RTO/RPO and made available to the incident post-mortem report.	Deferred — pending assessment
+Minimum requirement for this phase: ITDR's plan-to-process/asset linkage (FR-2) should follow the same structure as BCP's, so that if the existing mechanism turns out to be generic, DR plans become invocable with no additional work.
+
+7.6 Reporting & oversight
+ID	Requirement
+FR-27	System shall provide a readiness dashboard showing: % of applications with current plans, % tested within policy window, open gaps/remediation items.
+FR-28	Users shall be able to drill into a specific application/process to view its plan status, version history, and test history.
+FR-29	System shall generate exportable compliance reports mapped to ISO 22301 / ISO 27031 requirements.
+FR-30	System shall provide role-based access control (Plan Owner, Reviewer, Auditor, Admin, Executive view).
+8. Integration requirements
+Integration	Direction	Data exchanged	Status
+BIA module	Inbound to ITDR	RTO/RPO, process-to-application mapping	Committed
+BCP module	Inbound to ITDR	Business-side plan reference (linked, not duplicated)	Committed
+Testing module	Bidirectional	Outbound: test-due trigger and DR plan reference. Inbound: test results, pass/fail, actual RTO/RPO	Committed
+Crisis Management	Bidirectional	Outbound: applicable DR plans for affected systems. Inbound: incident context (affected assets, severity), notification channel	Deferred — pending assessment of existing invocation mechanism
+CMDB / ITSM (e.g., ServiceNow)	Inbound to ITDR	Asset and application inventory	Committed
+9. Assumptions & dependencies
+BIA module already captures RTO/RPO and process-to-application linkage in a queryable form.
+Testing module's data model can be extended with a new test type and additional fields without a rebuild.
+Crisis Management module can expose or consume an integration point (API/event) for incident and notification data.
+A CMDB or asset source of truth exists or will be identified for inventory sync.
+10. Open questions
+Which system is the authoritative source for IT asset inventory — native to BCM, or synced from an external CMDB?
+What re-certification/testing frequency policy applies by tier (annually, semi-annually)?
+Who has final approval authority on a DR plan — a single reviewer role, or a multi-step sign-off chain?
+Is Crisis Management's existing plan-invocation mechanism generic (any linked plan) or hardcoded to BCP plans? This determines whether Crisis Management integration (Section 7.5) requires any new work at all, or none. To be confirmed with the team that built the BCP–Crisis Management link.
+Should DR plan invocation, if/when connected, be initiated only from Crisis Management, or also directly from ITDR for smaller, non-crisis-declared outages?
+11. Release phasing (indicative)
+Phase	Scope
+Phase 1	Asset inventory, dependency mapping, RTO/RPO inheritance, DR plan builder with approval workflow
+Phase 2	Testing module integration (DR Test type), readiness dashboard
+Phase 3	Compliance reporting, gap analysis, advanced CMDB/ITSM integrations
+Future (not yet scoped)	Crisis Management integration — scope to be defined once the assessment in Section 7.5 / Section 10 is complete
+12. Reference standards
+ISO 22301 — Business Continuity Management systems
+ISO/IEC 27031 — ICT readiness for business continuity
+NIST SP 800-34 — Contingency Planning Guide for Federal Information Systems
