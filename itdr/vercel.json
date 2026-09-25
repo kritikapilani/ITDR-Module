@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "public": true,
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/:match*",
+      "destination": "https://YOUR-RENDER-SERVICE-NAME.onrender.com/api/:match*"
+    },
+    {
+      "source": "/itdr/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/itdr",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/$1"
+    }
+  ]
+}
