@@ -1,0 +1,595 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline":"#777587","on-surface-variant":"#464555","inverse-on-surface":"#eaf1ff","on-surface":"#0b1c30","tertiary-fixed-dim":"#ffb695","on-primary-fixed":"#0f0069","tertiary-container":"#a44100","surface-container-low":"#eff4ff","error":"#ba1a1a","on-background":"#0b1c30","primary-container":"#4f46e5","primary":"#3525cd","on-tertiary":"#ffffff","on-primary-fixed-variant":"#3323cc","surface-container-lowest":"#ffffff","inverse-primary":"#c3c0ff","on-secondary-fixed":"#131b2e","surface-container-highest":"#d3e4fe","tertiary-fixed":"#ffdbcc","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","background":"#f8f9ff","on-tertiary-fixed-variant":"#7b2f00","on-primary-container":"#dad7ff","secondary-fixed-dim":"#bec6e0","secondary-container":"#dae2fd","on-tertiary-container":"#ffd2be","surface-tint":"#4d44e3","on-secondary-fixed-variant":"#3f465c","on-secondary":"#ffffff","on-primary":"#ffffff","primary-fixed":"#e2dfff","surface":"#f8f9ff","surface-bright":"#f8f9ff","secondary-fixed":"#dae2fd","error-container":"#ffdad6","primary-fixed-dim":"#c3c0ff","tertiary":"#7e3000","on-error":"#ffffff","on-error-container":"#93000a","inverse-surface":"#213145","surface-container":"#e5eeff","outline-variant":"#c7c4d8","on-secondary-container":"#5c647a","secondary":"#565e74","on-tertiary-fixed":"#351000","surface-variant":"#d3e4fe"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"gutter":"1rem","space-md":"0.75rem","margin":"1rem","space-lg":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xl":"1.5rem","space-xs":"0.25rem","gutter-desktop":"1.5rem"},fontFamily:{"headline-lg":["Inter"],"headline-sm":["Inter"],"body-lg":["Inter"],"body-md":["Inter"],"headline-md":["Inter"],"label-sm":["Inter"],"label-md":["Inter"],"headline-xl":["Inter"],"body-sm":["Inter"],"code-sm":["Inter"]},fontSize:{"headline-lg":["1.25rem",{"lineHeight":"1.75rem","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-sm":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"600"}],"body-lg":["0.9375rem",{"lineHeight":"1.375rem","fontWeight":"400"}],"body-md":["0.8125rem",{"lineHeight":"1.1875rem","fontWeight":"400"}],"headline-md":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.04em","fontWeight":"600"}],"label-md":["0.8125rem",{"lineHeight":"1rem","fontWeight":"500"}],"headline-xl":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"400"}],"code-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"500"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest border-r border-outline-variant/40 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-14 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-lowest shrink-0"><img alt="ITDR Resilience Brand Mark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xrenfm6HxIOm9EKyEAmXLXEbhpffSmGhxPC0dyRcjiDrfBo9YbLL5g0Wkao9ki_L1XySRTsq-VF7QxtmlgFgUSJj19-G7uJxANAmciLrJ7145317JypKUY0Iubu7w6VOu32yY8YC0n7eiFkMt74U-qaKgATR4R-9iTMAT6-7a7absYdY3S1YoALAvdBtxPzhcCVN50JjG9kG85KJkkGb3XpR2X2yjN1v9eoj-sg_cv56iZAcwQxu5CDoo2"><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface truncate">ITDR</span><span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm tracking-wide uppercase">BCM Suite</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Disaster Recovery</span></div></div><div class="flex-1 overflow-y-auto px-space-sm py-space-sm space-y-space-md"><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">BCM Platform</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="business-impact-analysis" href="#bia"><span class="material-symbols-outlined text-[18px]">bar_chart</span><span class="">Business Impact Analysis</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="business-continuity-planning" href="#bcp"><span class="material-symbols-outlined text-[18px]">shield</span><span class="">Business Continuity Planning</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="crisis-management" href="#crisis"><span class="material-symbols-outlined text-[18px]">notification_important</span><span class="">Crisis Management</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Core</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="readiness-dashboard" href="#dashboard"><span class="material-symbols-outlined text-[18px]">dashboard</span><span class="">Readiness Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="applications-inventory" href="#coverage"><span class="material-symbols-outlined text-[18px]">dns</span><span class="">Applications &amp; Inventory</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Recovery Operations</div><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-1.5 transition-colors bg-primary-container text-on-primary font-label-md rounded" data-path="dr-plan-builder" href="#builder"><span class="material-symbols-outlined text-[18px]">layers</span><span class="">DR Plan Builder</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Testing &amp; Validation</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="itdr-test-plans" href="#test-plans"><span class="material-symbols-outlined text-[18px]">assignment</span><span class="">ITDR Test Plans</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="itdr-test-results" href="#test-results"><span class="material-symbols-outlined text-[18px]">rule</span><span class="">ITDR Test Results</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Governance &amp; Compliance</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="compliance-audit-reports" href="#audit"><span class="material-symbols-outlined text-[18px]">verified_user</span><span class="">Compliance &amp; Audit Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-policies" href="#decisions"><span class="material-symbols-outlined text-[18px]">settings</span><span class="">Settings &amp; Policies</span></a></nav></div></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low shrink-0"><div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span><span class="font-code-sm text-code-sm text-on-surface-variant truncate">Engine v4.8.2 · ISO 22301</span></div><p class="font-label-sm text-label-sm text-on-surface-variant/80 truncate mt-0.5">Synced with BIA Core</p></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur border-b border-outline-variant/40 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-sm bg-surface-container-low border border-outline-variant/60 rounded text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search applications, runbooks, test plans, or audit records... (⌘K)" type="text"></div><div class="hidden xl:flex items-center gap-1.5 px-2.5 h-8 rounded border border-outline-variant/40 bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">corporate_fare</span><span class="">Global Enterprise IT · ITDR</span><span class="material-symbols-outlined text-[14px]">expand_more</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container text-on-surface border border-outline-variant/30"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm font-medium">All Systems Nominal</span></div><button aria-label="Notifications" class="relative p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-label-sm flex items-center justify-center font-bold">3</span></button><div class="h-4 w-px bg-outline-variant/40"></div><div class="flex items-center gap-space-sm pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-TQnLz9M_57IO07zlAbl76zdD19OZZJn3n1o5Mp4qxa3IlgjAFwlyGzl2vTZrFfzbtIgGdrBx4dauXT0cQh_RhG_FqmTLWajlDK4EIVqO73ltQlSmC41W0aWMruAADKPvSuAI32LlY15GSrnG4seXkpfLRVjz7a2UdnsAFmQhbtCDCBnqR4pmFB-gOkaDmNh1aptmADzySJGsjyx4CAxgh668J7lugp6Rv15ECuodd5zJ0vVtZ8XnAw"><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Jordan Admin</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">BCM Admin / DR Coordinator</span></div></div></div></header><main class="flex-1 pt-14 w-full px-gutter-desktop py-space-lg bg-background"><div class="flex flex-col w-full space-y-space-lg">
+<!-- Breadcrumbs & Quick State Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded shadow-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="hover:text-on-surface cursor-pointer">Recovery Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="hover:text-on-surface cursor-pointer">DR Plan Builder</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">APP-0104 (Core Banking)</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-on-surface-variant bg-surface-container-lowest px-2 py-0.5 rounded shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="">AUDIT-ID: ITDR-2026-BCM-8891</span>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">
+        Next Audit Sync: <span class="text-on-surface font-medium">18m ago (Auto)</span>
+</div>
+</div>
+</div>
+<!-- Header Strip: Context & Global Plan Actions -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-lg flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight whitespace-nowrap">APP-0104 · Global Core Banking Engine</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high text-primary-container font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+          v2.1 Approved
+        </span>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+          Current Production Runbook
+        </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">sync</span>
+<span class="">Inherited BIA Snapshot: <strong class="text-on-surface font-medium">BIA Target: RTO 120m | RPO 15m</strong> (Synchronized 2026-01-15 via BIA Core Engine)</span>
+</p>
+</div>
+<!-- Action Buttons Array -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<!-- Version History Dropdown -->
+<div class="relative inline-block text-left" id="version-dropdown-container">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors shadow-sm" id="version-btn" type="button">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">history</span>
+<span class="">Versions: <strong>v2.1</strong></span>
+<span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+<div class="hidden absolute right-0 mt-1 w-52 bg-surface-container-lowest rounded shadow-md z-30 py-1 font-body-sm text-body-sm" id="version-menu">
+<div class="px-3 py-1 text-on-surface-variant font-label-sm text-label-sm uppercase">Revisions Archive</div>
+<a class="flex items-center justify-between px-3 py-1.5 bg-surface-container text-primary font-medium" href="javascript:void(0)">
+<span class="">v2.1 (Current Prod)</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</a>
+<a class="flex items-center justify-between px-3 py-1.5 hover:bg-surface-container-low text-on-surface" href="javascript:void(0)">
+<span class="">v2.0 (Archived Oct '25)</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">Pass</span>
+</a>
+<a class="flex items-center justify-between px-3 py-1.5 hover:bg-surface-container-low text-on-surface" href="javascript:void(0)">
+<span class="">v1.2 (Legacy 2024)</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">Deprecated</span>
+</a>
+</div>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">edit_note</span>
+<span class="">Edit New Draft (v2.2)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">send</span>
+<span class="">Submit for Approval</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+<span class="">Export PDF Runbook</span>
+</button>
+</div>
+</div>
+<!-- Enterprise Sub-Navigation Tabs -->
+<div class="bg-surface-container-lowest rounded shadow-sm px-space-md pt-2 flex items-center justify-between overflow-x-auto">
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="relative px-3 py-2 font-label-md text-label-md font-semibold text-primary border-b-2 border-primary-container bg-surface-container-low rounded-t flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span class="">Runbook &amp; Execution Steps</span>
+<span class="ml-1 px-1.5 py-0.2 rounded-full bg-primary-container text-on-primary font-code-sm text-code-sm">5</span>
+</button>
+<button class="px-3 py-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-t transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">share_location</span>
+<span class="">Recovery Strategy &amp; DR Site</span>
+</button>
+<button class="px-3 py-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-t transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+<span class="">Technical Dependencies &amp; Topology</span>
+</button>
+<button class="px-3 py-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-t transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">contact_emergency</span>
+<span class="">Team &amp; Escalation Contacts</span>
+</button>
+<button class="px-3 py-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-t transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">history_edu</span>
+<span class="">Test History &amp; Approvals</span>
+</button>
+</div>
+<div class="hidden md:flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm pb-1">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span class="">ISO 22301 Aligned</span>
+</div>
+</div>
+<!-- Primary Workspace Grid (8-col Main Runbook Canvas + 4-col Side Intelligence Companion) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left / Center Column (8 cols): Metadata & Runbook Stepper Table -->
+<div class="xl:col-span-8 space-y-space-lg">
+<!-- Section 1: Runbook Metadata & Strategy Overview Bento Card -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-lg relative overflow-hidden">
+<div class="flex items-center justify-between pb-space-md mb-space-md bg-surface-container-low -mx-space-lg -mt-space-lg px-space-lg pt-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">architecture</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Architectural Profile &amp; Invocation Protocol</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm">ZONE-TIER-1A</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Col 1: Recovery Pattern -->
+<div class="space-y-space-sm p-space-md bg-surface-container-low rounded">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Recovery Strategy Pattern</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Active-Passive Hot Standby Failover</div>
+<div class="space-y-1 pt-1 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-primary"></span>Primary Production:</span>
+<span class="font-medium text-on-surface">AWS us-east-1 (N. Virginia)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>Secondary Target DC:</span>
+<span class="font-medium text-on-surface">AWS us-west-2 (Oregon)</span>
+</div>
+</div>
+</div>
+<!-- Col 2: SLA Capabilities vs Target -->
+<div class="space-y-space-sm p-space-md bg-surface-container-low rounded">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Declared Recovery Capability</div>
+<div class="flex items-center gap-space-md">
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Declared RTO</span>
+<span class="font-headline-sm text-headline-sm text-primary">90m</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-1 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Target ≤ 120m (Margin +30m)</span>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Declared RPO</span>
+<span class="font-headline-sm text-headline-sm text-primary">10m</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-1 overflow-hidden">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 66%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Target ≤ 15m (Margin +5m)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Invocation Linkage Alert Bar -->
+<div class="mt-space-md p-space-sm bg-surface-container rounded flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">notification_important</span>
+<span class="font-body-sm text-body-sm text-on-surface">
+              Crisis Linkage ID: <code class="font-code-sm text-code-sm bg-surface-container-lowest px-1.5 py-0.5 rounded font-bold text-primary">INV-PLN-0104</code>
+<span class="mx-1.5 text-on-surface-variant">•</span>
+              Status: <span class="font-semibold text-primary">Ready for Immediate Invocation</span>
+</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Linked to CMT Severity-1 Runbooks</span>
+</div>
+</div>
+</div>
+<!-- Section 2: Step-by-Step Recovery Execution Runbook -->
+<div class="bg-surface-container-lowest rounded shadow-sm overflow-hidden">
+<!-- Runbook Control Toolbar -->
+<div class="p-space-md bg-surface-container-low flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-headline-sm font-headline-sm text-headline-sm text-on-surface">Execution Runbook Sequence</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold">5 Sequential Steps</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-lowest rounded shadow-sm text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span class="">Accumulated RTO: <strong class="font-headline-sm text-headline-sm text-primary">90m</strong></span>
+</div>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Reorder Steps" type="button">
+<span class="material-symbols-outlined text-[18px]">swap_vert</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Runbook Settings" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Runbook Execution Table (Ultra-dense SLA pattern) -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+<th class="py-2.5 px-3 w-14">#</th>
+<th class="py-2.5 px-3 w-36">Phase</th>
+<th class="py-2.5 px-4 min-w-[220px]">Step &amp; Automation Script</th>
+<th class="py-2.5 px-3 w-40">Assignee Role</th>
+<th class="py-2.5 px-3 w-20 text-right">Est.</th>
+<th class="py-2.5 px-3 w-32">Prerequisites</th>
+<th class="py-2.5 px-4 min-w-[200px]">Verification Outcome</th>
+<th class="py-2.5 px-2 w-10 text-center"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-body-sm font-body-sm">
+<!-- Step 1.0 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-3 font-code-sm text-code-sm font-bold text-primary">1.0</td>
+<td class="py-3 px-3">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-medium">
+                    Triage &amp; Command
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-headline-sm text-headline-sm text-on-surface">Disaster Declaration &amp; Failover Initiation</div>
+<div class="text-on-surface-variant text-body-sm mt-0.5">Authoritative executive invocation command transmitted to all secondary recovery squads.</div>
+<div class="mt-1 font-code-sm text-code-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant inline-block">
+                    itdr-cli crisis invoke --plan APP-0104 --auth-token $CISO_AUTH
+                  </div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">shield_person</span>
+<span class="truncate">Incident Commander</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Jordan Admin</div>
+</td>
+<td class="py-3 px-3 text-right font-code-sm text-code-sm font-bold text-on-surface">10m</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">flag</span> CMT Quorum
+                  </span>
+</td>
+<td class="py-3 px-4">
+<span class="text-on-surface font-medium">Formal failover command logged in tamper-proof audit trail.</span>
+</td>
+<td class="py-3 px-2 text-center">
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Step 2.0 -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-surface-container-lowest">
+<td class="py-3 px-3 font-code-sm text-code-sm font-bold text-primary">2.0</td>
+<td class="py-3 px-3">
+<span class="inline-block px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium">
+                    Network &amp; Edge
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-headline-sm text-headline-sm text-on-surface">Route53 DNS Failover &amp; Traffic Drain</div>
+<div class="text-on-surface-variant text-body-sm mt-0.5">Switch core API gateways, ingress controllers, and DNS weights to the secondary Oregon edge.</div>
+<div class="mt-1 font-code-sm text-code-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant inline-block">
+                    aws route53 change-resource-record-sets --hosted-zone-id Z1234
+                  </div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">hub</span>
+<span class="truncate">Network Lead / SRE</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Cloud NetOps Team</div>
+</td>
+<td class="py-3 px-3 text-right font-code-sm text-code-sm font-bold text-on-surface">15m</td>
+<td class="py-3 px-3">
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-on-surface">Step 1.0</span>
+</td>
+<td class="py-3 px-4">
+<span class="text-on-surface font-medium">100% incoming traffic redirected to us-west-2 ALB endpoints.</span>
+</td>
+<td class="py-3 px-2 text-center">
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Step 3.0 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-3 font-code-sm text-code-sm font-bold text-primary">3.0</td>
+<td class="py-3 px-3">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-medium">
+                    Data Tier Core
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-headline-sm text-headline-sm text-on-surface">Promote Aurora PostgreSQL Global DB Replica</div>
+<div class="text-on-surface-variant text-body-sm mt-0.5">Detach cross-region storage replica and convert us-west-2 read instance into read-write primary.</div>
+<div class="mt-1 font-code-sm text-code-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant inline-block">
+                    aws rds failover-global-cluster --global-cluster-identifier banking-aurora
+                  </div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">database</span>
+<span class="truncate">Principal DBA</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Elena Ramos</div>
+</td>
+<td class="py-3 px-3 text-right font-code-sm text-code-sm font-bold text-on-surface">20m</td>
+<td class="py-3 px-3">
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-on-surface">Step 1.0</span>
+</td>
+<td class="py-3 px-4">
+<span class="text-on-surface font-medium">us-west-2 replica promoted to standalone master with 0 data loss.</span>
+</td>
+<td class="py-3 px-2 text-center">
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Step 4.0 -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-surface-container-lowest">
+<td class="py-3 px-3 font-code-sm text-code-sm font-bold text-primary">4.0</td>
+<td class="py-3 px-3">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-medium">
+                    Application Tier
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-headline-sm text-headline-sm text-on-surface">Scale EKS Worker Node Groups &amp; Pod Rehydration</div>
+<div class="text-on-surface-variant text-body-sm mt-0.5">Scale node pools from standby 4 nodes to production 32 m6i.4xlarge instances; expand banking engine replicas.</div>
+<div class="mt-1 font-code-sm text-code-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant inline-block">
+                    kubectl scale deployment/core-banking --replicas=48 -n prod
+                  </div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">cloud_sync</span>
+<span class="truncate">Cloud Platforms Lead</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">DevOps Core</div>
+</td>
+<td class="py-3 px-3 text-right font-code-sm text-code-sm font-bold text-on-surface">30m</td>
+<td class="py-3 px-3">
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-on-surface">Step 2.0, 3.0</span>
+</td>
+<td class="py-3 px-4">
+<span class="text-on-surface font-medium">48/48 banking pods healthy and passing readiness probes.</span>
+</td>
+<td class="py-3 px-2 text-center">
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Step 5.0 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-3 px-3 font-code-sm text-code-sm font-bold text-primary">5.0</td>
+<td class="py-3 px-3">
+<span class="inline-block px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-medium">
+                    Validation &amp; Handover
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="font-headline-sm text-headline-sm text-on-surface">Synthetic Transaction &amp; Liquidity Clearing Smoke Test</div>
+<div class="text-on-surface-variant text-body-sm mt-0.5">Fire synthetic ledger transfers and settlement feeds across SWIFT / Fedwire mock channels to confirm ledger consistency.</div>
+<div class="mt-1 font-code-sm text-code-sm bg-surface-container-low px-2 py-1 rounded text-on-surface-variant inline-block">
+                    smoke-runner --suite=core-settlement-full --env=us-west-2
+                  </div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span class="truncate">QA Lead &amp; Verifier</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Settlements SRE</div>
+</td>
+<td class="py-3 px-3 text-right font-code-sm text-code-sm font-bold text-on-surface">15m</td>
+<td class="py-3 px-3">
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-on-surface">Step 4.0</span>
+</td>
+<td class="py-3 px-4">
+<span class="text-on-surface font-medium">End-to-end payment test accounts cleared within 500ms latency.</span>
+</td>
+<td class="py-3 px-2 text-center">
+<button class="p-1 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Add Step Trigger -->
+<div class="p-space-sm bg-surface-container-low flex items-center justify-between">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">add</span>
+<span class="">Append Execution Step</span>
+</button>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+            ISO 22301 Clause 8.4 Compliant Procedure Specification
+          </div>
+</div>
+</div>
+<!-- Execution Timeline Graphic Visualizer -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-lg">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">timeline</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Cumulative RTO Timeline &amp; Parallel Critical Path</span>
+</div>
+<span class="font-code-sm text-code-sm text-primary font-bold">Planned Duration: 90 Min</span>
+</div>
+<div class="relative pt-2 pb-1">
+<!-- Multi-tier Bar visualization -->
+<div class="h-6 w-full bg-surface-container rounded flex overflow-hidden font-label-sm text-label-sm text-on-primary">
+<div class="bg-primary flex items-center justify-center font-bold" style="width: 11%" title="Step 1.0: 10m">10m</div>
+<div class="bg-primary-container flex items-center justify-center font-bold" style="width: 17%" title="Step 2.0: 15m">15m</div>
+<div class="bg-secondary flex items-center justify-center font-bold" style="width: 22%" title="Step 3.0: 20m">20m</div>
+<div class="bg-primary flex items-center justify-center font-bold" style="width: 33%" title="Step 4.0: 30m">30m</div>
+<div class="bg-primary-container flex items-center justify-center font-bold" style="width: 17%" title="Step 5.0: 15m">15m</div>
+</div>
+<!-- Scale markers -->
+<div class="flex justify-between text-on-surface-variant font-code-sm text-code-sm pt-1">
+<span class="">T+0m (Invocation)</span>
+<span class="">T+25m</span>
+<span class="">T+45m</span>
+<span class="">T+75m</span>
+<span class="text-primary font-bold">T+90m (Declared Recovery Complete)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (4 cols): Companion Audit Trail, Contacts & Bound Test Results -->
+<div class="xl:col-span-4 space-y-space-lg">
+<!-- Companion Widget 1: Formal Approval & Audit Trail Box -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-lg space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Governance &amp; Audit Trail</h3>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">Active</span>
+</div>
+<div class="p-space-md bg-surface-container-low rounded space-y-space-sm">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Current Version Sign-off</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">v2.1 Approved</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Approved on <strong>2026-01-20</strong> by <span class="text-on-surface font-medium">Marcus Vance</span> (Chief Information Security Officer).
+            </div>
+</div>
+<div class="pt-space-xs space-y-1 font-body-sm text-body-sm">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="">Recertification Cycle:</span>
+<span class="text-on-surface font-medium">Annual</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="">Next Review Due:</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">In 245 Days</span>
+</div>
+</div>
+</div>
+<!-- Bound DR Test Evidence Card -->
+<div class="p-space-md bg-surface-container rounded space-y-space-xs">
+<div class="flex items-center justify-between flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Bound DR Simulation Test</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-lowest text-primary font-code-sm text-code-sm font-bold">PASSED</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">TP-2026-001 (Failover Simulation)</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+            Completed on <strong>2026-02-14</strong>. Actual failover time achieved was <strong>82 minutes</strong> with 0 data divergence reported.
+          </div>
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold hover:underline pt-1" href="#test-results">
+<span class="">Inspect Evidence Logs &amp; Sign-off</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Companion Widget 2: Emergency Contacts Matrix -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-lg space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">phone_in_talk</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Emergency Contacts Matrix</h3>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Escalation Tier 1</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Contact 1 -->
+<div class="p-space-sm bg-surface-container-low rounded flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary flex items-center justify-center font-bold text-label-md shrink-0">
+                IC
+              </div>
+<div class="min-w-0">
+<div class="font-headline-sm text-headline-sm text-on-surface truncate">Jordan Admin</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant truncate">Incident Commander / DR Lead</div>
+</div>
+</div>
+<a class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold flex items-center gap-1 shrink-0 shadow-sm" href="tel:555-0192">
+<span class="material-symbols-outlined text-[14px] text-primary">call</span>
+              555-0192
+            </a>
+</div>
+<!-- Contact 2 -->
+<div class="p-space-sm bg-surface-container-low rounded flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded bg-secondary text-on-secondary flex items-center justify-center font-bold text-label-md shrink-0">
+                DB
+              </div>
+<div class="min-w-0">
+<div class="font-headline-sm text-headline-sm text-on-surface truncate">Elena Ramos</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant truncate">Lead DBA On-Call (P1)</div>
+</div>
+</div>
+<a class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold flex items-center gap-1 shrink-0 shadow-sm" href="tel:555-0144">
+<span class="material-symbols-outlined text-[14px] text-primary">call</span>
+              555-0144
+            </a>
+</div>
+<!-- Contact 3 -->
+<div class="p-space-sm bg-surface-container-low rounded flex items-center justify-between hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-label-md shrink-0">
+                SEC
+              </div>
+<div class="min-w-0">
+<div class="font-headline-sm text-headline-sm text-on-surface truncate">Cloud SecOps Desk</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant truncate">Security Operation Center 24/7</div>
+</div>
+</div>
+<a class="px-2.5 py-1 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold flex items-center gap-1 shrink-0 shadow-sm" href="tel:555-0188">
+<span class="material-symbols-outlined text-[14px] text-primary">call</span>
+              555-0188
+            </a>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Bridge Conf Code: <strong class="text-on-surface font-code-sm text-code-sm">BR-882-901</strong></span>
+<button class="text-primary hover:underline font-semibold">Broadcast SMS</button>
+</div>
+</div>
+<!-- Infrastructure Quick Map / Topology Mini Tile -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-space-lg space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">satellite_alt</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Data Replication Health</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Continuous Lag &lt; 2s</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded flex items-center justify-between">
+<div class="text-center flex-1">
+<div class="font-label-sm text-label-sm text-on-surface-variant">Primary (Master)</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-0.5">us-east-1</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">10.140.0.0/16</div>
+</div>
+<div class="flex flex-col items-center px-2">
+<span class="material-symbols-outlined text-primary text-[20px] animate-pulse">sync_alt</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Aurora Global</span>
+</div>
+<div class="text-center flex-1">
+<div class="font-label-sm text-label-sm text-on-surface-variant">Standby (Replica)</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-0.5">us-west-2</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">10.144.0.0/16</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Script for Interactive Version Toggle -->
+<script>
+    (function() {
+      const btn = document.getElementById('version-btn');
+      const menu = document.getElementById('version-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          menu.classList.toggle('hidden');
+        });
+        document.addEventListener('click', function(e) {
+          if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            menu.classList.add('hidden');
+          }
+        });
+      }
+    })();
+  </script>
+</div></main></div>
+
+</body></html>

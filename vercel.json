@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "public": true,
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/:match*",
+      "destination": "https://itdr-module.onrender.com/api/:match*"
+    },
+    {
+      "source": "/itdr/(.*)",
+      "destination": "/itdr/public/index.html"
+    },
+    {
+      "source": "/itdr",
+      "destination": "/itdr/public/index.html"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/itdr/public/$1"
+    }
+  ]
+}

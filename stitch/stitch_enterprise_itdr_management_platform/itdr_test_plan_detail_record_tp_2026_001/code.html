@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline":"#777587","on-surface-variant":"#464555","inverse-on-surface":"#eaf1ff","on-surface":"#0b1c30","tertiary-fixed-dim":"#ffb695","on-primary-fixed":"#0f0069","tertiary-container":"#a44100","surface-container-low":"#eff4ff","error":"#ba1a1a","on-background":"#0b1c30","primary-container":"#4f46e5","primary":"#3525cd","on-tertiary":"#ffffff","on-primary-fixed-variant":"#3323cc","surface-container-lowest":"#ffffff","inverse-primary":"#c3c0ff","on-secondary-fixed":"#131b2e","surface-container-highest":"#d3e4fe","tertiary-fixed":"#ffdbcc","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","background":"#f8f9ff","on-tertiary-fixed-variant":"#7b2f00","on-primary-container":"#dad7ff","secondary-fixed-dim":"#bec6e0","secondary-container":"#dae2fd","on-tertiary-container":"#ffd2be","surface-tint":"#4d44e3","on-secondary-fixed-variant":"#3f465c","on-secondary":"#ffffff","on-primary":"#ffffff","primary-fixed":"#e2dfff","surface":"#f8f9ff","surface-bright":"#f8f9ff","secondary-fixed":"#dae2fd","error-container":"#ffdad6","primary-fixed-dim":"#c3c0ff","tertiary":"#7e3000","on-error":"#ffffff","on-error-container":"#93000a","inverse-surface":"#213145","surface-container":"#e5eeff","outline-variant":"#c7c4d8","on-secondary-container":"#5c647a","secondary":"#565e74","on-tertiary-fixed":"#351000","surface-variant":"#d3e4fe"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"gutter":"1rem","space-md":"0.75rem","margin":"1rem","space-lg":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xl":"1.5rem","space-xs":"0.25rem","gutter-desktop":"1.5rem"},fontFamily:{"headline-lg":["Inter"],"headline-sm":["Inter"],"body-lg":["Inter"],"body-md":["Inter"],"headline-md":["Inter"],"label-sm":["Inter"],"label-md":["Inter"],"headline-xl":["Inter"],"body-sm":["Inter"],"code-sm":["Inter"]},fontSize:{"headline-lg":["1.25rem",{"lineHeight":"1.75rem","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-sm":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"600"}],"body-lg":["0.9375rem",{"lineHeight":"1.375rem","fontWeight":"400"}],"body-md":["0.8125rem",{"lineHeight":"1.1875rem","fontWeight":"400"}],"headline-md":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.04em","fontWeight":"600"}],"label-md":["0.8125rem",{"lineHeight":"1rem","fontWeight":"500"}],"headline-xl":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"400"}],"code-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"500"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest border-r border-outline-variant/40 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-14 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-lowest shrink-0"><img alt="ITDR Resilience Brand Mark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xrenfm6HxIOm9EKyEAmXLXEbhpffSmGhxPC0dyRcjiDrfBo9YbLL5g0Wkao9ki_L1XySRTsq-VF7QxtmlgFgUSJj19-G7uJxANAmciLrJ7145317JypKUY0Iubu7w6VOu32yY8YC0n7eiFkMt74U-qaKgATR4R-9iTMAT6-7a7absYdY3S1YoALAvdBtxPzhcCVN50JjG9kG85KJkkGb3XpR2X2yjN1v9eoj-sg_cv56iZAcwQxu5CDoo2"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface truncate">ITDR</span><span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm tracking-wide uppercase">BCM Suite</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Disaster Recovery</span></div></div><div class="flex-1 overflow-y-auto px-space-sm py-space-sm space-y-space-md"><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">BCM Platform</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="business-impact-analysis" href="#bia"><span class="material-symbols-outlined text-[18px]">bar_chart</span><span>Business Impact Analysis</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="business-continuity-planning" href="#bcp"><span class="material-symbols-outlined text-[18px]">shield</span><span>Business Continuity Planning</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="crisis-management" href="#crisis"><span class="material-symbols-outlined text-[18px]">notification_important</span><span>Crisis Management</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Core</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="readiness-dashboard" href="#dashboard"><span class="material-symbols-outlined text-[18px]">dashboard</span><span>Readiness Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="applications-inventory" href="#coverage"><span class="material-symbols-outlined text-[18px]">dns</span><span>Applications &amp; Inventory</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Recovery Operations</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dr-plan-builder" href="#builder"><span class="material-symbols-outlined text-[18px]">layers</span><span>DR Plan Builder</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Testing &amp; Validation</div><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-1.5 transition-colors bg-primary-container text-on-primary font-label-md rounded" data-path="itdr-test-plans" href="#test-plans"><span class="material-symbols-outlined text-[18px]">assignment</span><span>ITDR Test Plans</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="itdr-test-results" href="#test-results"><span class="material-symbols-outlined text-[18px]">rule</span><span>ITDR Test Results</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Governance &amp; Compliance</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="compliance-audit-reports" href="#audit"><span class="material-symbols-outlined text-[18px]">verified_user</span><span>Compliance &amp; Audit Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-policies" href="#decisions"><span class="material-symbols-outlined text-[18px]">settings</span><span>Settings &amp; Policies</span></a></nav></div></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low shrink-0"><div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span><span class="font-code-sm text-code-sm text-on-surface-variant truncate">Engine v4.8.2 · ISO 22301</span></div><p class="font-label-sm text-label-sm text-on-surface-variant/80 truncate mt-0.5">Synced with BIA Core</p></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur border-b border-outline-variant/40 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-sm bg-surface-container-low border border-outline-variant/60 rounded text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search applications, runbooks, test plans, or audit records... (⌘K)" type="text"/></div><div class="hidden xl:flex items-center gap-1.5 px-2.5 h-8 rounded border border-outline-variant/40 bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">corporate_fare</span><span>Global Enterprise IT · ITDR</span><span class="material-symbols-outlined text-[14px]">expand_more</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container text-on-surface border border-outline-variant/30"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm font-medium">All Systems Nominal</span></div><button aria-label="Notifications" class="relative p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-label-sm flex items-center justify-center font-bold">3</span></button><div class="h-4 w-px bg-outline-variant/40"></div><div class="flex items-center gap-space-sm pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-TQnLz9M_57IO07zlAbl76zdD19OZZJn3n1o5Mp4qxa3IlgjAFwlyGzl2vTZrFfzbtIgGdrBx4dauXT0cQh_RhG_FqmTLWajlDK4EIVqO73ltQlSmC41W0aWMruAADKPvSuAI32LlY15GSrnG4seXkpfLRVjz7a2UdnsAFmQhbtCDCBnqR4pmFB-gOkaDmNh1aptmADzySJGsjyx4CAxgh668J7lugp6Rv15ECuodd5zJ0vVtZ8XnAw"/><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Jordan Admin</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">BCM Admin / DR Coordinator</span></div></div></div></header><main class="flex-1 pt-14 w-full px-gutter-desktop py-space-lg bg-background"><div class="flex flex-col w-full space-y-space-lg">
+<!-- Breadcrumbs & Meta Bar -->
+<div class="flex flex-col gap-space-xs">
+<nav class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#test-plans">
+<span class="material-symbols-outlined text-[14px]">assignment</span>
+<span>ITDR Test Plans</span>
+</a>
+<span class="material-symbols-outlined text-[12px] text-outline-variant">chevron_right</span>
+<span class="text-on-surface font-medium">TP-2026-001 · Core Banking Failover &amp; DB Switchover Test</span>
+</nav>
+<!-- Header & Action Row -->
+<div class="flex flex-col 2xl:flex-row 2xl:items-center justify-between gap-space-md pt-1">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center flex-wrap gap-space-sm">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+            TP-2026-001: Core Banking Failover &amp; DB Switchover Test
+          </h1>
+</div>
+<div class="flex items-center flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+            Status: Ready for Execution
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-medium">
+<span class="material-symbols-outlined text-[13px]">swap_calls</span>
+            Exercise Type: Full Failover Test
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-error-container text-on-error-container font-semibold">
+<span class="material-symbols-outlined text-[13px]">priority_high</span>
+            Tier 1 - Mission Critical
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+            ISO 22301 Cl. 8.5 Mandate
+          </span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3 h-8 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors shadow-sm flex items-center gap-1.5 font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Audit Packet</span>
+</button>
+<button class="px-3 h-8 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors shadow-sm flex items-center gap-1.5 font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>Clone Plan</span>
+</button>
+<button class="px-3 h-8 rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors shadow-sm flex items-center gap-1.5 font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Edit Parameters</span>
+</button>
+<button class="px-3.5 h-8 rounded bg-primary-container hover:bg-primary text-on-primary transition-colors shadow-sm flex items-center gap-1.5 font-label-md text-label-md font-semibold" type="button">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+<span>Execute &amp; Record Results</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Key Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Target Workload -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Target Workload</span>
+<span class="material-symbols-outlined text-primary text-[20px]">account_tree</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">APP-0104 · Core Banking</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Global Transaction Processing Engine</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-low font-code-sm text-code-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-primary">menu_book</span>
+          Runbook v2.1
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">14 Dependent Services</span>
+</div>
+</div>
+<!-- Card 2: Planned Execution Window -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Execution Window</span>
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">schedule</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">March 15, 2026</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">02:00 - 06:00 UTC (Off-peak)</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+          Scheduled in 18 days
+        </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Change Req #CR-8841</span>
+</div>
+</div>
+<!-- Card 3: Target Recovery SLA -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Recovery Targets</span>
+<span class="material-symbols-outlined text-primary text-[20px]">timer</span>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-low p-1.5 rounded">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Max RTO</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">120m</div>
+</div>
+<div class="bg-secondary-container/50 p-1.5 rounded">
+<div class="font-label-sm text-label-sm text-on-secondary-container uppercase">Target RTO</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">90m</div>
+</div>
+<div class="bg-surface-container-low p-1.5 rounded">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Max RPO</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">15m</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Target MTTR: 72 min</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">BIA Approved SLA</span>
+</div>
+</div>
+<!-- Card 4: Sign-off & Approvals -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col justify-between space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Sign-off Status</span>
+<span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">check_circle</span>
+            CISO Marcus Vance
+          </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Feb 10, 2026</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">check_circle</span>
+            SRE Lead David Chen
+          </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Feb 08, 2026</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">history_edu</span>
+          Dual-Party Authorization
+        </span>
+<span class="font-code-sm text-code-sm text-primary font-medium">Fully Approved</span>
+</div>
+</div>
+</div>
+<!-- Tabbed Navigation Bar -->
+<div class="bg-surface-container-lowest rounded shadow-sm p-1 flex items-center gap-1 overflow-x-auto">
+<button class="px-3 py-1.5 rounded font-label-md text-label-md bg-primary-container text-on-primary font-semibold flex items-center gap-1.5 whitespace-nowrap" type="button">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+<span>1. Scope &amp; Execution Procedure</span>
+</button>
+<button class="px-3 py-1.5 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-1.5 whitespace-nowrap" type="button">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>2. Participant Roster &amp; War Room</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface-variant font-code-sm text-code-sm">8</span>
+</button>
+<button class="px-3 py-1.5 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-1.5 whitespace-nowrap" type="button">
+<span class="material-symbols-outlined text-[16px]">health_and_safety</span>
+<span>3. Pre-Flight Health Checks</span>
+<span class="px-1.5 py-0.2 rounded-full bg-secondary-container text-on-secondary-container font-code-sm text-code-sm">100% OK</span>
+</button>
+<button class="px-3 py-1.5 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-1.5 whitespace-nowrap" type="button">
+<span class="material-symbols-outlined text-[16px]">campaign</span>
+<span>4. Communications &amp; Notice Plan</span>
+</button>
+<button class="px-3 py-1.5 rounded font-label-md text-label-md text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors flex items-center gap-1.5 whitespace-nowrap" type="button">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>5. Audit Sign-off History</span>
+</button>
+</div>
+<!-- SECTION 1: Test Scope, Scenario & Recovery Site Parameters -->
+<div class="flex flex-col space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Test Scope, Scenario &amp; Recovery Site Parameters</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Topology Model: Active / Hot-Standby Multi-Region</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+<!-- Scenario Card -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm space-y-2.5">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-error text-[18px]">emergency_home</span>
+<span class="font-headline-sm text-headline-sm">Disaster Scenario Definition</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Catastrophic Primary Region Outage: Simulated total loss of AWS <code class="px-1.5 py-0.5 rounded bg-surface-container-low font-code-sm text-code-sm font-semibold">us-east-1</code> (N. Virginia). Triggered by simulated multi-availability-zone transit gateway partition and isolated edge connectivity drop.
+        </p>
+<div class="flex flex-wrap gap-2 pt-1 font-label-sm text-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface">Simulation Mode: Dark Testing / Synthetic Ingress</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface">Controlled Injection</span>
+</div>
+</div>
+<!-- Recovery Site Card -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm space-y-2.5">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">cloud_sync</span>
+<span class="font-headline-sm text-headline-sm">Recovery Site Architecture</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Target Target: AWS <code class="px-1.5 py-0.5 rounded bg-surface-container-low font-code-sm text-code-sm font-semibold">us-west-2</code> (Oregon Secondary Data Center). Transitioning from warm standby footprint (15% capacity baseline) to full tier-1 production promotion with dedicated auto-scaling triggers.
+        </p>
+<div class="flex flex-wrap gap-2 pt-1 font-label-sm text-label-sm">
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container">Baseline: 4 Nodes</span>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed">Target Scale: 32 Nodes</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface">Direct Direct-Connect Gateway</span>
+</div>
+</div>
+<!-- In-Scope vs Exclusions Card -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm space-y-2.5">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">fact_check</span>
+<span class="font-headline-sm text-headline-sm">Scope Boundaries &amp; Boundary Conditions</span>
+</div>
+<div class="space-y-1.5">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[16px] mt-0.5 shrink-0">check</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong class="font-semibold text-on-surface">In-Scope:</strong> Aurora PostgreSQL DB Promotion, EKS Pod Rehydration, Route53 Weighted Health DNS Cutover, and end-to-end synthetic wire settlement processing.
+            </p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] mt-0.5 shrink-0">block</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong class="font-semibold text-on-surface">Out-of-Scope:</strong> External Federal Reserve Fedwire &amp; Third-party SWIFT clearing network hardware failover. Mocked using regulatory ISO 20022 sandbox simulator endpoints.
+            </p>
+</div>
+</div>
+</div>
+<!-- Rollback Strategy Card -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm space-y-2.5">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">undo</span>
+<span class="font-headline-sm text-headline-sm">Rollback &amp; Abort Safeguards</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          Full regional failback procedure scripted under fallback trigger step 6. Automatic abort threshold activated if Step 04 (pod rehydration) exceeds <strong class="font-semibold">45 minutes</strong> or if replica promotion yields data desynchronization &gt; 0 transaction records.
+        </p>
+<div class="flex items-center gap-3 pt-1 font-label-sm text-label-sm">
+<span class="text-tertiary-container font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">timer</span>
+            Abort Timer: 45 min ceiling
+          </span>
+<span class="text-on-surface-variant">· Zero Data Loss Guarantee</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: Step-by-Step Execution Runbook Table -->
+<div class="flex flex-col space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">reorder</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Step-by-Step Execution Runbook with Expected Audit-Grade Results</h2>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container font-code-sm text-code-sm">5 Total Steps Planned</span>
+<span>Estimated Total RTO: 90 Minutes</span>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider select-none">
+<th class="py-2.5 px-3 w-16 text-center">Step</th>
+<th class="py-2.5 px-3 w-44">Phase &amp; Discipline</th>
+<th class="py-2.5 px-3 w-72">Operational Procedure</th>
+<th class="py-2.5 px-3 w-48">Responsible Assignee</th>
+<th class="py-2.5 px-3 w-28 text-center">Est. Time</th>
+<th class="py-2.5 px-3">Expected Audit Verification Result</th>
+<th class="py-2.5 px-3 w-36 text-center">Pre-Flight</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-md text-body-md text-on-surface">
+<!-- Step 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 text-center align-top">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold">
+                  01
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Triage &amp; Incident Command</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">War Room Phase 0</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Emergency War Room Assembly &amp; Declaration Broadcast</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Automated paging via PagerDuty priority bridge #DR-TIER1. Incident declaration notification sent to leadership Slack channel.</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-sm text-label-sm font-semibold">JA</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface leading-tight">Jordan Admin</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Incident Commander</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[13px] text-on-surface-variant">timer</span>
+                  10m
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                  Executive incident declaration broadcasted via PagerDuty/Slack bridge. All 6 lead engineers confirmed active in War Room within 5 min with verified identity tokens.
+                </p>
+<div class="mt-1 flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+<span>Artifact: PagerDuty Incident Broadcast Log #PD-9921</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Verified Ready
+                </span>
+</td>
+</tr>
+<!-- Step 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 text-center align-top">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold">
+                  02
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Network &amp; Ingress</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Traffic Engineering</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Route53 DNS Failover &amp; Ingress Traffic Drain</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Execute script <code class="font-code-sm text-code-sm bg-surface-container-low px-1 rounded">r53_switchover.sh</code>. Deprecate us-east-1 latency routing records and initiate connection draining on ALB.</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-sm text-label-sm font-semibold">NL</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface leading-tight">Network Lead</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Cloud NetOps</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[13px] text-on-surface-variant">timer</span>
+                  15m
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                  Global DNS weighted record switched 100% to us-west-2. Edge propagation verified across 12 vantage points within 300s. Zero traffic routed to us-east-1 ingress gateway.
+                </p>
+<div class="mt-1 flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+<span>Artifact: Global DNS Propagation Probe Report</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Verified Ready
+                </span>
+</td>
+</tr>
+<!-- Step 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 text-center align-top">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold">
+                  03
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Data Tier Promotion</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Persistence &amp; Ledger</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Promote Aurora PostgreSQL Global DB Replica</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Decouple us-west-2 cluster from primary replication group. Convert read replica to standalone read-write master; update Secrets Manager connection strings.</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-sm text-label-sm font-semibold">ER</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface leading-tight">Elena Ramos</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Principal DBA</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[13px] text-on-surface-variant">timer</span>
+                  20m
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                  Secondary DB detached from global cluster and promoted to read-write standalone. Replication lag 0ms at cut point, zero transaction loss confirmed via LSN match.
+                </p>
+<div class="mt-1 flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+<span>Artifact: AWS RDS API Promotion Receipt &amp; LSN Diff</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Verified Ready
+                </span>
+</td>
+</tr>
+<!-- Step 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 text-center align-top">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold">
+                  04
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Application Tier</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Workload Orchestration</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Scale EKS Cluster Worker Nodes &amp; Pod Rehydration</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Scale Karpenter/NodePool autoscaling limits from 4 to 32 c6i.4xlarge instances. Apply Core Banking production deployment replica matrix.</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-sm text-label-sm font-semibold">DC</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface leading-tight">DevOps Core Lead</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Platform Team</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[13px] text-on-surface-variant">timer</span>
+                  30m
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                  Node pool scales from 4 to 32 instances in us-west-2. All 48 banking core microservice pods pass liveness and readiness probes within 15 minutes.
+                </p>
+<div class="mt-1 flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+<span>Artifact: Kubernetes Pod Status Telemetry Dump</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Verified Ready
+                </span>
+</td>
+</tr>
+<!-- Step 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 text-center align-top">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded bg-surface-container text-on-surface font-code-sm text-code-sm font-semibold">
+                  05
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Validation &amp; Handover</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Business Readiness</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="font-headline-sm text-headline-sm text-on-surface">Synthetic Wire Transaction &amp; APM Integrity Verification</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Fire synthetic transaction replay harness (100 synthetic ISO 20022 messages). Verify transaction ledger persistence and telemetry latencies.</div>
+</td>
+<td class="py-3 px-3 align-top">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-semibold">QV</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface leading-tight">QA Verifier</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Settlements SRE</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[13px] text-on-surface-variant">timer</span>
+                  15m
+                </span>
+</td>
+<td class="py-3 px-3 align-top">
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                  100 synthetic ISO 20022 clearing transactions executed successfully. End-to-end processing latency &lt; 280ms logged by Datadog APM with 0 error rate.
+                </p>
+<div class="mt-1 flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+<span>Artifact: Synthetic Test Replay Suite Execution Summary</span>
+</div>
+</td>
+<td class="py-3 px-3 align-top text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container text-on-surface font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Verified Ready
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Summary -->
+<div class="px-space-md py-2.5 bg-surface-container-low flex flex-wrap items-center justify-between text-on-surface-variant font-label-sm text-label-sm gap-2">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">lock_clock</span>
+<span>All 5 steps locked into tamper-evident revision ledger</span>
+</span>
+<span>·</span>
+<span>Target Cumulative RTO: <strong>90 Minutes</strong> (Buffer: 30 Min to SLA)</span>
+</div>
+<div class="flex items-center gap-2 font-code-sm text-code-sm">
+<span>Runbook Spec ID: RB-CORE-BANKING-USW2-v2.1</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Governance & Final Authorization Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<!-- Cryptographic Proof -->
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Cryptographic Pre-Approval Record</span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-on-surface font-label-sm text-label-sm">Immutable</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm text-on-surface-variant truncate">
+<span>sha256:d8a2c10b78e9f5462a74c77bb3201d140e94ff192e2190875bca612e3f9e4a81</span>
+<button class="text-primary hover:underline ml-1" title="Copy Full Hash" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Action Set -->
+<div class="flex items-center gap-2 shrink-0 w-full md:w-auto justify-end">
+<button class="px-3 h-8 rounded bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors flex items-center gap-1.5 font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>Print PDF Runbook</span>
+</button>
+<button class="px-3 h-8 rounded bg-surface-container hover:bg-surface-container-high text-on-surface transition-colors flex items-center gap-1.5 font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[16px]">science</span>
+<span>Simulate Dry-Run in Sandbox</span>
+</button>
+<button class="px-4 h-8 rounded bg-primary-container hover:bg-primary text-on-primary transition-colors flex items-center gap-1.5 font-label-md text-label-md font-semibold shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Begin Live Exercise</span>
+</button>
+</div>
+</div>
+</div></main></div></body></html>

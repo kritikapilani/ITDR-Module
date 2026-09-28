@@ -1,0 +1,20 @@
+{
+  "name": "itdr-root",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ITDR Enterprise Resilience Platform",
+  "scripts": {
+    "start": "node itdr/src/server.mjs",
+    "test": "node --test itdr/tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "itdr",
+    "bcm",
+    "resilience"
+  ],
+  "author": "",
+  "license": "ISC"
+}

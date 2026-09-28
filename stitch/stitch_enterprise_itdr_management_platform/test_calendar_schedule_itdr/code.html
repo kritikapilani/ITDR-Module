@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"error":"#ba1a1a","surface":"#f8f9ff","background":"#f8f9ff","on-surface":"#0b1c30","on-error-container":"#93000a","on-surface-variant":"#45464d","surface-variant":"#d3e4fe","surface-tint":"#565e74","on-secondary-fixed":"#0d1c2f","surface-container":"#e5eeff","inverse-on-surface":"#eaf1ff","surface-container-lowest":"#ffffff","tertiary-fixed-dim":"#adc6ff","error-container":"#ffdad6","on-tertiary-container":"#3980f4","primary-fixed":"#dae2fd","on-secondary-fixed-variant":"#3a485c","inverse-surface":"#213145","on-primary-fixed":"#131b2e","on-primary":"#ffffff","outline":"#76777d","primary-fixed-dim":"#bec6e0","on-secondary-container":"#57657b","on-tertiary-fixed":"#001a42","on-secondary":"#ffffff","on-error":"#ffffff","surface-bright":"#f8f9ff","on-primary-container":"#7c839b","on-tertiary-fixed-variant":"#004395","on-primary-fixed-variant":"#3f465c","tertiary":"#000000","secondary-fixed-dim":"#b9c7e0","outline-variant":"#c6c6cd","surface-container-highest":"#d3e4fe","primary":"#000000","secondary":"#515f74","inverse-primary":"#bec6e0","on-background":"#0b1c30","surface-dim":"#cbdbf5","surface-container-high":"#dce9ff","secondary-fixed":"#d5e3fd","primary-container":"#131b2e","on-tertiary":"#ffffff","surface-container-low":"#eff4ff","tertiary-container":"#001a42","secondary-container":"#d5e3fd","tertiary-fixed":"#d8e2ff"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xs":"0.25rem","gutter-desktop":"1.5rem","space-md":"0.75rem","margin":"1rem","margin-desktop":"1.5rem","gutter":"1rem","space-xl":"1.5rem","space-lg":"1rem","space-sm":"0.5rem"},fontFamily:{"label-md":["Inter"],"metric-display":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"body-md":["Inter"],"body-sm":["Inter"],"headline-xl":["Inter"]},fontSize:{"label-md":["0.8125rem",{"lineHeight":"1.125rem","letterSpacing":"0.01em","fontWeight":"600"}],"metric-display":["2rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg":["1.375rem",{"lineHeight":"1.875rem","letterSpacing":"-0.015em","fontWeight":"600"}],"body-lg":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"headline-md":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"400"}],"body-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"400"}],"headline-xl":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-outline-variant/50 z-50 flex flex-col"><div class="h-14 px-margin flex items-center gap-space-sm border-b border-outline-variant/40 bg-surface-container-lowest"><img alt="ITDR Resilience Shield Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WnCqNvq3-8qpGUerFgOMh5FhJqQZji9Idvpc_yVsmmGGENgieLCo7g6ZDciBXZkNTXN64l22Y8kPU_DegaJEEqPUmpCrASM_w2XYdH2c1QY_y-Sw7szdgRrFeej6EO500BEWNw5Djes70hGMS9KqnWo77G_HNEzTH3KWoEYSl4w86H4yeqQzJpSxN3_s2CQLoVUjfahNe9X0WqpKLQ0RjiWrLvN6OnXI6j-mmYRTCH0jnmomhzVzF8OjVm"/><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface truncate leading-none">ITDR</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">Disaster Recovery</span></div></div><div class="px-margin-desktop py-space-md border-b border-outline-variant/30 bg-surface-container-low/40"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Scope</span><span class="inline-flex items-center px-space-xs py-0.5 rounded-lg bg-surface-container-high text-on-surface text-[10px] font-bold tracking-wide">BCM-PROD</span></div><div class="flex items-center gap-space-xs mt-1 text-on-surface font-label-md text-label-md truncate"><span class="material-symbols-outlined text-[16px] text-secondary">corporate_fare</span><span class="truncate font-semibold">Global Enterprise IT</span></div></div><nav class="flex-1 overflow-y-auto px-space-sm py-space-md space-y-space-lg" data-active-classes="bg-primary-container text-on-primary font-bold border-l-2 border-on-tertiary-container shadow-sm"><div class="space-y-1"><div class="px-space-md py-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Core</div><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="readiness-dashboard" href="#"><span class="truncate font-label-md text-label-md">Readiness Dashboard</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="applications-assets" href="#"><span class="truncate font-label-md text-label-md">Applications &amp; Assets</span></a></div><div class="space-y-1"><div class="px-space-md py-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Recovery Operations</div><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dr-plan-builder" href="#"><span class="truncate font-label-md text-label-md">DR Plan Builder</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="plan-approvals" href="#"><span class="truncate font-label-md text-label-md">Plan Approvals</span></a></div><div class="space-y-1"><div class="px-space-md py-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Testing &amp; Validation</div><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="test-records-results" href="#"><span class="truncate font-label-md text-label-md">Test Records &amp; Results</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="test-calendar-schedule" href="#"><span class="truncate font-label-md text-label-md">Test Calendar &amp; Schedule</span></a></div><div class="space-y-1"><div class="px-space-md py-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Governance</div><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="compliance-audit-reports" href="#"><span class="truncate font-label-md text-label-md">Compliance &amp; Audit Reports</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="system-settings" href="#"><span class="truncate font-label-md text-label-md">Settings</span></a></div></nav><div class="p-space-md border-t border-outline-variant/40 bg-surface-container-low/50"><div class="flex items-center justify-between p-space-sm bg-surface-container-lowest border border-outline-variant/40 rounded-lg"><div class="flex items-center gap-space-sm min-w-0"><span class="w-2 h-2 rounded-full bg-emerald-600"></span><span class="font-label-sm text-label-sm text-on-surface font-semibold truncate">Telemetry: Active</span></div><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">v4.8.2</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/40 z-40 px-gutter-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-gutter flex-1 max-w-2xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full h-8 pl-9 pr-space-md bg-surface border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary transition-colors" placeholder="Search applications, plans, tests, RTO/RPO..." type="text"/></div></div><div class="flex items-center gap-gutter shrink-0"><button class="h-8 px-space-md inline-flex items-center gap-space-xs border border-outline-variant/60 rounded-lg bg-surface hover:bg-surface-container-low text-on-surface transition-colors font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px] text-secondary">business</span><span class="font-semibold">Global Enterprise IT</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></button><button aria-label="Notifications" class="relative w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute 1.5 top-1.5 right-1.5 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-[10px] leading-tight flex items-center justify-center font-bold">5</span></button><div class="h-6 w-px bg-outline-variant/40"></div><div class="flex items-center gap-space-md cursor-pointer"><div class="text-right hidden sm:block"><div class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Marcus Vance</div><div class="font-label-sm text-label-sm text-on-surface-variant leading-tight">IT Risk &amp; Resilience Director</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-14 min-h-screen bg-surface px-gutter-desktop py-gutter-desktop"><div class="flex flex-col w-full gap-space-lg">
+<!-- Top Breadcrumbs & Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="hover:text-on-surface transition-colors cursor-pointer">Testing &amp; Validation</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Test Calendar &amp; Schedule</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">DR Testing Calendar &amp; Execution Schedule</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Enterprise failover cadence, regulatory simulations, and change window scheduling across Tier 0–3 ecosystems.</p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="h-8 px-space-md bg-surface-container-lowest hover:bg-surface-container-high text-on-surface border-0 rounded-lg shadow-sm font-label-md text-label-md flex items-center gap-space-xs transition-colors">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span>Export Calendar (.ics / .csv)</span>
+</button>
+<button class="h-8 px-space-md bg-primary text-on-primary hover:bg-primary-container transition-colors rounded-lg shadow-sm font-label-md text-label-md flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Schedule DR Test</span>
+</button>
+</div>
+</div>
+<!-- Top Summary Metric Cards (4-Column Bento Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Total Scheduled -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Total Scheduled (H2 / Q4 2024)</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm">On Track</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface font-bold">28</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">drills scheduled</span>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Across 164 Tier 0–3 apps</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono">82% Verified</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-on-tertiary-container h-1 rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<!-- Card 2: Upcoming in 30 Days -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Upcoming (Next 30 Days)</span>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-on-tertiary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-on-tertiary-container"></span>
+</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface font-bold">6</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">drills queued</span>
+</div>
+<div class="flex items-center gap-2 text-[11px] font-medium text-secondary">
+<span class="px-1.5 py-0.5 rounded bg-surface-variant text-on-secondary-container">3 Failover</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface">2 Tabletop</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">1 Component</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-1 rounded-full" style="width: 50%"></div>
+</div>
+</div>
+<!-- Card 3: Compliance SLA -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Testing Compliance SLA</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container-high text-emerald-700 font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>SLA Satisfied</span>
+</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface font-bold">94.2%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">on-cadence</span>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Target: 90.0% ISO/FFIEC</span>
+<span class="text-emerald-700 font-semibold font-label-sm text-label-sm">+1.8% QoQ</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-emerald-600 h-1 rounded-full" style="width: 94.2%"></div>
+</div>
+</div>
+<!-- Card 4: Overdue & Action Needed -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col justify-between shadow-sm relative">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error font-semibold">Overdue / Action Needed</span>
+<span class="px-2 py-0.5 rounded-lg bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">Breach Risk</span>
+</div>
+<div class="my-space-sm flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-error font-bold">3</span>
+<span class="font-body-sm text-body-sm text-error">overdue drills</span>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span class="truncate">2 Tier-1, 1 Tier-2 exceed 365d</span>
+<button class="font-label-sm text-label-sm text-error font-semibold underline hover:text-on-error-container">Resolve</button>
+</div>
+<div class="w-full bg-error-container h-1 rounded-full mt-2 overflow-hidden">
+<div class="bg-error h-1 rounded-full" style="width: 38%"></div>
+</div>
+</div>
+</div>
+<!-- Regulatory Compliance Warning Callout Banner -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Overdue Compliance Action Required:</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">
+<strong>Customer Support CRM</strong> (Tier-1) is 8 days overdue for ISO22301 failover. <strong>Regulatory Analytics Warehouse</strong> due in 5 days.
+        </span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-end md:self-auto">
+<button class="h-7 px-space-sm bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded-lg transition-colors">
+        Dismiss Notice
+      </button>
+<button class="h-7 px-space-sm bg-error text-on-error hover:opacity-90 font-label-sm text-label-sm rounded-lg transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_month</span>
+<span>Auto-Assign Slot</span>
+</button>
+</div>
+</div>
+<!-- Calendar Controls & Legend Toolbar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md shadow-sm">
+<!-- View Mode Switcher -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="inline-flex bg-surface-container p-0.5 rounded-lg">
+<button class="h-7 px-space-md rounded-md bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-sm flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[15px]">calendar_view_month</span>
+<span>Month</span>
+</button>
+<button class="h-7 px-space-md rounded-md hover:text-on-surface text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[15px]">view_agenda</span>
+<span>List / Agenda</span>
+</button>
+<button class="h-7 px-space-md rounded-md hover:text-on-surface text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[15px]">waterfall_chart</span>
+<span>Gantt Timeline</span>
+</button>
+</div>
+<!-- Month Navigation -->
+<div class="flex items-center gap-1 ml-2">
+<button class="w-7 h-7 flex items-center justify-center rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" title="Previous Month">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold px-2 text-on-surface min-w-36 text-center">November 2024</span>
+<button class="w-7 h-7 flex items-center justify-center rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface transition-colors" title="Next Month">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="h-7 px-space-sm ml-1 text-on-surface font-label-sm text-label-sm rounded-lg bg-surface-container-high hover:bg-surface-variant transition-colors">
+          Today
+        </button>
+</div>
+</div>
+<!-- Filters & Legend -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<select class="h-7 px-2 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm focus:outline-none cursor-pointer">
+<option>Criticality: All Tiers</option>
+<option>Tier 0 - Mission Critical</option>
+<option>Tier 1 - Business Critical</option>
+<option>Tier 2 - Operational</option>
+</select>
+<select class="h-7 px-2 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm focus:outline-none cursor-pointer">
+<option>Type: All Types</option>
+<option>Full Data Center Failover</option>
+<option>Tabletop War Room</option>
+<option>Component / Sim</option>
+</select>
+<select class="h-7 px-2 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm focus:outline-none cursor-pointer">
+<option>Status: All Statuses</option>
+<option>Scheduled</option>
+<option>Upcoming</option>
+<option>Overdue</option>
+<option>Completed</option>
+</select>
+</div>
+<div class="h-4 w-px bg-outline-variant hidden sm:block"></div>
+<!-- Compact Legend -->
+<div class="flex items-center gap-3 text-[11px] font-medium text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>Full Failover</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span>Tabletop</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Simulation</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>Breach / Overdue</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Main Layout Split: Calendar Grid + Context Drawer Panel -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Calendar Body (9 cols on wide screens) -->
+<div class="lg:col-span-8 xl:col-span-9 bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Weekday Headers -->
+<div class="grid grid-cols-7 bg-surface-container-high py-2 text-center text-secondary font-label-sm text-label-sm uppercase tracking-wider font-bold">
+<div>Mon</div>
+<div>Tue</div>
+<div>Wed</div>
+<div>Thu</div>
+<div>Fri</div>
+<div>Sat</div>
+<div>Sun</div>
+</div>
+<!-- Calendar Month Grid (7 columns x 5 weeks) -->
+<div class="grid grid-cols-7 bg-surface-container-low gap-[1px]">
+<!-- Oct 28 (Prev Month) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest/60 text-outline flex flex-col justify-between opacity-50">
+<span class="font-label-sm text-label-sm">28</span>
+</div>
+<!-- Oct 29 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest/60 text-outline flex flex-col justify-between opacity-50">
+<span class="font-label-sm text-label-sm">29</span>
+</div>
+<!-- Oct 30 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest/60 text-outline flex flex-col justify-between opacity-50">
+<span class="font-label-sm text-label-sm">30</span>
+</div>
+<!-- Oct 31 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest/60 text-outline flex flex-col justify-between opacity-50">
+<span class="font-label-sm text-label-sm">31</span>
+</div>
+<!-- Nov 1 (Friday) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">1</span>
+<span class="font-body-sm text-[10px] text-secondary">Q4 Beg.</span>
+</div>
+</div>
+<!-- Nov 2 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">2</span>
+</div>
+<!-- Nov 3 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">3</span>
+</div>
+<!-- Nov 4 (Completed Simulation) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">4</span>
+<span class="material-symbols-outlined text-emerald-600 text-[14px]" title="Executed Successfully">check_circle</span>
+</div>
+<div class="mt-1 flex flex-col gap-1">
+<div class="p-1 rounded bg-surface-container-high text-on-surface cursor-pointer hover:bg-surface-variant transition-colors" title="Instant Checkout API Router">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-emerald-700 font-bold">COMPLETED</span>
+<span class="font-body-sm text-[9px] text-on-surface-variant">02:00 UTC</span>
+</div>
+<p class="font-label-sm text-label-sm font-semibold truncate leading-snug">TR-1108: Checkout API Router</p>
+<div class="flex items-center gap-1 mt-0.5 text-[9px] text-on-surface-variant">
+<span class="px-1 rounded bg-surface-container-lowest">Tier 1</span>
+<span>Sim Pass</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Nov 5 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">5</span>
+</div>
+<!-- Nov 6 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">6</span>
+</div>
+<!-- Nov 7 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">7</span>
+</div>
+<!-- Nov 8 (Completed Tabletop) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">8</span>
+<span class="material-symbols-outlined text-emerald-600 text-[14px]">check_circle</span>
+</div>
+<div class="mt-1 flex flex-col gap-1">
+<div class="p-1 rounded bg-surface-container text-on-surface cursor-pointer hover:bg-surface-variant transition-colors" title="Global People &amp; Payroll">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-on-tertiary-container font-bold">TABLETOP</span>
+<span class="font-body-sm text-[9px] text-on-surface-variant">14:00 UTC</span>
+</div>
+<p class="font-label-sm text-label-sm font-semibold truncate leading-snug">TR-1110: People &amp; Payroll</p>
+<div class="flex items-center gap-1 mt-0.5 text-[9px] text-on-surface-variant">
+<span class="px-1 rounded bg-surface-container-lowest">Tier 2</span>
+<span>Audit Signed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Nov 9 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">9</span>
+</div>
+<!-- Nov 10 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">10</span>
+</div>
+<!-- Nov 11 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">11</span>
+</div>
+<!-- Nov 12 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">12</span>
+</div>
+<!-- Nov 13 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">13</span>
+</div>
+<!-- Nov 14 (Today Marker) -->
+<div class="min-h-28 p-1.5 bg-surface-container-high/40 flex flex-col group hover:bg-surface-container-high/60 transition-colors">
+<div class="flex items-center justify-between">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm font-bold">14</span>
+<span class="font-label-sm text-[10px] text-primary font-bold">TODAY</span>
+</div>
+<div class="mt-2 text-center py-2">
+<span class="font-body-sm text-[11px] text-on-surface-variant italic">No drills running</span>
+</div>
+</div>
+<!-- Nov 15 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">15</span>
+</div>
+<!-- Nov 16 (Upcoming Major Failover) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">16</span>
+<span class="px-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-[9px] font-bold">IN 2 DAYS</span>
+</div>
+<div class="mt-1 flex flex-col gap-1">
+<div class="p-1.5 rounded-lg bg-primary text-on-primary cursor-pointer hover:bg-primary-container transition-colors shadow-sm" title="AWS Frankfurt Secondary Failover">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-tertiary-fixed-dim uppercase font-bold tracking-wider">FULL FAILOVER</span>
+<span class="font-mono text-[9px] text-inverse-on-surface">02:00 UTC</span>
+</div>
+<p class="font-label-md text-label-md font-bold truncate leading-tight mt-0.5">TR-1114: AWS Frankfurt</p>
+<div class="flex items-center gap-1.5 mt-1 text-[10px] text-primary-fixed">
+<span class="px-1 rounded bg-inverse-surface text-inverse-on-surface font-semibold">Tier 0</span>
+<span>Dual-AZ Cutover</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Nov 17 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">17</span>
+</div>
+<!-- Nov 18 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">18</span>
+</div>
+<!-- Nov 19 (Component Test) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">19</span>
+<span class="font-label-sm text-[10px] text-secondary">Tue</span>
+</div>
+<div class="mt-1 flex flex-col gap-1">
+<div class="p-1 rounded bg-surface-container-high text-on-surface cursor-pointer hover:bg-surface-variant transition-colors" title="MQ Cluster Rehydration">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-secondary font-bold">COMPONENT</span>
+<span class="font-body-sm text-[9px] text-on-surface-variant">11:00 UTC</span>
+</div>
+<p class="font-label-sm text-label-sm font-semibold truncate leading-snug">TR-1116: MQ Broker Sync</p>
+<span class="font-body-sm text-[9px] text-on-surface-variant">Tier 1 • SRE Lead: J. Choi</span>
+</div>
+</div>
+</div>
+<!-- Nov 20 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">20</span>
+</div>
+<!-- Nov 21 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">21</span>
+</div>
+<!-- Nov 22 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">22</span>
+</div>
+<!-- Nov 23 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">23</span>
+</div>
+<!-- Nov 24 (Kafka Component) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">24</span>
+<span class="font-label-sm text-[10px] text-secondary">Sun</span>
+</div>
+<div class="mt-1 flex flex-col gap-1">
+<div class="p-1 rounded bg-surface-container text-on-surface cursor-pointer hover:bg-surface-variant transition-colors" title="Global Messaging Kafka Rebuild">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-secondary font-bold">COMPONENT</span>
+<span class="font-body-sm text-[9px] text-on-surface-variant">14:00 UTC</span>
+</div>
+<p class="font-label-sm text-label-sm font-semibold truncate leading-snug">TR-1120: Kafka Rebuild</p>
+<span class="font-body-sm text-[9px] text-on-surface-variant">Tier 1 • Event Hub</span>
+</div>
+</div>
+</div>
+<!-- Nov 25 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">25</span>
+</div>
+<!-- Nov 26 (Change Blackout Window Day 1) -->
+<div class="min-h-28 p-1.5 bg-error-container/30 flex flex-col group relative">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-error-container">26</span>
+<span class="material-symbols-outlined text-error text-[13px]" title="Change Blackout Window">block</span>
+</div>
+<div class="mt-2 p-1 rounded bg-surface-container-lowest/80 text-on-error-container">
+<p class="font-label-sm text-[10px] font-bold truncate">Q4 Close Blackout</p>
+<span class="font-body-sm text-[9px] text-on-surface-variant">DR Tests Suspended</span>
+</div>
+</div>
+<!-- Nov 27 (Change Blackout Window Day 2) -->
+<div class="min-h-28 p-1.5 bg-error-container/30 flex flex-col group relative">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-error-container">27</span>
+<span class="material-symbols-outlined text-error text-[13px]" title="Change Blackout Window">block</span>
+</div>
+<div class="mt-2 p-1 rounded bg-surface-container-lowest/80 text-on-error-container">
+<p class="font-label-sm text-[10px] font-bold truncate">Q4 Close Blackout</p>
+<span class="font-body-sm text-[9px] text-on-surface-variant">Treasury Lock</span>
+</div>
+</div>
+<!-- Nov 28 (Holiday Slot Failover) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">28</span>
+<span class="font-body-sm text-[10px] text-secondary">US Maint</span>
+</div>
+<div class="mt-1 flex flex-col gap-1">
+<div class="p-1.5 rounded-lg bg-surface-container-highest text-on-surface cursor-pointer hover:bg-surface-variant transition-colors" title="Legacy Ledger &amp; Settlement">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-on-tertiary-container uppercase font-bold">FULL FAILOVER</span>
+<span class="font-body-sm text-[9px] text-on-surface-variant">01:00 UTC</span>
+</div>
+<p class="font-label-sm text-label-sm font-bold truncate leading-tight mt-0.5">TR-1122: Legacy Ledger</p>
+<div class="flex items-center gap-1 mt-1 text-[9px] text-on-surface-variant">
+<span class="px-1 rounded bg-surface-container-lowest font-semibold">Tier 0</span>
+<span>Mainframe Sync</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Nov 29 -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">29</span>
+</div>
+<!-- Nov 30 (Tabletop War Room) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest flex flex-col group hover:bg-surface-container-low/50 transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">30</span>
+<span class="px-1 rounded bg-surface-container-high text-on-surface font-label-sm text-[9px]">EOM</span>
+</div>
+<div class="mt-1 flex flex-col gap-1">
+<div class="p-1 rounded bg-surface-container-high text-on-surface cursor-pointer hover:bg-surface-variant transition-colors" title="Global Core Banking Tabletop War Room">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[10px] text-on-tertiary-container font-bold">WAR ROOM</span>
+<span class="font-body-sm text-[9px] text-on-surface-variant">18:00 UTC</span>
+</div>
+<p class="font-label-sm text-label-sm font-semibold truncate leading-snug">TR-1125: Core Banking</p>
+<span class="font-body-sm text-[9px] text-on-surface-variant">Tier 0 • Exec Simulation</span>
+</div>
+</div>
+</div>
+<!-- Dec 1 (Next Month Preview) -->
+<div class="min-h-28 p-1.5 bg-surface-container-lowest/60 text-outline flex flex-col justify-between opacity-50">
+<span class="font-label-sm text-label-sm">1</span>
+</div>
+</div>
+</div>
+<!-- Right Sidebar / Execution Context Drawer (3 cols on wide screens) -->
+<div class="lg:col-span-4 xl:col-span-3 flex flex-col gap-space-md">
+<!-- "Next Up" Immediate Drill Spotlight -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Immediate Execution</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container-high text-on-tertiary-container font-label-sm text-label-sm font-bold">T-Minus 44h</span>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-label-sm text-[10px] uppercase font-bold tracking-wider">Tier 0 Active</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono">TR-2024-1114</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface mt-1 leading-snug">AWS Frankfurt Secondary Failover</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Complete regional live-traffic rerouting and multi-zone database promotion drill.</p>
+<div class="pt-space-xs space-y-2 text-body-sm text-on-surface-variant">
+<div class="flex items-center justify-between">
+<span class="text-secondary">Execution Window:</span>
+<span class="font-semibold text-on-surface">Sat, Nov 16 • 02:00 UTC</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-secondary">Target RTO / RPO:</span>
+<span class="font-mono text-on-surface font-semibold">&lt; 15m / 0s</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-secondary">Incident Commander:</span>
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-[10px]">DA</div>
+<span class="font-semibold text-on-surface">Danielle Adler</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-secondary">Assigned Witness:</span>
+<span class="text-on-surface font-semibold">PwC Compliance (External)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-space-xs">
+<button class="flex-1 h-8 bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm rounded-lg transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span>Open Runbook</span>
+</button>
+<button class="h-8 px-2.5 bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-sm text-label-sm rounded-lg transition-colors" title="Roster &amp; Teams">
+<span class="material-symbols-outlined text-[16px]">group</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Change Freeze & Blackout Windows Notice -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Blackout &amp; Governance Rules</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">info</span>
+</div>
+<div class="space-y-2">
+<div class="p-2.5 rounded-lg bg-surface-container flex items-start gap-2.5">
+<span class="material-symbols-outlined text-error text-[18px] shrink-0 mt-0.5">event_busy</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Q4 Financial Close Blackout</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Nov 26, 00:00 – Nov 27, 23:59 UTC</span>
+<span class="font-body-sm text-[11px] text-secondary mt-0.5">All production failovers restricted. Tabletop exercises permitted.</span>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container flex items-start gap-2.5">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px] shrink-0 mt-0.5">shield</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Annual Board Audit Cutoff</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Dec 15, 2024</span>
+<span class="font-body-sm text-[11px] text-secondary mt-0.5">Remaining 22 scheduled drills must complete signed audit sign-off.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Resource & Witness Availability Guard -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">On-Duty Witness Roster</span>
+<span class="font-label-sm text-label-sm text-emerald-700 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>All Active</span>
+</span>
+</div>
+<div class="space-y-2 font-body-sm text-body-sm">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-[10px]">KC</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Karl Chen</span>
+<span class="text-[10px] text-secondary">Lead Oracle DBA</span>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-lowest text-emerald-700 font-label-sm text-[10px] font-bold">Available</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-[10px]">EL</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Elena Rostova</span>
+<span class="text-[10px] text-secondary">Cloud Network Sec</span>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-lowest text-emerald-700 font-label-sm text-[10px] font-bold">Available</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant text-on-surface flex items-center justify-center font-bold text-[10px]">MR</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Maya Rodriguez</span>
+<span class="text-[10px] text-secondary">GRC Lead Auditor</span>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-lowest text-emerald-700 font-label-sm text-[10px] font-bold">Available</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Agenda Table View for Quick Auditing (Below Calendar) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col mt-space-sm">
+<div class="px-space-md py-space-sm bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">format_list_bulleted</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Upcoming Execution Pipeline (Detailed Manifest)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-secondary">Showing 5 of 28 records</span>
+<button class="font-label-sm text-label-sm text-on-tertiary-container font-semibold hover:underline">View Full Log</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse">
+<thead class="bg-surface-container-low text-secondary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+<tr>
+<th class="py-2.5 px-space-md">Test ID &amp; Target</th>
+<th class="py-2.5 px-space-md">Criticality</th>
+<th class="py-2.5 px-space-md">Exercise Type</th>
+<th class="py-2.5 px-space-md">Scheduled Time</th>
+<th class="py-2.5 px-space-md">Target RTO / RPO</th>
+<th class="py-2.5 px-space-md">Lead Commander</th>
+<th class="py-2.5 px-space-md">Status</th>
+<th class="py-2.5 px-space-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md font-medium">
+<div class="font-semibold text-on-surface">AWS Frankfurt Secondary Failover</div>
+<div class="font-mono text-[11px] text-secondary">TR-2024-1114 • eu-central-1</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-[10px] font-bold">Tier 0</span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-label-sm text-[10px] font-semibold">Full Failover</span>
+</td>
+<td class="py-2.5 px-space-md font-mono text-secondary">Nov 16, 2024 02:00 UTC</td>
+<td class="py-2.5 px-space-md font-mono">&lt;15m / 0s</td>
+<td class="py-2.5 px-space-md">Danielle Adler</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-tertiary-container font-label-sm text-[10px] font-bold">Ready / Armed</span>
+</td>
+<td class="py-2.5 px-space-md text-right">
+<button class="h-6 px-2 bg-surface-container hover:bg-surface-variant text-on-surface rounded font-label-sm text-[11px] transition-colors">Pre-Flight Check</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md font-medium">
+<div class="font-semibold text-on-surface">MQ Cluster Rehydration &amp; Broker Sync</div>
+<div class="font-mono text-[11px] text-secondary">TR-2024-1116 • Core Bus Cluster</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-[10px] font-bold">Tier 1</span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-secondary font-label-sm text-[10px] font-semibold">Component Drill</span>
+</td>
+<td class="py-2.5 px-space-md font-mono text-secondary">Nov 19, 2024 11:00 UTC</td>
+<td class="py-2.5 px-space-md font-mono">&lt;45m / &lt;1m</td>
+<td class="py-2.5 px-space-md">J. Choi</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px] font-semibold">Scheduled</span>
+</td>
+<td class="py-2.5 px-space-md text-right">
+<button class="h-6 px-2 bg-surface-container hover:bg-surface-variant text-on-surface rounded font-label-sm text-[11px] transition-colors">Inspect Runbook</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md font-medium">
+<div class="font-semibold text-on-surface">Global Messaging Kafka Cluster Rebuild</div>
+<div class="font-mono text-[11px] text-secondary">TR-2024-1120 • us-east-2 / eu-west-1</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-[10px] font-bold">Tier 1</span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-secondary font-label-sm text-[10px] font-semibold">Component Drill</span>
+</td>
+<td class="py-2.5 px-space-md font-mono text-secondary">Nov 24, 2024 14:00 UTC</td>
+<td class="py-2.5 px-space-md font-mono">&lt;30m / &lt;15s</td>
+<td class="py-2.5 px-space-md">Raj Patel</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px] font-semibold">Scheduled</span>
+</td>
+<td class="py-2.5 px-space-md text-right">
+<button class="h-6 px-2 bg-surface-container hover:bg-surface-variant text-on-surface rounded font-label-sm text-[11px] transition-colors">Inspect Runbook</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md font-medium">
+<div class="font-semibold text-on-surface">Legacy Ledger &amp; Settlement System</div>
+<div class="font-mono text-[11px] text-secondary">TR-2024-1122 • On-Prem Mainframe DC-1</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-[10px] font-bold">Tier 0</span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-label-sm text-[10px] font-semibold">Full Failover</span>
+</td>
+<td class="py-2.5 px-space-md font-mono text-secondary">Nov 28, 2024 01:00 UTC</td>
+<td class="py-2.5 px-space-md font-mono">&lt;2h / &lt;5m</td>
+<td class="py-2.5 px-space-md">Liam Gallagher</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px] font-semibold">Scheduled</span>
+</td>
+<td class="py-2.5 px-space-md text-right">
+<button class="h-6 px-2 bg-surface-container hover:bg-surface-variant text-on-surface rounded font-label-sm text-[11px] transition-colors">Inspect Runbook</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-2.5 px-space-md font-medium">
+<div class="font-semibold text-on-surface">Global Core Banking Semi-Annual War Room</div>
+<div class="font-mono text-[11px] text-secondary">TR-2024-1125 • Multi-Region Exec Sim</div>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-[10px] font-bold">Tier 0</span>
+</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-on-secondary-container font-label-sm text-[10px] font-semibold">Tabletop War Room</span>
+</td>
+<td class="py-2.5 px-space-md font-mono text-secondary">Nov 30, 2024 18:00 UTC</td>
+<td class="py-2.5 px-space-md font-mono">N/A (Process)</td>
+<td class="py-2.5 px-space-md">Marcus Vance</td>
+<td class="py-2.5 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px] font-semibold">Invites Sent</span>
+</td>
+<td class="py-2.5 px-space-md text-right">
+<button class="h-6 px-2 bg-surface-container hover:bg-surface-variant text-on-surface rounded font-label-sm text-[11px] transition-colors">View Scenarios</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></main></div></body></html>

@@ -1,0 +1,21 @@
+{
+  "name": "itdr-service",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ITDR Phase 2 Management Platform Backend",
+  "main": "src/server.mjs",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "itdr",
+    "bcm",
+    "resilience"
+  ],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"error":"#ba1a1a","surface":"#f8f9ff","background":"#f8f9ff","on-surface":"#0b1c30","on-error-container":"#93000a","on-surface-variant":"#45464d","surface-variant":"#d3e4fe","surface-tint":"#565e74","on-secondary-fixed":"#0d1c2f","surface-container":"#e5eeff","inverse-on-surface":"#eaf1ff","surface-container-lowest":"#ffffff","tertiary-fixed-dim":"#adc6ff","error-container":"#ffdad6","on-tertiary-container":"#3980f4","primary-fixed":"#dae2fd","on-secondary-fixed-variant":"#3a485c","inverse-surface":"#213145","on-primary-fixed":"#131b2e","on-primary":"#ffffff","outline":"#76777d","primary-fixed-dim":"#bec6e0","on-secondary-container":"#57657b","on-tertiary-fixed":"#001a42","on-secondary":"#ffffff","on-error":"#ffffff","surface-bright":"#f8f9ff","on-primary-container":"#7c839b","on-tertiary-fixed-variant":"#004395","on-primary-fixed-variant":"#3f465c","tertiary":"#000000","secondary-fixed-dim":"#b9c7e0","outline-variant":"#c6c6cd","surface-container-highest":"#d3e4fe","primary":"#000000","secondary":"#515f74","inverse-primary":"#bec6e0","on-background":"#0b1c30","surface-dim":"#cbdbf5","surface-container-high":"#dce9ff","secondary-fixed":"#d5e3fd","primary-container":"#131b2e","on-tertiary":"#ffffff","surface-container-low":"#eff4ff","tertiary-container":"#001a42","secondary-container":"#d5e3fd","tertiary-fixed":"#d8e2ff"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xs":"0.25rem","gutter-desktop":"1.5rem","space-md":"0.75rem","margin":"1rem","margin-desktop":"1.5rem","gutter":"1rem","space-xl":"1.5rem","space-lg":"1rem","space-sm":"0.5rem"},fontFamily:{"label-md":["Inter"],"metric-display":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"],"body-lg":["Inter"],"headline-md":["Inter"],"body-md":["Inter"],"body-sm":["Inter"],"headline-xl":["Inter"]},fontSize:{"label-md":["0.8125rem",{"lineHeight":"1.125rem","letterSpacing":"0.01em","fontWeight":"600"}],"metric-display":["2rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg":["1.375rem",{"lineHeight":"1.875rem","letterSpacing":"-0.015em","fontWeight":"600"}],"body-lg":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"headline-md":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"400"}],"body-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"400"}],"headline-xl":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-outline-variant/50 z-50 flex flex-col"><div class="h-14 px-margin flex items-center gap-space-sm border-b border-outline-variant/40 bg-surface-container-lowest"><img alt="ITDR Resilience Shield Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WnCqNvq3-8qpGUerFgOMh5FhJqQZji9Idvpc_yVsmmGGENgieLCo7g6ZDciBXZkNTXN64l22Y8kPU_DegaJEEqPUmpCrASM_w2XYdH2c1QY_y-Sw7szdgRrFeej6EO500BEWNw5Djes70hGMS9KqnWo77G_HNEzTH3KWoEYSl4w86H4yeqQzJpSxN3_s2CQLoVUjfahNe9X0WqpKLQ0RjiWrLvN6OnXI6j-mmYRTCH0jnmomhzVzF8OjVm"/><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface truncate leading-none">ITDR</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">Disaster Recovery</span></div></div><div class="px-margin-desktop py-space-md border-b border-outline-variant/30 bg-surface-container-low/40"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Scope</span><span class="inline-flex items-center px-space-xs py-0.5 rounded-lg bg-surface-container-high text-on-surface text-[10px] font-bold tracking-wide">BCM-PROD</span></div><div class="flex items-center gap-space-xs mt-1 text-on-surface font-label-md text-label-md truncate"><span class="material-symbols-outlined text-[16px] text-secondary">corporate_fare</span><span class="truncate font-semibold">Global Enterprise IT</span></div></div><nav class="flex-1 overflow-y-auto px-space-sm py-space-md space-y-space-lg" data-active-classes="bg-primary-container text-on-primary font-bold border-l-2 border-on-tertiary-container shadow-sm"><div class="space-y-1"><div class="px-space-md py-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Core</div><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="readiness-dashboard" href="#"><span class="truncate font-label-md text-label-md">Readiness Dashboard</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="applications-assets" href="#"><span class="truncate font-label-md text-label-md">Applications &amp; Assets</span></a></div><div class="space-y-1"><div class="px-space-md py-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Recovery Operations</div><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dr-plan-builder" href="#"><span class="truncate font-label-md text-label-md">DR Plan Builder</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="plan-approvals" href="#"><span class="truncate font-label-md text-label-md">Plan Approvals</span></a></div><div class="space-y-1"><div class="px-space-md py-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Testing &amp; Validation</div><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="test-records-results" href="#"><span class="truncate font-label-md text-label-md">Test Records &amp; Results</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="test-calendar-schedule" href="#"><span class="truncate font-label-md text-label-md">Test Calendar &amp; Schedule</span></a></div><div class="space-y-1"><div class="px-space-md py-1 font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Governance</div><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="compliance-audit-reports" href="#"><span class="truncate font-label-md text-label-md">Compliance &amp; Audit Reports</span></a><a class="flex items-center px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="system-settings" href="#"><span class="truncate font-label-md text-label-md">Settings</span></a></div></nav><div class="p-space-md border-t border-outline-variant/40 bg-surface-container-low/50"><div class="flex items-center justify-between p-space-sm bg-surface-container-lowest border border-outline-variant/40 rounded-lg"><div class="flex items-center gap-space-sm min-w-0"><span class="w-2 h-2 rounded-full bg-emerald-600"></span><span class="font-label-sm text-label-sm text-on-surface font-semibold truncate">Telemetry: Active</span></div><span class="font-label-sm text-label-sm text-on-surface-variant font-mono">v4.8.2</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/40 z-40 px-gutter-desktop flex items-center justify-between gap-gutter"><div class="flex items-center gap-gutter flex-1 max-w-2xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full h-8 pl-9 pr-space-md bg-surface border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary transition-colors" placeholder="Search applications, plans, tests, RTO/RPO..." type="text"/></div></div><div class="flex items-center gap-gutter shrink-0"><button class="h-8 px-space-md inline-flex items-center gap-space-xs border border-outline-variant/60 rounded-lg bg-surface hover:bg-surface-container-low text-on-surface transition-colors font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px] text-secondary">business</span><span class="font-semibold">Global Enterprise IT</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></button><button aria-label="Notifications" class="relative w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute 1.5 top-1.5 right-1.5 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-[10px] leading-tight flex items-center justify-center font-bold">5</span></button><div class="h-6 w-px bg-outline-variant/40"></div><div class="flex items-center gap-space-md cursor-pointer"><div class="text-right hidden sm:block"><div class="font-label-md text-label-md text-on-surface font-semibold leading-tight">Marcus Vance</div><div class="font-label-sm text-label-sm text-on-surface-variant leading-tight">IT Risk &amp; Resilience Director</div></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-14 min-h-screen bg-surface px-gutter-desktop py-gutter-desktop"><div class="flex flex-col w-full">
+<!-- Interactive Script for Tab/Filter and Expand states -->
+<script>
+    function toggleStepDetails(id) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById(id + '-icon');
+      if (el) {
+        el.classList.toggle('hidden');
+        if (icon) {
+          icon.textContent = el.classList.contains('hidden') ? 'expand_more' : 'expand_less';
+        }
+      }
+    }
+
+    function toggleRemediation(toggleEl) {
+      const dot = toggleEl.querySelector('div');
+      const badge = document.getElementById('rem-status-badge');
+      const banner = document.getElementById('remediation-alert-banner');
+      const isChecked = toggleEl.getAttribute('data-active') === 'true';
+
+      if (isChecked) {
+        toggleEl.setAttribute('data-active', 'false');
+        toggleEl.classList.remove('bg-on-surface');
+        toggleEl.classList.add('bg-outline-variant');
+        dot.classList.remove('translate-x-4');
+        dot.classList.add('translate-x-0.5');
+        if (badge) {
+          badge.textContent = 'REMEDIATION WAIVED';
+          badge.className = 'px-2 py-0.5 rounded-lg bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm uppercase font-semibold';
+        }
+        if (banner) banner.classList.add('opacity-40');
+      } else {
+        toggleEl.setAttribute('data-active', 'true');
+        toggleEl.classList.remove('bg-outline-variant');
+        toggleEl.classList.add('bg-on-surface');
+        dot.classList.remove('translate-x-0.5');
+        dot.classList.add('translate-x-4');
+        if (badge) {
+          badge.textContent = 'REMEDIATION ACTIVE';
+          badge.className = 'px-2 py-0.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-200 font-label-sm text-label-sm uppercase font-semibold';
+        }
+        if (banner) banner.classList.remove('opacity-40');
+      }
+    }
+  </script>
+<!-- Top Breadcrumbs & Document Identifier -->
+<div class="flex items-center justify-between gap-gutter pb-space-sm">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<span>Testing &amp; Validation</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-on-surface transition-colors" href="#">Test Records &amp; Results</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold uppercase tracking-wider font-mono">TR-2024-1104</span>
+</div>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block"></span>
+<span class="font-mono">RECORD IMMUTABLE • RECORDED ON SECURE LEDGER</span>
+</div>
+</div>
+<!-- Primary Header & Regulatory Badges Area -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm mb-gutter">
+<div class="flex flex-col lg:flex-row lg:items-start justify-between gap-space-xl">
+<div class="space-y-space-sm max-w-4xl">
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Overall Status Badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 font-label-sm text-label-sm uppercase tracking-wide font-bold">
+<span class="material-symbols-outlined text-[16px] text-emerald-700">check_circle</span>
+            OVERALL RESULT: PASS (WITH OBSERVATIONS)
+          </span>
+<!-- Mode Badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-50 text-blue-900 border border-blue-200 font-label-sm text-label-sm uppercase tracking-wide font-bold">
+<span class="material-symbols-outlined text-[16px] text-blue-700">alt_route</span>
+            FULL FAILOVER DRILL
+          </span>
+<!-- Governance Standard Badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm uppercase tracking-wide font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+            EVIDENCE ATTESTED • ISO 22301 COMPLIANT
+          </span>
+</div>
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">
+            DR Drill Record: Global Core Banking Engine <span class="font-mono text-secondary font-medium text-headline-lg">(CI-APP-1092)</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 flex flex-wrap items-center gap-x-space-md gap-y-1">
+<span>Executed on <strong class="text-on-surface font-semibold">October 18, 2024</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Scheduled Cadence: <strong class="text-on-surface font-semibold">H2 2024 Regulatory Mandatory Drill</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Incident Commander: <strong class="text-on-surface font-semibold">Siddharth Kumar</strong> (ITDR Dir)</span>
+</p>
+</div>
+</div>
+<!-- Action Button Group -->
+<div class="flex items-center gap-space-sm shrink-0 flex-wrap">
+<button class="h-9 px-space-md inline-flex items-center gap-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-colors">
+<span class="material-symbols-outlined text-[18px] text-secondary">picture_as_pdf</span>
+          Export Audit Dossier (.pdf)
+        </button>
+<button class="h-9 px-space-md inline-flex items-center gap-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-colors">
+<span class="material-symbols-outlined text-[18px] text-secondary">terminal</span>
+          Download Raw Telemetry Logs
+        </button>
+<button class="h-9 px-space-md inline-flex items-center gap-1.5 rounded-lg bg-on-surface hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+          Create Remediation Ticket
+        </button>
+</div>
+</div>
+</div>
+<!-- Key Performance Metrics Comparison (Target vs Actual Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter mb-gutter">
+<!-- Card 1: RTO PERFORMANCE -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-xl pointer-events-none -mr-6 -mt-6"></div>
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">RTO Performance</span>
+<span class="px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 font-label-sm text-label-sm font-bold">SLA SATISFIED</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface font-bold tracking-tight">42m 18s</span>
+<span class="font-label-sm text-label-sm text-emerald-800 font-bold bg-emerald-100 px-1.5 py-0.5 rounded">
+            -17m 42s (29.5% faster)
+          </span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 -mx-space-lg -mb-space-lg px-space-lg pb-space-lg rounded-b-xl">
+<div class="flex justify-between items-center text-body-sm font-body-sm mb-1.5">
+<span class="text-on-surface-variant">BIA Target Threshold:</span>
+<span class="font-mono font-semibold text-on-surface">1h 00m (60 mins)</span>
+</div>
+<!-- Segmented Target vs Actual Progress -->
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden flex">
+<div class="bg-emerald-600 h-full rounded-full transition-all" style="width: 70.5%;"></div>
+<div class="bg-emerald-200 h-full rounded-full opacity-60" style="width: 29.5%;"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] font-label-sm text-on-surface-variant mt-1 font-mono">
+<span>Actual: 42m 18s</span>
+<span>Buffer: 17m 42s</span>
+</div>
+</div>
+</div>
+<!-- Card 2: RPO PERFORMANCE -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none -mr-6 -mt-6"></div>
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">RPO Performance</span>
+<span class="px-2 py-0.5 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 font-label-sm text-label-sm font-bold">ZERO LOSS</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface font-bold tracking-tight">4m 12s</span>
+<span class="font-label-sm text-label-sm text-blue-900 font-bold bg-blue-100 px-1.5 py-0.5 rounded">
+            Sync Lag &lt; Max
+          </span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 -mx-space-lg -mb-space-lg px-space-lg pb-space-lg rounded-b-xl">
+<div class="flex justify-between items-center text-body-sm font-body-sm mb-1.5">
+<span class="text-on-surface-variant">BIA Target Threshold:</span>
+<span class="font-mono font-semibold text-on-surface">15m 00s max</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden flex">
+<div class="bg-blue-600 h-full rounded-full" style="width: 28%;"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] font-label-sm text-on-surface-variant mt-1 font-mono">
+<span>SCN Delta: 0 Transactions</span>
+<span>Head Margin: 72%</span>
+</div>
+</div>
+</div>
+<!-- Card 3: EXECUTION INTEGRITY -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Execution Integrity</span>
+<span class="px-2 py-0.5 rounded-lg bg-blue-50 text-blue-900 font-label-sm text-label-sm font-bold">6/6 COMPLETED</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface font-bold tracking-tight">100%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Runbook completion</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 -mx-space-lg -mb-space-lg px-space-lg pb-space-lg rounded-b-xl">
+<div class="grid grid-cols-2 gap-space-sm text-body-sm font-body-sm">
+<div class="bg-surface-container-lowest p-2 rounded-lg">
+<div class="text-[11px] font-label-sm text-on-surface-variant uppercase font-semibold">Automated</div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface">4 / 4</div>
+<div class="text-[10px] text-emerald-700 font-semibold font-mono">100% Executed</div>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-lg">
+<div class="text-[11px] font-label-sm text-on-surface-variant uppercase font-semibold">Manual Signoff</div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface">2 / 2</div>
+<div class="text-[10px] text-emerald-700 font-semibold font-mono">100% Verified</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: ATTENDEES & WITNESSES -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Drill Witnesses</span>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm font-bold font-mono">9 TOTAL</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-metric-display text-metric-display text-on-surface font-bold tracking-tight">7 + 2</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Executors &amp; Auditors</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 -mx-space-lg -mb-space-lg px-space-lg pb-space-lg rounded-b-xl">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Independent Observers:</span>
+<span class="font-semibold text-on-surface">PwC &amp; BCM Audit</span>
+</div>
+<div class="mt-1 flex items-center gap-1.5 text-[11px] text-emerald-800 font-semibold">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<span>Zero procedural deviations registered</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Split (66% Runbook Checklist & Telemetry vs 34% Specifications & Governance) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- LEFT 8 COLS (approx 66% width): Execution Telemetry & Gaps -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Section: Step-Level Runbook Execution Checklist & Telemetry -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="p-space-lg bg-surface-container-low/50 flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">
+              Step-Level Runbook Execution Checklist &amp; Telemetry
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Chronological log matched against DR Runbook <span class="font-mono text-on-surface font-semibold">RB-1092-PROD-V3.2</span>
+</p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="px-2 py-1 rounded bg-surface-container-high text-on-surface font-mono text-[11px] font-semibold">
+              TOTAL ELAPSED: 42m 18s
+            </span>
+</div>
+</div>
+<!-- Telemetry Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-space-md w-16">Step</th>
+<th class="py-2.5 px-space-md">Operation &amp; Command Summary</th>
+<th class="py-2.5 px-space-md text-right w-24">Planned</th>
+<th class="py-2.5 px-space-md text-right w-24">Actual</th>
+<th class="py-2.5 px-space-md text-center w-36">Result Status</th>
+<th class="py-2.5 px-space-md w-28">Verified By</th>
+<th class="py-2.5 px-space-md w-10 text-center"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Step 1.1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer" onclick="toggleStepDetails('step-1-1')">
+<td class="py-3 px-space-md font-mono font-bold text-on-surface">1.1</td>
+<td class="py-3 px-space-md">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Emergency Incident Triage &amp; Failover Declaration</div>
+<div class="font-body-sm text-on-surface-variant text-[12px] truncate max-w-md">War room initiated; consensus vote quorum satisfied with lead commander sign-off.</div>
+</td>
+<td class="py-3 px-space-md text-right font-mono text-on-surface-variant">05m 00s</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold text-emerald-800">04m 12s</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 text-[11px] font-bold uppercase">
+<span class="material-symbols-outlined text-[13px]">check</span> PASS
+                  </span>
+</td>
+<td class="py-3 px-space-md font-body-sm text-on-surface-variant">S. Kumar</td>
+<td class="py-3 px-space-md text-center">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface" id="step-1-1-icon">expand_more</span>
+</td>
+</tr>
+<!-- Collapsible telemetry drawer Step 1.1 -->
+<tr class="hidden bg-surface-container-low" id="step-1-1">
+<td class="p-space-md" colspan="7">
+<div class="bg-surface-container-lowest p-space-md rounded-lg font-mono text-[12px] text-on-surface space-y-1">
+<div class="text-on-surface-variant flex items-center justify-between">
+<span>[TELEMETRY LOG • UTC 02:00:14 - 02:04:26]</span>
+<span class="text-emerald-700 font-bold">STATUS: COMPLETED (EXIT CODE 0)</span>
+</div>
+<div class="text-on-surface">02:00:14 [AUTH] Incident bridge opened: bridge-id::DR-INC-9912</div>
+<div class="text-on-surface">02:02:40 [QUORUM] Approvers active: S. Kumar, E. Rostova, M. Thorne. 3/3 signed.</div>
+<div class="text-on-surface">02:04:26 [STATE] System transition flag set to FAILOVER_STAGING. Broadcast sent to SecOps.</div>
+</div>
+</td>
+</tr>
+<!-- Step 1.2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer" onclick="toggleStepDetails('step-1-2')">
+<td class="py-3 px-space-md font-mono font-bold text-on-surface">1.2</td>
+<td class="py-3 px-space-md">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Freeze Primary Ingress &amp; Drain Active Transactions</div>
+<div class="font-body-sm text-on-surface-variant text-[12px] truncate max-w-md">Edge gateways switched to maintenance mode; ALB active connection count drained to 0.</div>
+</td>
+<td class="py-3 px-space-md text-right font-mono text-on-surface-variant">10m 00s</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold text-emerald-800">08m 45s</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 text-[11px] font-bold uppercase">
+<span class="material-symbols-outlined text-[13px]">check</span> PASS
+                  </span>
+</td>
+<td class="py-3 px-space-md font-body-sm text-on-surface-variant">E. Rostova</td>
+<td class="py-3 px-space-md text-center">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface" id="step-1-2-icon">expand_more</span>
+</td>
+</tr>
+<tr class="hidden bg-surface-container-low" id="step-1-2">
+<td class="p-space-md" colspan="7">
+<div class="bg-surface-container-lowest p-space-md rounded-lg font-mono text-[12px] text-on-surface space-y-1">
+<div class="text-on-surface-variant flex items-center justify-between">
+<span>[TELEMETRY LOG • UTC 02:04:30 - 02:13:15]</span>
+<span class="text-emerald-700 font-bold">ALB CONNECTIONS = 0</span>
+</div>
+<div class="text-on-surface">02:05:01 [INGRESS] Envoy rate-limits stepped down to 0 req/sec on Core VIP.</div>
+<div class="text-on-surface">02:08:12 [DRAIN] Active sessions remaining: 142 ... 48 ... 6 ... 0.</div>
+<div class="text-on-surface">02:13:15 [SIGNOFF] E. Rostova confirmed zero inflight settlement calls. Database ready for cutover.</div>
+</div>
+</td>
+</tr>
+<!-- Step 2.1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer" onclick="toggleStepDetails('step-2-1')">
+<td class="py-3 px-space-md font-mono font-bold text-on-surface">2.1</td>
+<td class="py-3 px-space-md">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Verify Oracle Data Guard SCN Replication Lag</div>
+<div class="font-body-sm text-on-surface-variant text-[12px] truncate max-w-md">Standby Exadata database verified in sync; SCN lag is 0.0 seconds.</div>
+</td>
+<td class="py-3 px-space-md text-right font-mono text-on-surface-variant">05m 00s</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold text-emerald-800">02m 10s</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 text-[11px] font-bold uppercase">
+<span class="material-symbols-outlined text-[13px]">check</span> PASS
+                  </span>
+</td>
+<td class="py-3 px-space-md font-body-sm text-on-surface-variant">M. Thorne</td>
+<td class="py-3 px-space-md text-center">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface" id="step-2-1-icon">expand_more</span>
+</td>
+</tr>
+<tr class="hidden bg-surface-container-low" id="step-2-1">
+<td class="p-space-md" colspan="7">
+<div class="bg-surface-container-lowest p-space-md rounded-lg font-mono text-[12px] text-on-surface space-y-1">
+<div class="text-on-surface-variant flex items-center justify-between">
+<span>[DB QUERY • V$DATAGUARD_STATS]</span>
+<span class="text-emerald-700 font-bold">TRANSPORT_LAG: +00 00:00:00</span>
+</div>
+<div class="text-on-surface">02:13:40 [ORA-DG] Standby Redo Apply Rate: 420 MB/s. SCN match verified.</div>
+<div class="text-on-surface">02:15:25 [SIGN] Marcus Thorne (Lead DBA): Clean failover safe. No data drift.</div>
+</div>
+</td>
+</tr>
+<!-- Step 2.2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer" onclick="toggleStepDetails('step-2-2')">
+<td class="py-3 px-space-md font-mono font-bold text-on-surface">2.2</td>
+<td class="py-3 px-space-md">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Promote Ashburn Standby Exadata to Primary Master</div>
+<div class="font-body-sm text-on-surface-variant text-[12px] truncate max-w-md">ALTER DATABASE RECOVER MANAGED STANDBY CANCEL; SWITCHOVER executed cleanly.</div>
+</td>
+<td class="py-3 px-space-md text-right font-mono text-on-surface-variant">15m 00s</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold text-emerald-800">13m 22s</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 text-[11px] font-bold uppercase">
+<span class="material-symbols-outlined text-[13px]">check</span> PASS
+                  </span>
+</td>
+<td class="py-3 px-space-md font-body-sm text-on-surface-variant">M. Thorne</td>
+<td class="py-3 px-space-md text-center">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface" id="step-2-2-icon">expand_more</span>
+</td>
+</tr>
+<tr class="hidden bg-surface-container-low" id="step-2-2">
+<td class="p-space-md" colspan="7">
+<div class="bg-surface-container-lowest p-space-md rounded-lg font-mono text-[12px] text-on-surface space-y-1">
+<div class="text-on-surface-variant flex items-center justify-between">
+<span>[DB EXEC • AUTOMATED SCRIPT]</span>
+<span class="text-emerald-700 font-bold">OPEN_MODE: READ WRITE</span>
+</div>
+<div class="text-on-surface">02:16:00 [EXEC] SWITCHOVER TO ASHBURN_STANDBY VERIFY ... OK</div>
+<div class="text-on-surface">02:29:22 [ALERT] Database role changed to PRIMARY. All 8 RAC instances accepting connections.</div>
+</div>
+</td>
+</tr>
+<!-- Step 2.3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group cursor-pointer" onclick="toggleStepDetails('step-2-3')">
+<td class="py-3 px-space-md font-mono font-bold text-on-surface">2.3</td>
+<td class="py-3 px-space-md">
+<div class="font-label-md text-label-md text-on-surface font-semibold">Scale Secondary EKS Cluster &amp; Mount ConfigMaps</div>
+<div class="font-body-sm text-on-surface-variant text-[12px] truncate max-w-md">ArgoCD synced disaster recovery manifests; 48 of 48 microservice worker pods healthy.</div>
+</td>
+<td class="py-3 px-space-md text-right font-mono text-on-surface-variant">10m 00s</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold text-emerald-800">07m 30s</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 text-[11px] font-bold uppercase">
+<span class="material-symbols-outlined text-[13px]">check</span> PASS
+                  </span>
+</td>
+<td class="py-3 px-space-md font-body-sm text-on-surface-variant">Infra Lead</td>
+<td class="py-3 px-space-md text-center">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface" id="step-2-3-icon">expand_more</span>
+</td>
+</tr>
+<tr class="hidden bg-surface-container-low" id="step-2-3">
+<td class="p-space-md" colspan="7">
+<div class="bg-surface-container-lowest p-space-md rounded-lg font-mono text-[12px] text-on-surface space-y-1">
+<div class="text-on-surface-variant flex items-center justify-between">
+<span>[K8S TELEMETRY • CLUSTER: ashburn-prod-02]</span>
+<span class="text-emerald-700 font-bold">READY 48/48 PODS</span>
+</div>
+<div class="text-on-surface">02:30:10 [ARGO] Target state synchronized. Replicas scaled from 0 to 48 across 6 availability zones.</div>
+<div class="text-on-surface">02:36:52 [PROBE] Readiness probes passed: /healthz return 200 OK.</div>
+</div>
+</td>
+</tr>
+<!-- Step 2.4 (PASS WITH OBSERVATION) -->
+<tr class="hover:bg-amber-50/40 bg-amber-50/20 transition-colors group cursor-pointer" onclick="toggleStepDetails('step-2-4')">
+<td class="py-3 px-space-md font-mono font-bold text-amber-950">2.4</td>
+<td class="py-3 px-space-md">
+<div class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-2">
+                    Switch Global DNS Traffic to Ashburn VIP Endpoint
+                    <span class="px-1.5 py-0.2 bg-amber-100 text-amber-900 text-[10px] font-mono font-bold rounded">LATENCY LAG</span>
+</div>
+<div class="font-body-sm text-amber-900/80 text-[12px] truncate max-w-md">Route53 propagation completed; edge CDN purge experienced 45-second propagation throttle.</div>
+</td>
+<td class="py-3 px-space-md text-right font-mono text-on-surface-variant">15m 00s</td>
+<td class="py-3 px-space-md text-right font-mono font-semibold text-amber-900">06m 19s</td>
+<td class="py-3 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-950 border border-amber-300 text-[11px] font-bold uppercase">
+<span class="material-symbols-outlined text-[13px] text-amber-800">warning</span> OBSERVATION
+                  </span>
+</td>
+<td class="py-3 px-space-md font-body-sm text-on-surface-variant">NetOps Lead</td>
+<td class="py-3 px-space-md text-center">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-on-surface" id="step-2-4-icon">expand_more</span>
+</td>
+</tr>
+<tr class="hidden bg-surface-container-low" id="step-2-4">
+<td class="p-space-md" colspan="7">
+<div class="bg-surface-container-lowest p-space-md rounded-lg font-mono text-[12px] text-on-surface space-y-1">
+<div class="text-on-surface-variant flex items-center justify-between">
+<span>[DNS TELEMETRY • ANYCAST EDGE STATUS]</span>
+<span class="text-amber-800 font-bold">WARNING: HTTP 429 RATE LIMIT EXCEEDED</span>
+</div>
+<div class="text-on-surface">02:37:00 [DNS] AWS Route53 TTL: 30s. Traffic cutover initiated.</div>
+<div class="text-amber-900">02:39:15 [WARN] Akamai Edge API rate limiter triggered during concurrent token purge (Burst = 250 req/sec).</div>
+<div class="text-on-surface">02:42:19 [RESOLVED] APAC POPs successfully repointed to 198.51.100.82 after retry backoff.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-md bg-surface-container-low/30 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Showing 6 of 6 planned recovery operations.</span>
+<span class="font-mono text-[12px]">ALL AUDIT TRAILS CRYPTOGRAPHICALLY HASHED (SHA-256)</span>
+</div>
+</div>
+<!-- Section: Gaps, Observations & Post-Mortem Notes -->
+<div class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm border-b border-surface-container">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+              Gaps, Observations &amp; Post-Mortem Notes
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Operational anomalies identified during execution requiring continuous improvement remediation
+            </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<span class="px-2 py-0.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-200 font-label-sm text-label-sm uppercase font-semibold" id="rem-status-badge">
+              REMEDIATION ACTIVE
+            </span>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Auto-Create Jira:</span>
+<button class="w-10 h-6 bg-on-surface rounded-full p-0.5 transition-colors relative flex items-center cursor-pointer" data-active="true" onclick="toggleRemediation(this)" title="Toggle automated remediation requirement">
+<div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-4 transition-transform"></div>
+</button>
+</div>
+</div>
+</div>
+<!-- Observation 1 Item -->
+<div class="p-space-md rounded-xl bg-surface-container-low/70 space-y-space-sm">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-amber-700 text-[20px] mt-0.5 shrink-0">report_problem</span>
+<div>
+<span class="font-label-md text-label-md font-bold text-on-surface">Observation #1: Akamai CDN Edge Ingress Rate-Limiting Throttling</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+                  Akamai CDN cache flush delayed in APAC edge nodes by 45 seconds due to API rate-limit throttling during simultaneous failover burst. Primary traffic was drained, but stale cache caused temporary authentication token mismatches for 0.04% of active consumer banking sessions.
+                </p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-mono text-[11px] font-semibold shrink-0">
+              SEV-3 OBSERVATION
+            </span>
+</div>
+<!-- Alert Banner / Ticket Info -->
+<div class="bg-amber-50 border border-amber-200 p-space-md rounded-lg flex items-center justify-between gap-space-md transition-opacity" id="remediation-alert-banner">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-amber-800 text-[18px]">confirmation_number</span>
+<div class="text-body-sm font-body-sm text-amber-950">
+                Ticket <strong class="font-mono font-bold">REM-8841</strong> automatically opened in ServiceNow ITDR Queue for NetOps Team to update API quota limits and modify concurrent edge purge burst rates.
+              </div>
+</div>
+<a class="px-2.5 py-1 bg-amber-900 text-white rounded font-label-sm text-label-sm font-semibold hover:bg-amber-950 transition-colors whitespace-nowrap" href="#">
+              View Ticket
+            </a>
+</div>
+</div>
+<!-- Post-Mortem Sign-Off Section -->
+<div class="pt-space-sm grid grid-cols-1 sm:grid-cols-2 gap-space-md font-body-sm text-body-sm">
+<div class="p-space-md bg-surface-container-low/40 rounded-lg">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold">Incident Commander Attestation</span>
+<div class="mt-2 flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-bold text-on-surface">SK</div>
+<div>
+<div class="font-semibold text-on-surface">Siddharth Kumar</div>
+<div class="text-[11px] text-emerald-800 font-mono">Digitally Signed: 2024-10-18 03:34:12 UTC</div>
+</div>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low/40 rounded-lg">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold">External Audit Co-Witness</span>
+<div class="mt-2 flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-bold text-on-surface">AP</div>
+<div>
+<div class="font-semibold text-on-surface">Arthur Pendelton (PwC)</div>
+<div class="text-[11px] text-emerald-800 font-mono">Attested Compliant: 2024-10-18 03:40:02 UTC</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT 4 COLS (approx 34% width): Specifications, Participants & Governance -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Card: Drill Specifications & Setup -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+            Drill Specifications
+          </h3>
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+</div>
+<dl class="divide-y divide-surface-container mt-space-xs text-body-sm font-body-sm">
+<div class="py-2.5 flex justify-between items-center">
+<dt class="text-on-surface-variant">Test Type</dt>
+<dd class="font-semibold text-on-surface">DR Test (Fixed Schedule)</dd>
+</div>
+<div class="py-2.5 flex justify-between items-center">
+<dt class="text-on-surface-variant">Exercise Mode</dt>
+<dd class="font-semibold text-on-surface">Full Live Failover</dd>
+</div>
+<div class="py-2.5 flex justify-between items-center">
+<dt class="text-on-surface-variant">Linked DR Plan</dt>
+<dd>
+<a class="font-mono text-on-tertiary-container hover:underline font-bold inline-flex items-center gap-1" href="#">
+                DR-PLAN-1092-A
+                <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+</a>
+<span class="text-[11px] text-on-surface-variant block text-right font-mono">(v3.2 Active)</span>
+</dd>
+</div>
+<div class="py-2.5 flex justify-between items-start">
+<dt class="text-on-surface-variant">Execution Window</dt>
+<dd class="text-right">
+<span class="font-mono font-medium text-on-surface block">Oct 18, 2024</span>
+<span class="font-mono text-[11px] text-on-surface-variant block">02:00 UTC - 03:30 UTC</span>
+<span class="text-[11px] text-secondary font-semibold">(Maintenance Slot)</span>
+</dd>
+</div>
+<div class="py-2.5 flex justify-between items-center">
+<dt class="text-on-surface-variant">Primary DC Target</dt>
+<dd class="font-semibold text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">domain</span>
+              Ashburn Tier IV (Equinix)
+            </dd>
+</div>
+<div class="py-2.5 flex justify-between items-center">
+<dt class="text-on-surface-variant">Source DC Origin</dt>
+<dd class="text-on-surface-variant font-mono">Secaucus DC-01 (Drained)</dd>
+</div>
+<div class="py-2.5 flex justify-between items-center">
+<dt class="text-on-surface-variant">Rollback Capability</dt>
+<dd class="font-semibold text-emerald-800">Verified &amp; Hot Standby</dd>
+</div>
+</dl>
+</div>
+<!-- Card: Participants & Observers -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+            Participants &amp; Observers
+          </h3>
+<span class="px-2 py-0.5 rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">
+            6 Checked-In
+          </span>
+</div>
+<ul class="divide-y divide-surface-container text-body-sm font-body-sm">
+<!-- Commander -->
+<li class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-bold text-[11px]">
+                SK
+              </div>
+<div>
+<div class="font-semibold text-on-surface">Siddharth Kumar</div>
+<div class="text-[11px] text-on-surface-variant">Incident Commander</div>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 font-label-sm text-[10px] uppercase font-bold">COMMAND</span>
+</li>
+<!-- SRE Lead -->
+<li class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface flex items-center justify-center font-bold text-[11px]">
+                ER
+              </div>
+<div>
+<div class="font-semibold text-on-surface">Elena Rostova</div>
+<div class="text-[11px] text-on-surface-variant">Platform &amp; SRE Lead</div>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase font-bold">EXEC</span>
+</li>
+<!-- DBA Lead -->
+<li class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface flex items-center justify-center font-bold text-[11px]">
+                MT
+              </div>
+<div>
+<div class="font-semibold text-on-surface">Marcus Thorne</div>
+<div class="text-[11px] text-on-surface-variant">Lead Database Architect</div>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase font-bold">EXEC</span>
+</li>
+<!-- Network Lead -->
+<li class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface flex items-center justify-center font-bold text-[11px]">
+                DW
+              </div>
+<div>
+<div class="font-semibold text-on-surface">David Wu</div>
+<div class="text-[11px] text-on-surface-variant">Network &amp; Traffic Ops</div>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-[10px] uppercase font-bold">EXEC</span>
+</li>
+<!-- Internal Audit -->
+<li class="py-2.5 flex items-center justify-between bg-surface-container-low/40 -mx-space-lg px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center font-bold text-[11px]">
+                CR
+              </div>
+<div>
+<div class="font-semibold text-on-surface">Chloe Renaud</div>
+<div class="text-[11px] text-on-surface-variant">Internal BCM Compliance</div>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-blue-50 text-blue-900 border border-blue-200 font-label-sm text-[10px] uppercase font-bold">INTERNAL AUDIT</span>
+</li>
+<!-- External Audit (PwC) -->
+<li class="py-2.5 flex items-center justify-between bg-surface-container-low/40 -mx-space-lg px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-blue-100 text-blue-900 flex items-center justify-center font-bold text-[11px]">
+                AP
+              </div>
+<div>
+<div class="font-semibold text-on-surface">Arthur Pendelton</div>
+<div class="text-[11px] text-on-surface-variant">Independent Witness (PwC)</div>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-blue-50 text-blue-900 border border-blue-200 font-label-sm text-[10px] uppercase font-bold">EXTERNAL AUDIT</span>
+</li>
+</ul>
+</div>
+<!-- Card: Remediation & Action Items -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+              Remediation Items
+            </h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Linked tasks for audit clearance</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]">assignment_turned_in</span>
+</div>
+<!-- REM Ticket Card -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-mono text-label-md font-bold text-on-surface">REM-8841</span>
+<span class="px-2 py-0.5 rounded bg-amber-100 text-amber-950 font-label-sm text-[10px] font-bold uppercase">
+              OPEN • P2 HIGH
+            </span>
+</div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">
+            Increase Akamai Edge API rate limits prior to Q1 2025 failover
+          </div>
+<div class="text-[12px] text-on-surface-variant">
+            Target SLA compliance buffer needs expansion to avoid 45s latency during global DNS cutover.
+          </div>
+<div class="pt-2 flex items-center justify-between text-body-sm font-body-sm border-t border-surface-container">
+<span class="text-on-surface-variant text-[11px]">Owner: <strong class="text-on-surface">NetOps Lead</strong></span>
+<span class="font-mono text-[11px] text-error font-semibold">Due: Nov 30, 2024</span>
+</div>
+</div>
+<!-- Regulatory Sign-Off Note -->
+<div class="p-space-sm rounded-lg bg-surface-container border border-surface-container-high text-[11px] font-body-sm text-on-surface-variant flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0 mt-0.5">policy</span>
+<span>
+            Closure of <strong class="font-mono text-on-surface">REM-8841</strong> is mandated by FINMA and MAS BCM guidelines prior to final annual resilience filing.
+          </span>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

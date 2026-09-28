@@ -1,0 +1,961 @@
+<!DOCTYPE html><html class="h-full" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline":"#777587","on-surface-variant":"#464555","inverse-on-surface":"#eaf1ff","on-surface":"#0b1c30","tertiary-fixed-dim":"#ffb695","on-primary-fixed":"#0f0069","tertiary-container":"#a44100","surface-container-low":"#eff4ff","error":"#ba1a1a","on-background":"#0b1c30","primary-container":"#4f46e5","primary":"#3525cd","on-tertiary":"#ffffff","on-primary-fixed-variant":"#3323cc","surface-container-lowest":"#ffffff","inverse-primary":"#c3c0ff","on-secondary-fixed":"#131b2e","surface-container-highest":"#d3e4fe","tertiary-fixed":"#ffdbcc","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","background":"#f8f9ff","on-tertiary-fixed-variant":"#7b2f00","on-primary-container":"#dad7ff","secondary-fixed-dim":"#bec6e0","secondary-container":"#dae2fd","on-tertiary-container":"#ffd2be","surface-tint":"#4d44e3","on-secondary-fixed-variant":"#3f465c","on-secondary":"#ffffff","on-primary":"#ffffff","primary-fixed":"#e2dfff","surface":"#f8f9ff","surface-bright":"#f8f9ff","secondary-fixed":"#dae2fd","error-container":"#ffdad6","primary-fixed-dim":"#c3c0ff","tertiary":"#7e3000","on-error":"#ffffff","on-error-container":"#93000a","inverse-surface":"#213145","surface-container":"#e5eeff","outline-variant":"#c7c4d8","on-secondary-container":"#5c647a","secondary":"#565e74","on-tertiary-fixed":"#351000","surface-variant":"#d3e4fe"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"gutter":"1rem","space-md":"0.75rem","margin":"1rem","space-lg":"1rem","margin-desktop":"2rem","space-sm":"0.5rem","space-xl":"1.5rem","space-xs":"0.25rem","gutter-desktop":"1.5rem"},fontFamily:{"headline-lg":["Inter"],"headline-sm":["Inter"],"body-lg":["Inter"],"body-md":["Inter"],"headline-md":["Inter"],"label-sm":["Inter"],"label-md":["Inter"],"headline-xl":["Inter"],"body-sm":["Inter"],"code-sm":["Inter"]},fontSize:{"headline-lg":["1.25rem",{"lineHeight":"1.75rem","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-sm":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0em","fontWeight":"600"}],"body-lg":["0.9375rem",{"lineHeight":"1.375rem","fontWeight":"400"}],"body-md":["0.8125rem",{"lineHeight":"1.1875rem","fontWeight":"400"}],"headline-md":["1.125rem",{"lineHeight":"1.5rem","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"0.875rem","letterSpacing":"0.04em","fontWeight":"600"}],"label-md":["0.8125rem",{"lineHeight":"1rem","fontWeight":"500"}],"headline-xl":["1.75rem",{"lineHeight":"2.25rem","letterSpacing":"-0.02em","fontWeight":"600"}],"body-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"400"}],"code-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"500"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest border-r border-outline-variant/40 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-14 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-lowest shrink-0"><img alt="ITDR Resilience Brand Mark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xrenfm6HxIOm9EKyEAmXLXEbhpffSmGhxPC0dyRcjiDrfBo9YbLL5g0Wkao9ki_L1XySRTsq-VF7QxtmlgFgUSJj19-G7uJxANAmciLrJ7145317JypKUY0Iubu7w6VOu32yY8YC0n7eiFkMt74U-qaKgATR4R-9iTMAT6-7a7absYdY3S1YoALAvdBtxPzhcCVN50JjG9kG85KJkkGb3XpR2X2yjN1v9eoj-sg_cv56iZAcwQxu5CDoo2"><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface truncate">ITDR</span><span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm tracking-wide uppercase">BCM Suite</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Disaster Recovery</span></div></div><div class="flex-1 overflow-y-auto px-space-sm py-space-sm space-y-space-md"><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">BCM Platform</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="business-impact-analysis" href="#bia"><span class="material-symbols-outlined text-[18px]">bar_chart</span><span class="">Business Impact Analysis</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="business-continuity-planning" href="#bcp"><span class="material-symbols-outlined text-[18px]">shield</span><span class="">Business Continuity Planning</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="crisis-management" href="#crisis"><span class="material-symbols-outlined text-[18px]">notification_important</span><span class="">Crisis Management</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Core</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="readiness-dashboard" href="#dashboard"><span class="material-symbols-outlined text-[18px]">dashboard</span><span class="">Readiness Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="applications-inventory" href="#coverage"><span class="material-symbols-outlined text-[18px]">dns</span><span class="">Applications &amp; Inventory</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Recovery Operations</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dr-plan-builder" href="#builder"><span class="material-symbols-outlined text-[18px]">layers</span><span class="">DR Plan Builder</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Testing &amp; Validation</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="itdr-test-plans" href="#test-plans"><span class="material-symbols-outlined text-[18px]">assignment</span><span class="">ITDR Test Plans</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="itdr-test-results" href="#test-results"><span class="material-symbols-outlined text-[18px]">rule</span><span class="">ITDR Test Results</span></a></nav><nav class="space-y-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-md rounded"><div class="px-space-sm pt-space-xs pb-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Governance &amp; Compliance</div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="compliance-audit-reports" href="#audit"><span class="material-symbols-outlined text-[18px]">verified_user</span><span class="">Compliance &amp; Audit Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-policies" href="#decisions"><span class="material-symbols-outlined text-[18px]">settings</span><span class="">Settings &amp; Policies</span></a></nav></div></div><div class="p-space-sm border-t border-outline-variant/30 bg-surface-container-low shrink-0"><div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span><span class="font-code-sm text-code-sm text-on-surface-variant truncate">Engine v4.8.2 · ISO 22301</span></div><p class="font-label-sm text-label-sm text-on-surface-variant/80 truncate mt-0.5">Synced with BIA Core</p></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-14 bg-surface-container-lowest/95 backdrop-blur border-b border-outline-variant/40 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-sm bg-surface-container-low border border-outline-variant/60 rounded text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search applications, runbooks, test plans, or audit records... (⌘K)" type="text"></div><div class="hidden xl:flex items-center gap-1.5 px-2.5 h-8 rounded border border-outline-variant/40 bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap"><span class="material-symbols-outlined text-[16px]">corporate_fare</span><span class="">Global Enterprise IT · ITDR</span><span class="material-symbols-outlined text-[14px]">expand_more</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container text-on-surface border border-outline-variant/30"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-sm text-label-sm font-medium">All Systems Nominal</span></div><button aria-label="Notifications" class="relative p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-error text-on-error font-label-sm text-label-sm flex items-center justify-center font-bold">3</span></button><div class="h-4 w-px bg-outline-variant/40"></div><div class="flex items-center gap-space-sm pl-1"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-outline-variant/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-TQnLz9M_57IO07zlAbl76zdD19OZZJn3n1o5Mp4qxa3IlgjAFwlyGzl2vTZrFfzbtIgGdrBx4dauXT0cQh_RhG_FqmTLWajlDK4EIVqO73ltQlSmC41W0aWMruAADKPvSuAI32LlY15GSrnG4seXkpfLRVjz7a2UdnsAFmQhbtCDCBnqR4pmFB-gOkaDmNh1aptmADzySJGsjyx4CAxgh668J7lugp6Rv15ECuodd5zJ0vVtZ8XnAw"><div class="hidden lg:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Jordan Admin</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">BCM Admin / DR Coordinator</span></div></div></div></header><main class="flex-1 pt-14 w-full px-gutter-desktop py-space-lg bg-background"><div class="flex flex-col w-full">
+<!-- Subtle ambient decorative glow behind metrics -->
+<div class="relative w-full">
+<div class="absolute -top-10 left-1/4 w-96 h-40 bg-surface-container-high/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute -top-4 right-10 w-72 h-32 bg-primary-fixed/20 rounded-full blur-2xl pointer-events-none -z-10"></div>
+</div>
+<!-- Header & Context Actions Bar -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md pb-space-lg">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider font-semibold">Asset Governance · ITDR Core</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">sync</span>
+          BIA Master Sync active
+        </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight whitespace-nowrap">IT Applications &amp; Asset Inventory</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Complete technical recovery catalog synchronized with Business Impact Analysis (BIA) master data and infrastructure topology.</p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="flex items-center bg-surface-container-lowest px-3 py-1.5 rounded shadow-sm gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-medium text-on-surface">BIA SoR Synced:</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">12m ago</span>
+<button class="ml-1 p-1 hover:bg-surface-container rounded text-primary transition-colors flex items-center" id="btn-sync-bia" title="Refresh BIA Master Synchronization">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+</button>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-2 bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md rounded shadow-sm transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">cloud_download</span>
+<span class="">Export Catalog</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-2 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded shadow-sm transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-[18px]">add_box</span>
+<span class="">Register Technical Asset</span>
+</button>
+</div>
+</div>
+<!-- Operational Metrics Ribbon (Bento Micro Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Metric 1: Total Mapped BIA -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Mapped BIA Applications</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">64</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">/ 66 cataloged</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+</div>
+</div>
+<div class="mt-3 pt-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+          96.9% BIA Alignment
+        </span>
+<span class="font-code-sm text-code-sm">Tier 1: 18 · Tier 2: 32</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-primary-container h-full rounded-full" style="width: 96.9%;"></div>
+</div>
+</div>
+<!-- Metric 2: Active Approved DR Runbooks -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Approved DR Runbooks</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">59</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-sm text-code-sm font-semibold">92.1% Coverage</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+</div>
+</div>
+<div class="mt-3 pt-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="text-on-surface-variant">5 In Review or Draft</span>
+<span class="text-secondary font-code-sm text-code-sm">ISO 22301 Ready</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-primary-container h-full rounded-full" style="width: 92.1%;"></div>
+</div>
+</div>
+<!-- Metric 3: Pending Mapping Gap -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error">Critical Exposure</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-error font-bold">2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Unmapped Targets</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+</div>
+<div class="mt-3 pt-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="text-error font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">error</span>
+          Requires BIA Assignment
+        </span>
+<button class="text-primary hover:underline font-label-sm text-label-sm">Resolve</button>
+</div>
+<div class="w-full bg-error-container h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-error h-full rounded-full" style="width: 15%;"></div>
+</div>
+</div>
+<!-- Metric 4: Infrastructure Nodes -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Infrastructure Topology</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">482</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Linked Assets</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+</div>
+<div class="mt-3 pt-2 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-code-sm text-code-sm">294 Cloud · 188 On-Prem</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">99.4% Validated</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden mt-1.5">
+<div class="bg-primary-container h-full rounded-full" style="width: 99.4%;"></div>
+</div>
+</div>
+</div>
+<!-- Workspace Shell: 12-Column Responsive Split (Data Grid + Inspection Drawer) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left / Center Section: Filter Toolbar + Data Table (xl:col-span-8 or 9 depending on drawer toggle) -->
+<div class="xl:col-span-8 flex flex-col gap-space-sm w-full">
+<!-- Filter & Search Toolbar Container -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-sm">
+<!-- Live Filter Search Field -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span>
+<input class="w-full h-9 pl-9 pr-8 text-body-sm font-body-sm bg-surface-container-low rounded text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container transition-all" id="app-search" placeholder="Filter applications by code, service name, host, or tier... (⌘F)" type="text">
+<button class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" id="clear-search">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Quick Statistics Filter Pills -->
+<div class="flex items-center gap-1 bg-surface-container-low p-0.5 rounded text-on-surface-variant font-label-sm text-label-sm">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-primary shadow-sm font-medium">All (64)</button>
+<button class="px-2.5 py-1 rounded hover:text-on-surface transition-colors">Tier 1 (18)</button>
+<button class="px-2.5 py-1 rounded hover:text-on-surface transition-colors">Tier 2 (32)</button>
+<button class="px-2.5 py-1 rounded hover:text-on-surface transition-colors">Drift Flagged (3)</button>
+</div>
+</div>
+<!-- Secondary Dropdown Filters Row -->
+<div class="flex flex-wrap items-center gap-space-sm pt-2 bg-surface-container-lowest">
+<!-- Criticality Tier -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-2 py-1 rounded text-on-surface font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Criticality:</span>
+<select class="bg-transparent font-medium text-on-surface focus:outline-none cursor-pointer">
+<option value="all">All Tiers (Tier 1, 2, 3)</option>
+<option value="tier1">Tier 1 · Mission Critical</option>
+<option value="tier2">Tier 2 · Business Vital</option>
+<option value="tier3">Tier 3 · Operational</option>
+</select>
+</div>
+<!-- Hosting Environment -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-2 py-1 rounded text-on-surface font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Environment:</span>
+<select class="bg-transparent font-medium text-on-surface focus:outline-none cursor-pointer">
+<option value="all">All Hosts &amp; Clouds</option>
+<option value="aws">AWS us-east-1 / us-west-2</option>
+<option value="onprem">On-Prem DC Dallas</option>
+<option value="hybrid">Hybrid GCP &amp; Equinix</option>
+</select>
+</div>
+<!-- DR Plan State -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-2 py-1 rounded text-on-surface font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Plan State:</span>
+<select class="bg-transparent font-medium text-on-surface focus:outline-none cursor-pointer">
+<option value="all">All Plan States</option>
+<option value="approved">Approved &amp; Current</option>
+<option value="review">In Review / Testing</option>
+<option value="draft">Draft / Gap</option>
+<option value="missing">Missing Runbook</option>
+</select>
+</div>
+<!-- BIA Sync Status -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-2 py-1 rounded text-on-surface font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Sync State:</span>
+<select class="bg-transparent font-medium text-on-surface focus:outline-none cursor-pointer">
+<option value="all">All Statuses</option>
+<option value="synced">Synchronized</option>
+<option value="drift">Drift Flagged</option>
+</select>
+</div>
+<div class="ml-auto flex items-center gap-2">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Showing 6 of 64</span>
+<button class="p-1 rounded hover:bg-surface-container-low text-on-surface-variant" title="Table View Settings">
+<span class="material-symbols-outlined text-[18px]">view_column</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Master Applications Table -->
+<div class="bg-surface-container-lowest rounded shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider select-none">
+<th class="py-2.5 px-space-md font-semibold">Application / Code</th>
+<th class="py-2.5 px-space-md font-semibold">Tier &amp; Process Mapping</th>
+<th class="py-2.5 px-space-md font-semibold">Owner</th>
+<th class="py-2.5 px-space-md font-semibold">BIA SLA Target</th>
+<th class="py-2.5 px-space-md font-semibold">Plan Capability</th>
+<th class="py-2.5 px-space-md font-semibold">Topology</th>
+<th class="py-2.5 px-space-md font-semibold">Runbook Status</th>
+<th class="py-2.5 px-space-md font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface" id="app-table-body">
+<!-- Row 1: APP-0104 (Selected / Active) -->
+<tr class="bg-surface-container-low/70 hover:bg-surface-container transition-colors cursor-pointer group" onclick="selectApp('APP-0104')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded bg-primary-container shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-code-sm text-code-sm font-semibold text-primary">APP-0104</span>
+<span class="px-1 rounded bg-primary-fixed text-on-primary-fixed font-code-sm text-code-sm">CORE</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">Core Banking Transaction Engine</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold w-max">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Tier 1 Mission Critical
+                    </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm mt-0.5 truncate">Core Deposit &amp; Clearing, Wire</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold">DC</div>
+<span class="font-label-md text-label-md">David Chen</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Principal SRE</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RTO:</span>
+<span class="font-semibold text-on-surface">120m</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RPO:</span>
+<span class="font-semibold text-on-surface">15m</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RTO: 90m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RPO: 10m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate">AWS Multi-AZ + RDS Aurora</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">us-east-1 &gt; us-west-2 (38 Nodes)</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm font-semibold w-max">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                      v2.1 Approved
+                    </span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm w-max">Ready</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-primary transition-colors" href="#builder" title="Open Runbook in Builder">
+<span class="material-symbols-outlined text-[18px]">build</span>
+</a>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Topology Graph">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Audit DR History">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: APP-0108 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectApp('APP-0108')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded bg-transparent shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-code-sm text-code-sm font-semibold text-secondary">APP-0108</span>
+<span class="px-1 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">FIN</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">Swift Payment Gateway Switch</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold w-max">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Tier 1 Mission Critical
+                    </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm mt-0.5 truncate">International Wire Clearing</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center justify-center font-bold">ER</div>
+<span class="font-label-md text-label-md">Elena Rostova</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Cloud Architect</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RTO:</span>
+<span class="font-semibold text-on-surface">60m</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RPO:</span>
+<span class="font-semibold text-on-surface">0m (Sync)</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RTO: 45m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RPO: 0m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate">On-Prem Dallas Active-Active</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">NetApp MetroCluster (24 Nodes)</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm font-semibold w-max">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                      v1.4 Approved
+                    </span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm w-max">Ready</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-primary transition-colors" href="#builder">
+<span class="material-symbols-outlined text-[18px]">build</span>
+</a>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: APP-0211 (Drift Warning) -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectApp('APP-0211')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded bg-transparent shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-code-sm text-code-sm font-semibold text-secondary">APP-0211</span>
+<span class="px-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-code-sm text-code-sm">DRIFT</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">Retail Mobile API Gateway</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold w-max">
+                      Tier 2 Business Vital
+                    </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm mt-0.5 truncate">Consumer Banking Channels</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center justify-center font-bold">MS</div>
+<span class="font-label-md text-label-md">Marcus Shaw</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Edge Lead</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RTO:</span>
+<span class="font-semibold text-error">240m (BIA update)</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RPO:</span>
+<span class="font-semibold text-on-surface">30m</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-tertiary font-medium">
+<span class="">RTO: 360m</span>
+<span class="material-symbols-outlined text-[14px] text-tertiary">warning</span>
+</div>
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RPO: 30m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate">Kong Ingress + EKS Cluster</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">AWS us-east-1 (52 Pods)</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold w-max">
+<span class="material-symbols-outlined text-[14px]">sync_problem</span>
+                      v3.0 In Review
+                    </span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary-fixed-dim text-on-tertiary-container font-label-sm text-label-sm w-max font-semibold">BIA Drift</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-primary transition-colors" href="#builder">
+<span class="material-symbols-outlined text-[18px]">build</span>
+</a>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: APP-0340 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectApp('APP-0340')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded bg-transparent shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-code-sm text-code-sm font-semibold text-secondary">APP-0340</span>
+<span class="px-1 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">PORTAL</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">Corporate Treasury Portal</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold w-max">
+                      Tier 2 Business Vital
+                    </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm mt-0.5 truncate">FX Operations &amp; Hedging</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center justify-center font-bold">AK</div>
+<span class="font-label-md text-label-md">Anand Kumar</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fintech Lead</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RTO:</span>
+<span class="font-semibold text-on-surface">360m</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RPO:</span>
+<span class="font-semibold text-on-surface">60m</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RTO: 180m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RPO: 30m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate">GCP Compute Engine + Cloud SQL</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">us-central1 &gt; us-east4 (16 Nodes)</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm font-semibold w-max">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                      v2.0 Approved
+                    </span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm w-max">Approved Untested</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-primary transition-colors" href="#builder">
+<span class="material-symbols-outlined text-[18px]">build</span>
+</a>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: APP-0402 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectApp('APP-0402')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded bg-transparent shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-code-sm text-code-sm font-semibold text-secondary">APP-0402</span>
+<span class="px-1 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">IAM</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">Active Directory &amp; Okta Bridge</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold w-max">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Tier 1 Mission Critical
+                    </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm mt-0.5 truncate">Identity &amp; Zero Trust Auth</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold">SO</div>
+<span class="font-label-md text-label-md">Sarah Owens</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Infra Security VP</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RTO:</span>
+<span class="font-semibold text-on-surface">30m</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RPO:</span>
+<span class="font-semibold text-on-surface">0m</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RTO: 15m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex items-center gap-1.5 font-code-sm text-code-sm text-primary font-medium">
+<span class="">RPO: 0m</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate">Multi-Region Hybrid AD DS</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Dallas + AWS East/West (8 DCs)</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm font-semibold w-max">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                      v4.2 Approved
+                    </span>
+<span class="px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm w-max">Ready</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="p-1 rounded bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-primary transition-colors" href="#builder">
+<span class="material-symbols-outlined text-[18px]">build</span>
+</a>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: APP-0515 (Missing Runbook Gap) -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectApp('APP-0515')">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-6 rounded bg-transparent shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-code-sm text-code-sm font-semibold text-secondary">APP-0515</span>
+<span class="px-1 rounded bg-error-container text-on-error-container font-code-sm text-code-sm">GAP</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate group-hover:text-primary transition-colors">Enterprise BI &amp; Warehouse</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold w-max">
+                      Tier 3 Operational
+                    </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm mt-0.5 truncate">Regulatory Financial Reporting</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center justify-center font-bold">JZ</div>
+<span class="font-label-md text-label-md">James Zhou</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Data Platform Lead</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RTO:</span>
+<span class="font-semibold text-on-surface">1440m</span>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm">
+<span class="text-on-surface-variant">RPO:</span>
+<span class="font-semibold text-on-surface">24h</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 font-code-sm text-code-sm text-error font-medium">
+<span class="material-symbols-outlined text-[14px]">cancel</span>
+                    Unstated
+                  </span>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-medium text-on-surface truncate">Snowflake on AWS + DBT</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Multi-region reader not deployed</span>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold w-max">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                      No Plan
+                    </span>
+<span class="px-1.5 py-0.2 rounded bg-error-container text-on-error-container font-label-sm text-label-sm w-max font-semibold">Critical Gap</span>
+</div>
+</td>
+<td class="py-3 px-space-md text-right whitespace-nowrap">
+<div class="flex items-center justify-end gap-1">
+<a class="px-2 py-1 rounded bg-primary-container text-on-primary font-label-sm text-label-sm font-medium hover:bg-primary transition-colors flex items-center gap-1" href="#builder">
+<span class="material-symbols-outlined text-[14px]">add</span> Create
+                    </a>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="">Rows per page:</span>
+<select class="bg-surface-container-lowest px-2 py-1 rounded font-medium text-on-surface focus:outline-none">
+<option>10</option>
+<option selected="">25</option>
+<option>50</option>
+<option>100</option>
+</select>
+<span class="">Showing 1-6 of 64 applications</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-[18px]">first_page</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="px-2.5 py-1 rounded bg-primary-container text-on-primary font-semibold">1</span>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container">2</button>
+<button class="px-2.5 py-1 rounded hover:bg-surface-container">3</button>
+<button class="p-1 rounded hover:bg-surface-container">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container">
+<span class="material-symbols-outlined text-[18px]">last_page</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Section: Technical Dependency Detail Drawer / Side Inspection Panel (xl:col-span-4) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md w-full sticky top-16">
+<!-- Detailed Preview Inspection Card -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm relative overflow-hidden flex flex-col gap-space-md">
+<!-- Drawer Header -->
+<div class="flex items-start justify-between pb-space-sm bg-surface-container-low/50 -mx-space-md -mt-space-md p-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-code-sm text-code-sm font-semibold">APP-0104</span>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">Tier 1 Mission Critical</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold mt-1">Core Banking Transaction Engine</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Recovery Spec · ISO 22301 Annex A.12</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-code-sm text-code-sm font-semibold">Active Runbook v2.1</span>
+</div>
+</div>
+<!-- Dependency Architecture Visual Schema (Inline SVG Micro Topology) -->
+<div class="bg-surface-container-low rounded p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-semibold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">lan</span>
+              Topology Dependency Flow
+            </span>
+<span class="font-code-sm text-code-sm text-primary font-medium">3 Upstream · 14 Downstream</span>
+</div>
+<!-- Micro Schema Visual -->
+<div class="w-full bg-surface-container-lowest rounded p-3 relative overflow-hidden">
+<svg class="w-full h-28" fill="none" viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">
+<!-- Upstream nodes -->
+<rect class="fill-surface-container" height="24" rx="4" width="85" x="10" y="8"></rect>
+<text class="fill-on-surface font-code-sm text-[10px] font-semibold" x="16" y="24">Customer SSO</text>
+<rect class="fill-surface-container" height="24" rx="4" width="85" x="10" y="42"></rect>
+<text class="fill-on-surface font-code-sm text-[10px] font-semibold" x="16" y="58">Core MQ Broker</text>
+<rect class="fill-surface-container" height="24" rx="4" width="85" x="10" y="76"></rect>
+<text class="fill-on-surface font-code-sm text-[10px] font-semibold" x="16" y="92">HSM Sec Module</text>
+<!-- Connectors Upstream to Target -->
+<path class="text-outline-variant" d="M95 20 H 145" stroke="currentColor" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<path class="text-primary-container" d="M95 54 H 145" stroke="currentColor" stroke-width="2"></path>
+<path class="text-outline-variant" d="M95 88 H 145" stroke="currentColor" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<!-- Core Node (Selected App) -->
+<rect class="fill-primary-container" height="60" rx="6" width="110" x="145" y="24"></rect>
+<text class="fill-on-primary font-headline-sm text-[11px] font-bold" x="155" y="46">APP-0104 Engine</text>
+<text class="fill-on-primary-container font-code-sm text-[9px]" x="155" y="62">AWS Multi-AZ DB</text>
+<text class="fill-on-primary-container font-code-sm text-[9px]" x="155" y="74">Failover: Hot Standby</text>
+<!-- Connectors to Downstream -->
+<path class="text-primary-container" d="M255 54 H 300" stroke="currentColor" stroke-width="2"></path>
+<!-- Downstream consumer node -->
+<rect class="fill-secondary-container" height="52" rx="4" width="70" x="300" y="28"></rect>
+<text class="fill-on-secondary-container font-code-sm text-[10px] font-bold" x="306" y="48">14 Services</text>
+<text class="fill-on-secondary-container font-code-sm text-[8px]" x="306" y="62">Retail / ATMs</text>
+<text class="fill-on-secondary-container font-code-sm text-[8px]" x="306" y="72">Wire Settlement</text>
+</svg>
+</div>
+</div>
+<!-- Specifications Breakdown -->
+<div class="flex flex-col gap-space-sm text-body-sm">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Technical Infrastructure Targets</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low p-2.5 rounded">
+<span class="text-on-surface-variant font-label-sm text-label-sm block">Primary Production Site</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-0.5 block">AWS us-east-1</span>
+<span class="font-code-sm text-code-sm text-secondary">VPC: vpc-09c31fa882</span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded">
+<span class="text-on-surface-variant font-label-sm text-label-sm block">Designated Recovery Site</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-0.5 block text-primary">AWS us-west-2 (Oregon)</span>
+<span class="font-code-sm text-code-sm text-secondary">Warm Pilot Light</span>
+</div>
+</div>
+<!-- RTO/RPO Comparison Matrix -->
+<div class="bg-surface-container-low p-3 rounded flex flex-col gap-2">
+<div class="flex justify-between items-center text-on-surface font-label-sm text-label-sm">
+<span class="font-semibold">SLA Tolerance Threshold</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">Capability Exceeds Target</span>
+</div>
+<!-- RTO bar -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between text-body-sm font-label-sm text-label-sm">
+<span class="text-on-surface-variant">RTO (Recovery Time Objective):</span>
+<span class="font-code-sm text-code-sm"><strong class="text-primary">90m achieved</strong> / 120m target</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden relative">
+<div class="bg-surface-variant h-full rounded-full" style="width: 100%;"></div>
+<div class="bg-primary-container h-full rounded-full absolute top-0 left-0" style="width: 75%;"></div>
+</div>
+</div>
+<!-- RPO bar -->
+<div class="flex flex-col gap-1 mt-1">
+<div class="flex justify-between text-body-sm font-label-sm text-label-sm">
+<span class="text-on-surface-variant">RPO (Recovery Point Objective):</span>
+<span class="font-code-sm text-code-sm"><strong class="text-primary">10m achieved</strong> / 15m target</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden relative">
+<div class="bg-surface-variant h-full rounded-full" style="width: 100%;"></div>
+<div class="bg-primary-container h-full rounded-full absolute top-0 left-0" style="width: 66%;"></div>
+</div>
+</div>
+</div>
+<!-- Automation Orchestration Metadata -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex items-center justify-between text-body-sm py-1 bg-surface-container-lowest">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Failover Automation Level:</span>
+<span class="font-label-md text-label-md text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">precision_manufacturing</span>
+                Semi-Automated (Ansible + TF)
+              </span>
+</div>
+<div class="flex items-center justify-between text-body-sm py-1 bg-surface-container-lowest">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Database Replication Engine:</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">AWS Aurora Global Database</span>
+</div>
+<div class="flex items-center justify-between text-body-sm py-1 bg-surface-container-lowest">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Last Successful DR Test:</span>
+<span class="font-code-sm text-code-sm text-on-surface">Oct 24, 2024 · Passed (78m)</span>
+</div>
+</div>
+</div>
+<!-- Action Trigger Bottom Ribbon -->
+<div class="flex flex-col gap-2 pt-2">
+<a class="w-full py-2.5 px-4 bg-primary-container hover:bg-primary text-on-primary rounded font-label-md text-label-md font-semibold text-center shadow-sm flex items-center justify-center gap-2 transition-all" href="#builder">
+<span class="material-symbols-outlined text-[18px]">alt_route</span>
+<span class="">Launch DR Plan Builder (#builder)</span>
+</a>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-1.5 px-3 bg-surface-container hover:bg-surface-container-high text-on-surface rounded font-label-sm text-label-sm font-medium text-center transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">play_circle</span>
+              Simulate Runbook
+            </button>
+<button class="py-1.5 px-3 bg-surface-container hover:bg-surface-container-high text-on-surface rounded font-label-sm text-label-sm font-medium text-center transition-colors flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">file_present</span>
+              Audit Package
+            </button>
+</div>
+</div>
+</div>
+<!-- Infrastructure Quick Node Snapshot (Secondary Box) -->
+<div class="bg-surface-container-lowest rounded p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Host Node Telemetry (38 Units)</span>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</div>
+<div class="flex items-center justify-between text-body-sm pt-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">dns</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">usw2-core-db-replica-01</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-sm text-code-sm">Lag: 42ms</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">dns</span>
+<span class="font-code-sm text-code-sm text-on-surface font-medium">usw2-core-kafka-broker-03</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-primary font-code-sm text-code-sm">Lag: 12ms</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive micro-logic for app row selection and live search filtering
+  function selectApp(appId) {
+    const rows = document.querySelectorAll('#app-table-body tr');
+    rows.forEach(r => {
+      r.classList.remove('bg-surface-container-low/70');
+      const bar = r.querySelector('span.shrink-0');
+      if (bar) {
+        bar.classList.replace('bg-primary-container', 'bg-transparent');
+      }
+    });
+
+    const activeRow = event.currentTarget;
+    activeRow.classList.add('bg-surface-container-low/70');
+    const activeBar = activeRow.querySelector('span.shrink-0');
+    if (activeBar) {
+      activeBar.classList.replace('bg-transparent', 'bg-primary-container');
+    }
+  }
+
+  // Quick search filtering
+  const searchInput = document.getElementById('app-search');
+  const clearBtn = document.getElementById('clear-search');
+  
+  if (searchInput && clearBtn) {
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase();
+      clearBtn.classList.toggle('hidden', val.length === 0);
+      
+      const rows = document.querySelectorAll('#app-table-body tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(val) ? '' : 'none';
+      });
+    });
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearBtn.classList.add('hidden');
+      const rows = document.querySelectorAll('#app-table-body tr');
+      rows.forEach(row => row.style.display = '');
+      searchInput.focus();
+    });
+  }
+
+  // Refresh Sync Simulator
+  const btnSync = document.getElementById('btn-sync-bia');
+  if (btnSync) {
+    btnSync.addEventListener('click', () => {
+      btnSync.classList.add('animate-spin');
+      setTimeout(() => {
+        btnSync.classList.remove('animate-spin');
+      }, 800);
+    });
+  }
+</script></main></div>
+
+</body></html>
