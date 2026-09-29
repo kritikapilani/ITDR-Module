@@ -98,8 +98,11 @@ export function Coverage({ catalogs, users, session, onError, query, mode }) {
       ),
       e("div", { className: "actions" },
         builder
-          ? null
-          : isAdmin && e("button", { type: "button", className: "accent", onClick: () => { location.hash = "#coverage/new"; } }, e(Icon, { name: "add" }), "Add application")
+          ? canEdit && e("button", { type: "button", className: "accent", onClick: () => setShowPlan(true) }, e(Icon, { name: "add" }), "New DR Plan")
+          : e("div", { className: "actions" },
+              canEdit && e("button", { type: "button", className: "secondary", onClick: () => setShowPlan(true) }, e(Icon, { name: "add" }), "New DR Plan"),
+              isAdmin && e("button", { type: "button", className: "accent", onClick: () => { location.hash = "#coverage/new"; } }, e(Icon, { name: "add" }), "Add application")
+            )
       )
     ),
     e("article", { className: "card list-card" },

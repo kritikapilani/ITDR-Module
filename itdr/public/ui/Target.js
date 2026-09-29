@@ -342,6 +342,7 @@ export function Target({ id, tab, catalogs, users, session, onError, onWarn }) {
           ? e("p", { className: "muted" }, "Read-only for this persona.")
           : e("p", { className: "muted" }, "Same record as New DR Plan. Save to persist. Switching tabs keeps these values.");
   const planActions = e("div", { className: "actions" },
+    !record && canWrite && e("button", { type: "button", className: "accent", onClick: () => setShowPlan(true) }, e(Icon, { name: "add" }), "New DR Plan"),
     canEdit && e("button", { type: "button", className: "secondary", onClick: () => savePlan() }, e(Icon, { name: "save" }), "Save"),
     canEdit && e("button", { type: "button", onClick: async () => {
       await savePlan();
@@ -408,6 +409,7 @@ export function Target({ id, tab, catalogs, users, session, onError, onWarn }) {
         e("p", { className: "sub" }, `${hostingLabel(t.hostingEnvironment)} Â· ${typeLabel(t.applicationType)}`)
       ),
       e("div", { className: "actions" },
+        !record && canWrite && e("button", { type: "button", className: "accent", onClick: () => setShowPlan(true) }, e(Icon, { name: "add" }), "New DR Plan"),
         e("button", { type: "button", className: "secondary", onClick: () => goTab("runbook") }, e(Icon, { name: "description" }), "Open runbook"),
         e("button", { type: "button", className: "secondary", onClick: () => { location.hash = "#testing"; } }, e(Icon, { name: "bolt" }), "Open DR test")
       )
@@ -547,7 +549,10 @@ export function Target({ id, tab, catalogs, users, session, onError, onWarn }) {
     ),
     planLockNote,
     !record
-      ? e("div", { className: "empty" }, e("p", null, "No plan yet. Create a DR Plan to capture recovery strategy."))
+      ? e("div", { className: "empty" },
+          e("p", null, "No plan yet. Create a DR Plan to capture recovery strategy."),
+          canWrite && e("button", { type: "button", className: "accent", style: { marginTop: 12 }, onClick: () => setShowPlan(true) }, e(Icon, { name: "add" }), "New DR Plan")
+        )
       : e("form", { className: "stack", onSubmit: savePlan },
           e("div", { className: "form-grid two" },
             e(Field, { label: "Recovery strategy type", required: true }, e(Select, {
