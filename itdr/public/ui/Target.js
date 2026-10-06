@@ -58,6 +58,7 @@ const CONTACT_KIND = {
 
 const APP_TABS = [
   { id: "overview", label: "Overview" },
+  { id: "hosting", label: "Hosting Topologies" },
   { id: "infra", label: "Infrastructure & Dependencies" },
   { id: "plan", label: "DR Plan" },
 ];
@@ -391,9 +392,9 @@ export function Target({ id, tab, catalogs, users, session, onError, onWarn }) {
 
   const header = e("div", { className: "detail-head-plain" },
     e(Crumb, { items: [
-      { label: "Applications", href: "#coverage" },
-      { label: `Tier ${t.tier ?? "—"}` },
-      { label: t.biaApplicationId, mono: true },
+      { label: "ITDR", href: "#itdr" },
+      { label: "Plans", href: "#itdr" },
+      { label: t.name },
     ] }),
     e("div", { className: "badge-row" },
       e(StatusPill, { kind: "tier", dot: false }, `Tier ${t.tier ?? "—"}`),
@@ -406,7 +407,7 @@ export function Target({ id, tab, catalogs, users, session, onError, onWarn }) {
           e("h1", null, t.name),
           e("span", { className: "id-chip mono" }, t.biaApplicationId)
         ),
-        e("p", { className: "sub" }, `${hostingLabel(t.hostingEnvironment)} Â· ${typeLabel(t.applicationType)}`)
+        e("p", { className: "sub" }, `${t.hostingSummary || hostingLabel(t.hostingEnvironment)} · ${typeLabel(t.applicationType)}`)
       ),
       e("div", { className: "actions" },
         !record && canWrite && e("button", { type: "button", className: "accent", onClick: () => setShowPlan(true) }, e(Icon, { name: "add" }), "New DR Plan"),
@@ -640,6 +641,36 @@ export function Target({ id, tab, catalogs, users, session, onError, onWarn }) {
     }
   }
 
+  const hostingCard = e("article", { className: "card", style: { marginTop: 16 } },
+    e("div", { className: "card-toolbar" },
+      e("div", null,
+        e("h2", { style: { margin: 0 } }, "Hosting Topologies"),
+        e("p", { className: "muted" }, "Master Library Environment + Site mappings with strict uniqueness and composite references.")
+      ),
+      t.hostingWarning && e("span", { className: "chip", style: { background: "var(--warn-bg)", color: "var(--warn)", border: "1px solid var(--warn-border)" } }, e(Icon, { name: "warning" }), t.hostingWarning)
+    ),
+    e("table", { className: "list-table" },
+      e("thead", null, e("tr", null,
+        e("th", null, "Environment"),
+        e("th", null, "Site / Data Center"),
+        e("th", null, "Topology Role"),
+        e("th", null, "Composite Reference Tag")
+      )),
+      e("tbody", null,
+        (t.hosting || []).length
+          ? (t.hosting || []).map((h, i) =>
+              e("tr", { key: h.hostingId || i },
+                e("td", null, e("strong", null, h.environmentName || h.environmentId)),
+                e("td", null, h.siteName || h.siteId),
+                e("td", null, e("span", { className: `pill pill-${h.role === "primary" ? "approved" : h.role === "secondary" ? "draft" : "neutral"}` }, pretty(h.role))),
+                e("td", null, e("code", { className: "composite-tag" }, h.compositeLabel || `${t.name} | ${h.environmentName || h.environmentId} | ${h.siteName || h.siteId}`))
+              )
+            )
+          : e("tr", null, e("td", { colSpan: 4, className: "muted" }, "No hosting topologies recorded."))
+      )
+    )
+  );
+
   return e(
     "div",
     { className: "list-page" },
@@ -649,6 +680,7 @@ export function Target({ id, tab, catalogs, users, session, onError, onWarn }) {
       e(Tabs, { items: PLAN_TABS, value: PLAN_IDS.includes(pane) ? pane : "runbook", onChange: goTab })
     ),
     show("overview") && biaCard,
+    show("hosting") && hostingCard,
     show("plan") && planSummary,
     show("infra") && e("article", { className: "card", style: { marginTop: 16 } },
       e("h2", { style: { marginTop: 0 } }, "Infrastructure Dependencies"),

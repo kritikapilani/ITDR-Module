@@ -9,13 +9,19 @@ import { DR_TEST, EXERCISE_MODES, createTestingModule } from "./testingModule.mj
 import {
   APPLICATION_TYPES,
   HOSTING_ENVIRONMENTS,
+  HOSTING_ROLES,
   LIFECYCLE_STATUSES,
   BACKUP_FREQUENCIES,
   RETENTION_UNITS,
   FAILOVER_METHODS,
   ASSET_TYPES,
+  DEFAULT_APPLICATION_LIBRARY,
+  DEFAULT_SITES,
+  DEFAULT_ENVIRONMENTS,
+  DEFAULT_SCENARIOS,
   fieldCatalogs,
 } from "./catalogs.mjs";
+
 const SECRET_HINT = /(password|secret|api[_-]?key|private[_-]?key)/i;
 
 export const DIRECTORY = Object.freeze([
@@ -53,6 +59,11 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
   const targets = new Map();
   const plans = new Map();
   const versions = new Map();
+  const applicationLibrary = [...DEFAULT_APPLICATION_LIBRARY.map((a) => ({ ...a }))];
+  const siteLibrary = [...DEFAULT_SITES.map((s) => ({ ...s }))];
+  const environmentLibrary = [...DEFAULT_ENVIRONMENTS.map((e) => ({ ...e }))];
+  const scenariosLibrary = [...DEFAULT_SCENARIOS.map((s) => ({ ...s }))];
+
   const testingModule = testing || createTestingModule({ now });
   const testOutbox = [];
   const reminderKeys = new Set();
@@ -109,6 +120,129 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     }
   }
 
+  function findSiteInLibrary(id) {
+    return siteLibrary.find((s) => s.id === id || s.name === id) || null;
+  }
+
+  function findEnvInLibrary(id) {
+    return environmentLibrary.find((e) => e.id === id || e.name === id) || null;
+  }
+
+  function findAppInLibrary(id) {
+    return applicationLibrary.find((a) => a.id === id || a.name === id) || null;
+  }
+
+  function compositeHostingLabel(appName, envId, siteId) {
+    const envObj = findEnvInLibrary(envId);
+    const envName = envObj ? envObj.name : envId === "env-prod" || envId === "prod" ? "Production" : envId === "env-dr" || envId === "dr" ? "DR" : envId;
+    const siteObj = findSiteInLibrary(siteId);
+    const siteName = siteObj ? siteObj.name : siteId;
+    return `${appName || "App"} | ${envName || "Environment"} | ${siteName || "Site"}`;
+  }
+
+  function normalizeHostingRows(appName, rawHosting = []) {
+    if (!rawHosting || !rawHosting.length) return [];
+    return rawHosting.map((h) => {
+      const environmentId = h.environmentId || (h.environment === "dr" ? "env-dr" : "env-prod");
+      const siteId = h.siteId || (environmentId === "env-prod" ? "site-mum-dc01" : "site-chn-dc02");
+      const role = h.role || (environmentId === "env-prod" ? "primary" : environmentId === "env-dr" ? "secondary" : "none");
+      const hostingId = h.hostingId || `host-${newId("h")}`;
+      const envName = findEnvInLibrary(environmentId)?.name || (environmentId === "env-prod" ? "Production" : environmentId === "env-dr" ? "DR" : environmentId);
+      const siteName = findSiteInLibrary(siteId)?.name || siteId;
+      return {
+        hostingId,
+        environmentId,
+        environmentName: envName,
+        siteId,
+        siteName,
+        role,
+        compositeLabel: compositeHostingLabel(appName, environmentId, siteId),
+      };
+    });
+  }
+
+  function validateHosting(hostingRows) {
+    if (!hostingRows || !hostingRows.length) return { warning: null };
+    const seen = new Set();
+    let hasProd = false;
+    const prodSites = new Set();
+    const drSites = new Set();
+
+    for (const h of hostingRows) {
+      const key = `${h.environmentId}::${h.siteId}`;
+      if (seen.has(key)) {
+        fail(400, `Duplicate hosting row: Environment '${h.environmentName || h.environmentId}' and Site '${h.siteName || h.siteId}' already assigned to this application.`, "EC-HOST-01");
+      }
+      seen.add(key);
+      const isProd = h.environmentId === "env-prod" || String(h.environmentId).toLowerCase().includes("prod") || h.role === "primary";
+      const isDr = h.environmentId === "env-dr" || String(h.environmentId).toLowerCase().includes("dr") || h.role === "secondary";
+      if (isProd) {
+        hasProd = true;
+        prodSites.add(h.siteId);
+      }
+      if (isDr) {
+        drSites.add(h.siteId);
+      }
+    }
+
+    if (!hasProd) {
+      fail(400, "An application must have at least one Production hosting row.", "EC-HOST-02");
+    }
+
+    let warning = null;
+    for (const ps of prodSites) {
+      if (drSites.has(ps)) {
+        const sName = findSiteInLibrary(ps)?.name || ps;
+        warning = `Production and DR share the same site (${sName}). Geographic redundancy is compromised.`;
+        break;
+      }
+    }
+    return { warning };
+  }
+
+  function computeHostingSummary(target) {
+    const hosting = target.hosting || [];
+    const prodRow = hosting.find((h) => h.role === "primary" || h.environmentId === "env-prod");
+    const drRow = hosting.find((h) => h.role === "secondary" || h.environmentId === "env-dr");
+    if (prodRow && drRow) {
+      const pName = prodRow.siteName || findSiteInLibrary(prodRow.siteId)?.name || prodRow.siteId;
+      const dName = drRow.siteName || findSiteInLibrary(drRow.siteId)?.name || drRow.siteId;
+      return `${pName} (Prod) -> ${dName} (DR)`;
+    }
+    if (prodRow) {
+      const pName = prodRow.siteName || findSiteInLibrary(prodRow.siteId)?.name || prodRow.siteId;
+      return `${pName} (Prod)`;
+    }
+    if (target.primarySite && target.recoverySite) {
+      return `${target.primarySite} (Prod) -> ${target.recoverySite} (DR)`;
+    }
+    return target.primarySite || target.hostingEnvironment || "—";
+  }
+
+  function computeHighLevelPlan(target, version) {
+    const strat = version?.strategy || target.strategy;
+    const stratMap = {
+      hot_site: "Hot Site Active-Passive Synchronous Failover",
+      warm_site: "Warm Site Standby with Periodic Replication",
+      cold_site: "Cold Site On-Demand Provisioning & Restore",
+      cloud_dr: "Cloud Native Multi-Region Automated Failover",
+      backup_restore: "Immutable Backup & Bare-Metal/Cloud Rebuild",
+    };
+    if (strat && stratMap[strat]) return stratMap[strat];
+    if (version?.title) return version.title;
+    if (strat) return String(strat).replace(/_/g, " ");
+    return "Standard Multi-Tier DR Strategy";
+  }
+
+  function formatMins(m) {
+    if (m == null) return "—";
+    const total = Number(m);
+    if (!Number.isFinite(total)) return "—";
+    const h = Math.floor(total / 60);
+    const mins = total % 60;
+    return `${String(h).padStart(2, "0")}:${String(mins).padStart(2, "0")}`;
+  }
+
   function liveBia(id) {
     try {
       return bia.get(id);
@@ -119,7 +253,11 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
   }
 
   function targetOrThrow(id) {
-    const target = targets.get(id);
+    let target = targets.get(id);
+    if (!target) {
+      const app = bia.getIncludingOutOfScope(id);
+      if (app) target = seedTarget(app);
+    }
     if (!target) fail(404, "Recovery target not found", "NOT_FOUND");
     return target;
   }
@@ -174,21 +312,48 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       existing.outOfBiaScope = app.inScope === false;
       return existing;
     }
+
+    const libApp = findAppInLibrary(app.biaApplicationId);
     const assetId = `asset-${app.biaApplicationId}`;
+    let defaultHosting = [];
+
+    if (app.biaApplicationId === "bia-app-payments") {
+      defaultHosting = [
+        { hostingId: "host-pay-prod", applicationId: app.biaApplicationId, environmentId: "env-prod", siteId: "site-mum-dc01", role: "primary" },
+        { hostingId: "host-pay-dr", applicationId: app.biaApplicationId, environmentId: "env-dr", siteId: "site-chn-dc02", role: "secondary" },
+      ];
+    } else if (app.biaApplicationId === "bia-app-hr") {
+      defaultHosting = [
+        { hostingId: "host-hr-prod", applicationId: app.biaApplicationId, environmentId: "env-prod", siteId: "site-az-cin1", role: "primary" },
+        { hostingId: "host-hr-dr", applicationId: app.biaApplicationId, environmentId: "env-dr", siteId: "site-blr-dc03", role: "secondary" },
+      ];
+    } else {
+      defaultHosting = [
+        { hostingId: `host-${app.biaApplicationId}-prod`, applicationId: app.biaApplicationId, environmentId: "env-prod", siteId: "site-mum-dc01", role: "primary" },
+        { hostingId: `host-${app.biaApplicationId}-dr`, applicationId: app.biaApplicationId, environmentId: "env-dr", siteId: "site-chn-dc02", role: "secondary" },
+      ];
+    }
+
+    const normHosting = normalizeHostingRows(app.name, defaultHosting);
+    const hostingValidation = validateHosting(normHosting);
+
     const target = {
       targetId: app.biaApplicationId,
       biaApplicationId: app.biaApplicationId,
+      applicationLibraryId: libApp?.id || app.biaApplicationId,
       tenantId: app.tenantId,
       name: app.name,
       tier: app.tier,
-      applicationOwnerUserId: "user-plan_owner",
-      applicationType: app.tier === 1 ? "custom_built" : app.tier === 2 ? "cots" : "legacy",
+      applicationOwnerUserId: libApp?.defaultOwnerUserId || "user-plan_owner",
+      applicationType: libApp?.type || (app.tier === 1 ? "custom_built" : app.tier === 2 ? "cots" : "legacy"),
       hostingEnvironment: app.biaApplicationId === "bia-app-payments" ? "aws" : app.biaApplicationId === "bia-app-hr" ? "vendor_hosted" : "on_prem",
+      hosting: normHosting,
+      hostingWarning: hostingValidation.warning,
       vendorDependencies: "",
       lifecycleStatus: "active",
       strategy: null,
-      primarySite: "",
-      recoverySite: "",
+      primarySite: normHosting.find((h) => h.role === "primary")?.siteName || "",
+      recoverySite: normHosting.find((h) => h.role === "secondary")?.siteName || "",
       backupFrequency: null,
       backupRetentionValue: null,
       backupRetentionUnit: "days",
@@ -261,6 +426,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     const live = liveBia(target.biaApplicationId);
     const approved = currentApproved(target);
     const draft = currentDraft(target);
+    const activeVersion = draft || approved;
     const readiness = computeReadiness({
       target,
       draftVersion: draft,
@@ -270,8 +436,17 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       tests: testsFor(target),
     });
     const bcp = bia.listBcp(target.biaApplicationId);
+    const hosting = normalizeHostingRows(target.name, target.hosting || []);
+    const hVal = validateHosting(hosting);
+    const hostingSummary = computeHostingSummary({ ...target, hosting });
+    const highLevelPlan = computeHighLevelPlan(target, activeVersion);
+
     return {
       ...clone(target),
+      hosting,
+      hostingSummary,
+      hostingWarning: hVal.warning,
+      highLevelPlan,
       bcpPlans: bcp.map((p) => ({ planId: p.planId, title: p.title, status: p.status })),
       processes: live?.processes || [],
       biaGap: !live || (live.inheritedObjectives.rtoMinutes == null && live.inheritedObjectives.rpoMinutes == null),
@@ -283,6 +458,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       ),
       draft,
       approved,
+      hasPlan: Boolean(target.planId && (draft || approved)),
       tests: testsFor(target),
       readiness,
     };
@@ -309,6 +485,17 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
         const completed = (row.tests || [])
           .filter((x) => x.completedAt)
           .sort((a, b) => String(b.completedAt).localeCompare(String(a.completedAt)));
+
+        const activeVersion = row.draft || row.approved;
+        const claimedRto = activeVersion?.claimedRtoMinutes ?? row.objectives?.effectiveRtoMinutes ?? row.objectives?.inherited?.rtoMinutes;
+        const claimedRpo = activeVersion?.claimedRpoMinutes ?? row.objectives?.effectiveRpoMinutes ?? row.objectives?.inherited?.rpoMinutes;
+
+        const nextReviewDueAt = activeVersion?.nextReviewDueAt || (row.approved?.approvedAt ? addMonths(new Date(row.approved.approvedAt), 12).toISOString() : null);
+        const lastReviewedAt = activeVersion?.lastReviewedAt || row.approved?.approvedAt || null;
+
+        const hasPlan = Boolean(t.planId && (row.draft || row.approved));
+        const status = planListStatus(row);
+
         return {
           targetId: row.targetId,
           biaApplicationId: row.biaApplicationId,
@@ -321,6 +508,10 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
           applicationOwnerUserId: row.applicationOwnerUserId,
           applicationType: row.applicationType,
           hostingEnvironment: row.hostingEnvironment,
+          hosting: row.hosting,
+          hostingSummary: row.hostingSummary,
+          hostingWarning: row.hostingWarning,
+          highLevelPlan: row.highLevelPlan,
           vendorDependencies: row.vendorDependencies,
           lifecycleStatus: row.lifecycleStatus,
           strategy: row.strategy,
@@ -332,22 +523,68 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
           failoverMethod: row.failoverMethod,
           currentApprovedVersionId: row.currentApprovedVersionId,
           draftStatus: row.draft?.status || null,
+          hasPlan,
+          planId: t.planId,
+          planTitle: activeVersion?.title || `${row.name} Technical Recovery Plan`,
           objectives: row.objectives,
+          rto: formatMins(claimedRto),
+          rpo: formatMins(claimedRpo),
+          rtoMinutes: claimedRto,
+          rpoMinutes: claimedRpo,
+          lastReviewedAt,
+          nextReviewDueAt,
           readiness: row.readiness,
           evidence: row.readiness.evidence,
           lastTestedAt: completed[0]?.completedAt || row.readiness.evidence?.testCompletedAt || null,
           testCount: completed.length,
           versionCount: [...versions.values()].filter((v) => v.planId === t.planId).length,
-          planStatus: planListStatus(row),
+          planStatus: status,
           bcpPlanIds: row.bcpPlans.map((p) => p.planId),
+          assets: row.assets,
         };
       });
 
     const scoped = rows.filter((r) => r.readiness?.inCoverageDenominator !== false && !r.outOfBiaScope && !r.retired);
     const tier12 = scoped.filter((r) => r.tier === 1 || r.tier === 2);
     const approvedNonExpired = tier12.filter((r) => r.readiness?.kpiEligible).length;
+
+    // Dashboard summary cards live statistics
+    const totalApplications = scoped.length;
+    const applicationsWithPlan = scoped.filter((r) => r.hasPlan && r.planStatus !== "none");
+    const applicationsWithoutPlan = scoped.filter((r) => !r.hasPlan || r.planStatus === "none");
+
+    const plansByStatus = {
+      draft: scoped.filter((r) => r.planStatus === "draft").length,
+      in_review: scoped.filter((r) => r.planStatus === "in_review").length,
+      approved: scoped.filter((r) => r.planStatus === "approved" || r.planStatus === "published").length,
+      expired: scoped.filter((r) => r.planStatus === "expired").length,
+      under_remediation: scoped.filter((r) => r.planStatus === "under_remediation").length,
+    };
+
+    const plansByTier = {
+      tier1: scoped.filter((r) => r.tier === 1 && r.hasPlan).length,
+      tier2: scoped.filter((r) => r.tier === 2 && r.hasPlan).length,
+      tier3: scoped.filter((r) => r.tier === 3 && r.hasPlan).length,
+    };
+
+    const nowMs = now().getTime();
+    const plansOverdueReviewOrTest = scoped.filter((r) => {
+      if (!r.hasPlan) return false;
+      const reviewOverdue = r.nextReviewDueAt && new Date(r.nextReviewDueAt).getTime() < nowMs;
+      const testOverdue = r.readiness?.status === "expired" || r.readiness?.status === "failed_test";
+      return reviewOverdue || testOverdue;
+    }).length;
+
     return {
       generatedAt: now().toISOString(),
+      summary: {
+        totalApplications,
+        totalApplicationsWithPlan: applicationsWithPlan.length,
+        applicationsWithoutPlan: applicationsWithoutPlan.length,
+        plansByStatus,
+        plansByTier,
+        plansOverdueReviewOrTest,
+      },
       kpi: {
         population: "tier_1_2_in_bia_scope",
         denominator: tier12.length,
@@ -355,7 +592,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
         percent: tier12.length ? Math.round((approvedNonExpired / tier12.length) * 1000) / 10 : null,
       },
       countsByStatus: scoped.reduce((acc, r) => {
-        const s = r.readiness.status;
+        const s = r.readiness?.status || "not_started";
         acc[s] = (acc[s] || 0) + 1;
         return acc;
       }, {}),
@@ -383,6 +620,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     }
     const target = targetOrThrow(id);
     assertEdit(session, target);
+
     if (body.strategy != null) {
       if (body.strategy && !STRATEGIES.includes(body.strategy)) fail(400, "Unknown recovery strategy", "FR-5");
       target.strategy = body.strategy || null;
@@ -394,6 +632,14 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     if (body.hostingEnvironment != null) {
       if (body.hostingEnvironment && !HOSTING_ENVIRONMENTS.includes(body.hostingEnvironment)) fail(400, "Unknown hosting environment", "FR-1");
       target.hostingEnvironment = body.hostingEnvironment || null;
+    }
+    if (body.hosting != null && Array.isArray(body.hosting)) {
+      const norm = normalizeHostingRows(target.name, body.hosting);
+      const val = validateHosting(norm);
+      target.hosting = norm;
+      target.hostingWarning = val.warning;
+      target.primarySite = norm.find((h) => h.role === "primary")?.siteName || target.primarySite;
+      target.recoverySite = norm.find((h) => h.role === "secondary")?.siteName || target.recoverySite;
     }
     if (body.lifecycleStatus != null) {
       if (body.lifecycleStatus && !LIFECYCLE_STATUSES.includes(body.lifecycleStatus)) fail(400, "Unknown application status", "FR-1");
@@ -557,6 +803,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     if (target.retired) fail(400, "Retired target cannot gain a new plan without Admin restore", "EC-APR-09");
     const existing = currentDraft(target);
     if (existing) fail(409, "A draft or in-review version already exists", "EC-TGT-02");
+
     const hasUserSteps = Array.isArray(body.steps) && body.steps.some((s) => String(s.title || s.instruction || "").trim());
     const applyTemplate = body.applyTemplate !== false && !hasUserSteps;
     const tpl = applyTemplate ? templateForTier(target.tier) : templateForTier(null);
@@ -567,6 +814,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     const contactSource = Array.isArray(body.contacts) && body.contacts.some((c) => String(c.name || "").trim())
       ? body.contacts
       : tpl.contacts;
+
     const version = {
       versionId: newId("ver"),
       planId: target.planId,
@@ -576,6 +824,10 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       strategy: body.strategy || target.strategy || tpl.strategy,
       claimedRtoMinutes: body.claimedRtoMinutes != null ? Number(body.claimedRtoMinutes) : obj.effectiveRtoMinutes,
       claimedRpoMinutes: body.claimedRpoMinutes != null ? Number(body.claimedRpoMinutes) : obj.effectiveRpoMinutes,
+      primaryHostingId: body.primaryHostingId || null,
+      recoveryHostingId: body.recoveryHostingId || null,
+      failoverPairLabel: body.failoverPairLabel || null,
+      scenarios: Array.isArray(body.scenarios) ? body.scenarios : null,
       steps: stepSource.map((s, i) => ({
         stepId: s.stepId || newId("s"),
         order: s.order ?? i + 1,
@@ -597,7 +849,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       })),
       templateId: body.templateId || tpl.id,
       lastReviewedAt: null,
-      nextReviewDueAt: null,
+      nextReviewDueAt: addMonths(now(), 12).toISOString(),
       attachments: [],
       roles: [
         { role: "plan_owner", userId: target.primaryOwnerUserId, displayName: "Plan Owner" },
@@ -614,6 +866,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       createdAt: now().toISOString(),
       updatedAt: now().toISOString(),
     };
+
     if (Array.isArray(body.attachmentsAdd)) {
       for (const att of body.attachmentsAdd) {
         const name = att.fileName || "";
@@ -631,9 +884,24 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       if (!target.strategy) target.strategy = body.strategy;
     }
     if (!target.strategy) target.strategy = version.strategy;
+
     versions.set(version.versionId, version);
     plans.set(target.planId, { planId: target.planId, biaApplicationId: target.biaApplicationId });
     record(session, "plan.draft.create", { id, versionId: version.versionId });
+    return decorate(session, target);
+  }
+
+  function deleteDraft(session, id) {
+    const target = targetOrThrow(id);
+    assertEdit(session, target);
+    const draft = currentDraft(target);
+    if (!draft) fail(404, "No draft plan to delete", "NOT_FOUND");
+    versions.delete(draft.versionId);
+    if (!target.currentApprovedVersionId && versionsFor(target.planId).length === 0) {
+      plans.delete(target.planId);
+      target.planId = null;
+    }
+    record(session, "plan.draft.delete", { id, versionId: draft.versionId });
     return decorate(session, target);
   }
 
@@ -663,6 +931,10 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     }
     if (body.claimedRtoMinutes != null) version.claimedRtoMinutes = Number(body.claimedRtoMinutes);
     if (body.claimedRpoMinutes != null) version.claimedRpoMinutes = Number(body.claimedRpoMinutes);
+    if (body.primaryHostingId !== undefined) version.primaryHostingId = body.primaryHostingId;
+    if (body.recoveryHostingId !== undefined) version.recoveryHostingId = body.recoveryHostingId;
+    if (body.failoverPairLabel !== undefined) version.failoverPairLabel = body.failoverPairLabel;
+    if (body.scenarios !== undefined) version.scenarios = body.scenarios;
     if (body.steps) {
       version.steps = body.steps.map((s, i) => ({
         stepId: s.stepId || newId("s"),
@@ -798,164 +1070,242 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       fail(403, "Author cannot approve their own plan (segregation of duties)", "EC-APR-01");
     }
     if (version.status === "approved") fail(409, "Already approved", "EC-APR-03");
+
     const live = liveBia(target.biaApplicationId);
-    if (!live) fail(409, "Cannot approve without a current BIA read", "EC-BIA-14");
-    if (!(version.contacts || []).some((c) => (c.name || "").trim())) fail(400, "Contacts required", "EC-PLN-07");
+    const prevApprovedId = target.currentApprovedVersionId;
+    if (prevApprovedId && prevApprovedId !== versionId) {
+      const prev = versions.get(prevApprovedId);
+      if (prev) prev.status = "superseded";
+    }
 
-    const prev = currentApproved(target);
-    if (prev) prev.status = "superseded";
-
-    const assetId = target.assets.find((a) => a.type === "application")?.assetId || null;
-    const links = (live.processes || []).map((p) => ({
-      processId: p.processId,
-      assetId,
-      applicationId: target.biaApplicationId,
-    }));
-    version.snapshot = {
-      at: now().toISOString(),
-      inheritedRtoMinutes: live.inheritedObjectives.rtoMinutes,
-      inheritedRpoMinutes: live.inheritedObjectives.rpoMinutes,
-      overrideRtoMinutes: target.rtoOverrideMinutes,
-      overrideRpoMinutes: target.rpoOverrideMinutes,
-      mappingKey: mappingKeyFromProcesses(live.processes),
-      processes: clone(live.processes),
-      links,
-      assets: clone(target.assets),
-      dependencies: clone(target.dependencies),
-      bcpPlanIds: bia.listBcp(target.biaApplicationId).map((p) => p.planId),
-    };
-    version.roles = [
-      { role: "plan_owner", userId: target.primaryOwnerUserId, displayName: "Plan Owner" },
-      { role: "backup_owner", userId: target.backupOwnerUserId, displayName: "Backup Plan Owner" },
-      { role: "approver", userId: session.userId, displayName: session.displayName || session.userId },
-    ];
     version.status = "approved";
     version.approvedBy = session.userId;
     version.approvedAt = now().toISOString();
-    version.lastReviewedAt = version.approvedAt;
-    version.nextReviewDueAt = addMonths(now(), recertificationMonths(target.tier)).toISOString();
+    version.lastReviewedAt = now().toISOString();
+    version.nextReviewDueAt = addMonths(now(), 12).toISOString();
+    version.snapshot = {
+      inheritedRtoMinutes: live?.inheritedObjectives?.rtoMinutes ?? null,
+      inheritedRpoMinutes: live?.inheritedObjectives?.rpoMinutes ?? null,
+      mappingKey: mappingKeyFromProcesses(live?.processes || []),
+      assets: clone(target.assets),
+      dependencies: clone(target.dependencies),
+      links: (live?.processes || []).map((p) => ({
+        processId: p.processId,
+        assetId: target.assets.find((a) => a.type === "application")?.assetId || null,
+        applicationId: target.biaApplicationId,
+      })),
+      processes: clone(live?.processes || []),
+    };
     version.etag += 1;
-    target.currentApprovedVersionId = version.versionId;
-    const payload = crisisPayload(target, version);
+    target.currentApprovedVersionId = versionId;
     notify("plan.approved", { versionId, biaApplicationId: target.biaApplicationId }, session);
-    record(session, "plan.approve", { versionId, approvedBy: session.userId, at: version.approvedAt });
-    const testRequest = requestTestForVersion(target, version, "publish");
-    return { ...decorate(session, target), crisisCompatible: payload, testRequest };
+    record(session, "plan.approve", { versionId });
+
+    const testRequest = requestTestForVersion(target, version, "new_approved_version");
+    return { ...decorate(session, target), crisisCompatible: crisisPayload(target, version), testRequest };
   }
 
   function newDraftFromApproved(session, id) {
     const target = targetOrThrow(id);
     assertEdit(session, target);
     const approved = currentApproved(target);
-    if (!approved) fail(400, "No approved version to clone", "FR-21");
-    if (currentDraft(target)) fail(409, "Finish or withdraw the existing draft first", "EC-TGT-02");
-    const copy = clone(approved);
-    copy.versionId = newId("ver");
-    copy.status = "draft";
-    copy.etag = 1;
-    copy.submittedBy = null;
-    copy.submittedAt = null;
-    copy.approvedBy = null;
-    copy.approvedAt = null;
-    copy.snapshot = null;
-    copy.createdAt = now().toISOString();
-    copy.updatedAt = now().toISOString();
-    versions.set(copy.versionId, copy);
-    record(session, "plan.draft.from_approved", { versionId: copy.versionId });
+    if (!approved) fail(404, "No approved version exists", "NOT_FOUND");
+    const existing = currentDraft(target);
+    if (existing) fail(409, "A draft or in-review version already exists", "EC-TGT-02");
+
+    const next = {
+      versionId: newId("ver"),
+      planId: target.planId,
+      status: "draft",
+      title: approved.title,
+      etag: 1,
+      strategy: target.strategy || approved.strategy,
+      claimedRtoMinutes: approved.claimedRtoMinutes,
+      claimedRpoMinutes: approved.claimedRpoMinutes,
+      primaryHostingId: approved.primaryHostingId || null,
+      recoveryHostingId: approved.recoveryHostingId || null,
+      failoverPairLabel: approved.failoverPairLabel || null,
+      scenarios: clone(approved.scenarios || null),
+      steps: clone(approved.steps),
+      contacts: clone(approved.contacts),
+      templateId: approved.templateId,
+      lastReviewedAt: approved.lastReviewedAt,
+      nextReviewDueAt: approved.nextReviewDueAt,
+      attachments: clone(approved.attachments),
+      roles: clone(approved.roles),
+      submittedBy: null,
+      submittedAt: null,
+      approvedBy: null,
+      approvedAt: null,
+      rejectedBy: null,
+      rejectedAt: null,
+      reviewComments: [],
+      snapshot: null,
+      createdAt: now().toISOString(),
+      updatedAt: now().toISOString(),
+    };
+    versions.set(next.versionId, next);
+    record(session, "plan.draft.from_approved", { id, fromVersionId: approved.versionId, versionId: next.versionId });
     return decorate(session, target);
   }
 
   function retire(session, id) {
-    if (!canManage(session)) fail(403, "Only Admin can retire a plan", "EC-APR-09");
+    if (!canManage(session)) fail(403, "Only Admin can retire targets", "FR-30");
     const target = targetOrThrow(id);
-    const approved = currentApproved(target);
-    if (approved) approved.status = "retired";
-    const draft = currentDraft(target);
-    if (draft) draft.status = "retired";
     target.retired = true;
-    target.currentApprovedVersionId = approved ? approved.versionId : target.currentApprovedVersionId;
-    record(session, "plan.retire", { id });
+    record(session, "target.retire", { id });
     return decorate(session, target);
   }
 
+  function history(session, id) {
+    const target = targetOrThrow(id);
+    assertView(session, target);
+    return versionsFor(target.planId).sort((a, b) => b.etag - a.etag);
+  }
+
   function inbox(session) {
-    if (![Roles.ADMIN, Roles.APPROVER, Roles.AUDITOR].includes(session.role)) {
-      fail(403, "Approval inbox is for reviewers", "FR-11");
-    }
-    return [...versions.values()]
-      .filter((v) => v.status === "in_review")
-      .map((v) => {
-        const plan = plans.get(v.planId);
-        const target = targets.get(plan.biaApplicationId);
-        return {
+    syncMissing(session);
+    const items = [];
+    for (const v of versions.values()) {
+      if (v.status !== "in_review") continue;
+      const plan = plans.get(v.planId);
+      const target = plan ? targets.get(plan.biaApplicationId) : null;
+      if (!target || target.tenantId !== session.tenantId) continue;
+      if ([Roles.ADMIN, Roles.APPROVER].includes(session.role)) {
+        items.push({
           versionId: v.versionId,
-          planId: v.planId,
-          title: v.title,
           biaApplicationId: target.biaApplicationId,
           name: target.name,
+          title: v.title,
           submittedBy: v.submittedBy,
           submittedAt: v.submittedAt,
-        };
-      });
+        });
+      }
+    }
+    return items;
   }
 
   function ingestCmdb(session, payload) {
-    if (!canManage(session)) fail(403, "CMDB ingest is an Admin/coordinator action", "FR-1");
+    if (!canManage(session)) fail(403, "Only Admin can ingest CMDB", "FR-30");
     cmdbLastSyncAt = now().toISOString();
-    if (!payload?.biaApplicationId || !targets.has(payload.biaApplicationId)) {
-      cmdbOrphans.push({ ...payload, at: cmdbLastSyncAt });
-      return { attached: false, orphan: true, cmdbLastSyncAt };
+    const biaId = payload?.biaApplicationId;
+    if (!biaId || !bia.getIncludingOutOfScope(biaId)) {
+      cmdbOrphans.push({ ciId: payload?.ciId, name: payload?.name, type: payload?.type, at: cmdbLastSyncAt });
+      record(session, "cmdb.orphan", { ciId: payload?.ciId, name: payload?.name, biaApplicationId: biaId });
+      return { ok: true, orphan: true };
     }
-    const target = targets.get(payload.biaApplicationId);
-    const existing = target.assets.find((a) => a.assetId === payload.ciId);
-    if (existing) {
-      existing.name = payload.name ?? existing.name;
-      existing.type = payload.type ?? existing.type;
-      existing.ownerUserId = payload.techOwner ?? existing.ownerUserId;
-      existing.source = "cmdb";
-    } else {
-      target.assets.push({
-        assetId: payload.ciId,
-        name: payload.name,
-        type: payload.type || "infrastructure",
-        environment: "prod",
-        ownerUserId: payload.techOwner || null,
-        criticality: "medium",
-        source: "cmdb",
-        recoveryNotes: null,
-      });
-    }
-    return { attached: true, orphan: false, cmdbLastSyncAt };
+    const target = targets.get(biaId) || seedTarget(bia.getIncludingOutOfScope(biaId));
+    addAsset(session, biaId, {
+      assetId: payload.ciId,
+      name: payload.name,
+      type: payload.type || "infrastructure",
+      environment: payload.environment || "prod",
+      criticality: payload.criticality || "medium",
+      recoveryNotes: payload.recoveryNotes || null,
+    });
+    record(session, "cmdb.bound", { ciId: payload.ciId, biaApplicationId: biaId });
+    return { ok: true, target: decorate(session, target) };
   }
 
-  // Seed from BIA at construction using demo tenant.
-  syncFromBia({ tenantId: bia.tenantId, role: Roles.ADMIN, userId: "system" });
-
   return {
-    directory: () => DIRECTORY,
-    templates: () => listTemplates(),
-    catalogs: () => ({ strategies: [...STRATEGIES], ...fieldCatalogs() }),
+    biaCatalog: bia,
+    libraries() {
+      return {
+        applications: applicationLibrary,
+        sites: siteLibrary,
+        environments: environmentLibrary,
+        scenarios: scenariosLibrary,
+        hostingRoles: HOSTING_ROLES,
+      };
+    },
+    directory() {
+      return DIRECTORY;
+    },
+    catalogs() {
+      return {
+        strategies: [...STRATEGIES],
+        templates: listTemplates(),
+        applicationLibrary,
+        siteLibrary,
+        environmentLibrary,
+        scenarios: scenariosLibrary,
+        hostingRoles: HOSTING_ROLES,
+        ...fieldCatalogs(),
+      };
+    },
+    libraries() {
+      return {
+        applicationLibrary,
+        siteLibrary,
+        environmentLibrary,
+        scenarios: scenariosLibrary,
+        hostingRoles: HOSTING_ROLES,
+      };
+    },
+    templates() {
+      return listTemplates();
+    },
     coverage,
+    dashboard(session) {
+      const cov = coverage(session);
+      const tier12 = cov.rows.filter((r) => (r.tier === 1 || r.tier === 2) && r.readiness?.inCoverageDenominator !== false && !r.outOfBiaScope && !r.retired);
+      const currentPlans = tier12.filter((r) => r.readiness?.kpiEligible);
+      const testedInWindow = tier12.filter((r) => r.readiness?.dimensions?.test);
+      const testedCurrent = tier12.filter((r) => r.readiness?.evidence?.testId);
+      const meeting = testedCurrent.filter((r) => r.readiness?.testEval?.meetsRtoRpo);
+      const remediations = cov.rows.filter((r) => r.readiness?.status === "failed_test");
+      const overdue = cov.rows.filter((r) => r.readiness?.status === "expired");
+      const drift = cov.rows.filter((r) => r.readiness?.status === "bia_drift" || r.readiness?.drift);
+
+      function tile(id, label, numerator, denominator, members) {
+        return {
+          id,
+          label,
+          population: "tier_1_2_in_bia_scope",
+          numerator,
+          denominator,
+          percent: denominator ? Math.round((numerator / denominator) * 1000) / 10 : null,
+          members: members.map((r) => ({
+            biaApplicationId: r.biaApplicationId,
+            name: r.name,
+            status: r.readiness?.status,
+            evidence: r.evidence || r.readiness?.evidence,
+          })),
+        };
+      }
+
+      return {
+        generatedAt: cov.generatedAt,
+        summary: cov.summary,
+        phase: 2,
+        population: "tier_1_2_in_bia_scope",
+        kpis: {
+          currentPlans: tile("currentPlans", "% Applications with Approved Plan", currentPlans.length, tier12.length, currentPlans),
+          testedInWindow: tile("testedInWindow", "% Plans Tested Within Policy Window", testedInWindow.length, tier12.length, testedInWindow),
+          testedMeetingRtoRpo: tile(
+            "testedMeetingRtoRpo",
+            "% Plans Meeting Target RTO/RPO",
+            meeting.length,
+            testedCurrent.length,
+            meeting
+          ),
+        },
+        remediations: remediations.map((r) => ({
+          biaApplicationId: r.biaApplicationId,
+          name: r.name,
+          evidence: r.evidence || r.readiness?.evidence,
+          gaps: r.readiness?.gaps,
+        })),
+        overdueRecertifications: overdue.map((r) => ({ biaApplicationId: r.biaApplicationId, name: r.name, evidence: r.evidence })),
+        biaDrift: drift.map((r) => ({ biaApplicationId: r.biaApplicationId, name: r.name, drift: r.readiness?.drift })),
+        countsByStatus: cov.countsByStatus,
+        rows: cov.rows,
+      };
+    },
     getTarget(session, id) {
       const target = targetOrThrow(id);
       assertView(session, target);
       return decorate(session, target);
-    },
-    history(session, id) {
-      const target = targetOrThrow(id);
-      assertView(session, target);
-      return versionsFor(target.planId || "")
-        .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
-        .map((v) => ({
-          versionId: v.versionId,
-          status: v.status,
-          title: v.title,
-          submittedBy: v.submittedBy,
-          submittedAt: v.submittedAt,
-          approvedBy: v.approvedBy,
-          approvedAt: v.approvedAt,
-          etag: v.etag,
-        }));
     },
     patchTarget,
     ack,
@@ -963,6 +1313,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     removeAsset,
     addDependency,
     createDraft,
+    deleteDraft,
     patchVersion,
     submit,
     withdraw,
@@ -970,13 +1321,15 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
     approve,
     newDraftFromApproved,
     retire,
+    history,
     inbox,
     ingestCmdb,
-    cmdbStatus: () => ({ lastSyncAt: cmdbLastSyncAt, orphans: clone(cmdbOrphans) }),
+    cmdbStatus() {
+      return { lastSyncAt: cmdbLastSyncAt, orphanCount: cmdbOrphans.length, orphans: cmdbOrphans };
+    },
     updateBia(session, id, body) {
-      if (!canManage(session)) fail(403, "BIA remains system of record; this is a demo adapter write", "FR-3");
+      if (!canManage(session)) fail(403, "Only Admin can update BIA", "FR-30");
       const updated = bia.upsert({ biaApplicationId: id, ...body });
-      syncFromBia(session);
       record(session, "bia.adapter.update", { id, inScope: updated.inScope });
       if (targets.has(id) && currentApproved(targets.get(id))) {
         const live = liveBia(id);
@@ -998,6 +1351,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       const tier = body.tier == null || body.tier === "" ? 2 : Number(body.tier);
       const rto = body.rtoMinutes == null || body.rtoMinutes === "" ? null : Number(body.rtoMinutes);
       const rpo = body.rpoMinutes == null || body.rpoMinutes === "" ? null : Number(body.rpoMinutes);
+
       bia.upsert({
         biaApplicationId: id,
         name: body.name || id,
@@ -1017,6 +1371,7 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
             ],
       });
       syncFromBia(session);
+
       const patch = {
         lifecycleStatus: body.lifecycleStatus || "active",
         vendorDependencies: body.vendorDependencies || "",
@@ -1025,20 +1380,22 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       };
       if (body.applicationType) patch.applicationType = body.applicationType;
       if (body.hostingEnvironment) patch.hostingEnvironment = body.hostingEnvironment;
+      if (body.hosting) patch.hosting = body.hosting;
       if (body.strategy) patch.strategy = body.strategy;
       if (body.backupFrequency) patch.backupFrequency = body.backupFrequency;
       if (body.backupRetentionValue !== "" && body.backupRetentionValue != null) patch.backupRetentionValue = Number(body.backupRetentionValue);
       if (body.backupRetentionUnit) patch.backupRetentionUnit = body.backupRetentionUnit;
       if (body.failoverMethod) patch.failoverMethod = body.failoverMethod;
       if (body.applicationOwnerUserId) patch.applicationOwnerUserId = body.applicationOwnerUserId;
-      if (body.primaryOwnerUserId) patch.primaryOwnerUserId = body.primaryOwnerUserId;
-      if (body.backupOwnerUserId) patch.backupOwnerUserId = body.backupOwnerUserId;
+      patch.primaryOwnerUserId = body.primaryOwnerUserId || findAppInLibrary(id)?.defaultOwnerUserId || "user-plan_owner";
+      patch.backupOwnerUserId = body.backupOwnerUserId || "user-admin";
       if (body.rtoOverrideMinutes != null || body.rpoOverrideMinutes != null) {
         patch.rtoOverrideMinutes = body.rtoOverrideMinutes;
         patch.rpoOverrideMinutes = body.rpoOverrideMinutes;
         patch.overrideReason = body.overrideReason;
       }
       patchTarget(session, id, patch);
+
       const assetPayloads = [
         ...(Array.isArray(body.assets) ? body.assets : []),
         ...(Array.isArray(body.infrastructure) ? body.infrastructure : []),
@@ -1204,59 +1561,6 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       }
       return { reminders, requested, at: now().toISOString() };
     },
-    dashboard(session) {
-      const cov = coverage(session);
-      const tier12 = cov.rows.filter((r) => (r.tier === 1 || r.tier === 2) && r.readiness?.inCoverageDenominator !== false && !r.outOfBiaScope && !r.retired);
-      const currentPlans = tier12.filter((r) => r.readiness?.kpiEligible);
-      const testedInWindow = tier12.filter((r) => r.readiness?.dimensions?.test);
-      const testedCurrent = tier12.filter((r) => r.readiness?.evidence?.testId);
-      const meeting = testedCurrent.filter((r) => r.readiness?.testEval?.meetsRtoRpo);
-      const remediations = cov.rows.filter((r) => r.readiness?.status === "failed_test");
-      const overdue = cov.rows.filter((r) => r.readiness?.status === "expired");
-      const drift = cov.rows.filter((r) => r.readiness?.status === "bia_drift" || r.readiness?.drift);
-      function tile(id, label, numerator, denominator, members) {
-        return {
-          id,
-          label,
-          population: "tier_1_2_in_bia_scope",
-          numerator,
-          denominator,
-          percent: denominator ? Math.round((numerator / denominator) * 1000) / 10 : null,
-          members: members.map((r) => ({
-            biaApplicationId: r.biaApplicationId,
-            name: r.name,
-            status: r.readiness?.status,
-            evidence: r.evidence || r.readiness?.evidence,
-          })),
-        };
-      }
-      return {
-        generatedAt: cov.generatedAt,
-        phase: 2,
-        population: "tier_1_2_in_bia_scope",
-        kpis: {
-          currentPlans: tile("currentPlans", "% Applications with Approved Plan", currentPlans.length, tier12.length, currentPlans),
-          testedInWindow: tile("testedInWindow", "% Plans Tested Within Policy Window", testedInWindow.length, tier12.length, testedInWindow),
-          testedMeetingRtoRpo: tile(
-            "testedMeetingRtoRpo",
-            "% Plans Meeting Target RTO/RPO",
-            meeting.length,
-            testedCurrent.length,
-            meeting
-          ),
-        },
-        remediations: remediations.map((r) => ({
-          biaApplicationId: r.biaApplicationId,
-          name: r.name,
-          evidence: r.evidence || r.readiness?.evidence,
-          gaps: r.readiness?.gaps,
-        })),
-        overdueRecertifications: overdue.map((r) => ({ biaApplicationId: r.biaApplicationId, name: r.name, evidence: r.evidence })),
-        biaDrift: drift.map((r) => ({ biaApplicationId: r.biaApplicationId, name: r.name, drift: r.readiness?.drift })),
-        countsByStatus: cov.countsByStatus,
-        rows: cov.rows,
-      };
-    },
     processView(session, processId) {
       const apps = [];
       for (const t of targets.values()) {
@@ -1280,6 +1584,6 @@ export function createItdrModule({ audit, notifications, testing, now = () => ne
       return { items: testsFor(target), testingHref: "/#testing" };
     },
     testing: testingModule,
-    _test: { targets, versions, bia, testing: testingModule, testOutbox },
+    _test: { targets, versions, bia, testing: testingModule, testOutbox, applicationLibrary, siteLibrary, environmentLibrary },
   };
 }

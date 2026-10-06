@@ -1,8 +1,7 @@
 import { e, useState, useEffect, api, ROLES, Banner, Icon } from "./core.js";
-import { Coverage } from "./Coverage.js";
+import { ItdrLanding } from "./ItdrLanding.js";
 import { Target } from "./Target.js";
 import { Testing } from "./Testing.js";
-import { ApplicationForm } from "./ApplicationModal.js";
 import { Dashboard, Approvals, OtherModule, Process, Overview, JsonPage } from "./Dashboard.js";
 
 const TITLES = {
@@ -13,9 +12,10 @@ const TITLES = {
   "test-results": ["ITDR Test Results", "Post-execution telemetry, actual outcomes, automated SLA comparison, and remediation"],
   testing: ["ITDR Testing & Validation", "Disaster recovery testing lifecycle, plans, execution results, and comparisons"],
   calendar: ["DR Testing Calendar", "Failover cadence and execution schedule"],
-  coverage: ["IT Applications & Asset Inventory", "Manage disaster recovery scope, tier classifications, hosting, and linked processes"],
-  builder: ["DR Plan Builder", "Open an application to edit its recovery runbook"],
-  itdr: ["IT Applications & Asset Inventory", "Manage disaster recovery scope, tier classifications, hosting, and linked processes"],
+  itdr: ["ITDR - Disaster Recovery", "Unified DR plan registry, multi-site hosting topologies, RTO/RPO objectives, and runbooks"],
+  plans: ["ITDR - Disaster Recovery", "Unified DR plan registry, multi-site hosting topologies, RTO/RPO objectives, and runbooks"],
+  coverage: ["ITDR - Disaster Recovery", "Unified DR plan registry, multi-site hosting topologies, RTO/RPO objectives, and runbooks"],
+  builder: ["ITDR - Disaster Recovery", "Unified DR plan registry, multi-site hosting topologies, RTO/RPO objectives, and runbooks"],
   dashboard: ["ITDR Readiness Dashboard", "Application resilience, compliance posture, and DR plan health"],
   process: ["Process mapping", "A process has no DR plan; applications mapped to it do"],
   approvals: ["Plan Approvals", "Segregation of duties: author cannot approve"],
@@ -26,9 +26,16 @@ const TITLES = {
 };
 
 function parseHash() {
-  const raw = (location.hash || "#dashboard").slice(1);
+  const raw = (location.hash || "#itdr").slice(1);
   const [page, id, extra] = raw.split("/");
-  return { page: page || "dashboard", id, extra };
+
+  // Backward-compatible redirect from old sub-modules to ITDR landing page
+  if (page === "coverage" || page === "builder" || page === "plans") {
+    if (!id) return { page: "itdr", id: undefined, extra: undefined };
+    if (id === "new") return { page: "itdr", id: "new", extra: undefined };
+  }
+
+  return { page: page || "itdr", id, extra };
 }
 
 function initials(name) {
@@ -109,21 +116,17 @@ export function App() {
   const hasAccess = (session.permissions || []).includes("itdr.access");
   const itdrNav = flag && hasAccess;
   const { page, id, extra } = route;
-  const [title, sub] = TITLES[page] || TITLES.dashboard;
-  void title;
-  void sub;
 
   function navItem(href, label, icon) {
     const hash = href.slice(1);
-    const planExtras = ["runbook", "posture", "strategy", "team", "tests"];
     const active =
       hash === page ||
-      (page === "itdr" && hash === "coverage") ||
-      (page === "coverage" && hash === "coverage") ||
-      (page === "target" && planExtras.includes(extra) && hash === "builder") ||
-      (page === "target" && !planExtras.includes(extra) && hash === "coverage") ||
-      (page === "builder" && hash === "builder") ||
-      (page === "process" && hash === "coverage") ||
+      (page === "itdr" && hash === "itdr") ||
+      (page === "coverage" && hash === "itdr") ||
+      (page === "builder" && hash === "itdr") ||
+      (page === "plans" && hash === "itdr") ||
+      (page === "target" && hash === "itdr") ||
+      (page === "process" && hash === "itdr") ||
       (page === "testing" && hash === "test-plans");
     return e("a", { className: `nav-item${active ? " active" : ""}`, href }, e(Icon, { name: icon }), e("span", null, label));
   }
@@ -142,10 +145,8 @@ export function App() {
     else if (page === "dashboard") view = e(Dashboard, { filter: id, onError: setError, query });
     else if (page === "process" && id) view = e(Process, { id, onError: setError });
     else if (page === "approvals") view = e(Approvals, { onError: setError });
-    else if (page === "coverage" && id === "new") view = e(ApplicationForm, { catalogs, users, session, onError: setError });
     else if (page === "target" && id) view = e(Target, { id, tab: extra, catalogs, users, session, onError: setError, onWarn: setWarn });
-    else if (page === "builder") view = e(Coverage, { catalogs, users, session, onError: setError, onWarn: setWarn, query, mode: "builder" });
-    else view = e(Coverage, { catalogs, users, session, onError: setError, onWarn: setWarn, query });
+    else view = e(ItdrLanding, { catalogs, users, session, onError: setError, onWarn: setWarn, query });
   } catch (err) {
     view = e("div", { className: "card empty" }, err.message);
   }
@@ -169,7 +170,7 @@ export function App() {
           e(Icon, { name: "search" }),
           e("input", {
             className: "search",
-            placeholder: "Search applications, plans, tests...",
+            placeholder: "Search applications, plans, hosting, tests...",
             value: query,
             onChange: (ev) => setQuery(ev.target.value),
           })
@@ -254,9 +255,7 @@ export function App() {
         navItem("#crisis", "Crisis Management", "e911_emergency"),
         itdrNav && e("p", { className: "nav-label" }, "Core"),
         itdrNav && navItem("#dashboard", "Readiness Dashboard", "speed"),
-        itdrNav && navItem("#coverage", "Applications", "dns"),
-        itdrNav && e("p", { className: "nav-label" }, "Recovery operations"),
-        itdrNav && navItem("#builder", "DR Plan Builder", "schema"),
+        itdrNav && navItem("#itdr", "ITDR", "shield"),
         e("p", { className: "nav-label" }, "Testing & validation"),
         navItem("#test-plans", "ITDR Test Plans", "assignment"),
         navItem("#test-results", "ITDR Test Results", "fact_check"),

@@ -487,6 +487,17 @@ export function createApp(options = {}) {
       return;
     }
 
+    if (path === "/api/itdr/libraries" && method === "GET") {
+      send(res, 200, itdr.libraries());
+      return;
+    }
+
+    if (path === "/api/itdr/plans" && method === "GET") {
+      const cov = itdr.coverage(session);
+      send(res, 200, { plans: cov.rows, ...cov });
+      return;
+    }
+
     if (path === "/api/itdr/templates" && method === "GET") {
       send(res, 200, { templates: itdr.templates() });
       return;
@@ -555,6 +566,10 @@ export function createApp(options = {}) {
       }
       if (action === "plan" && method === "POST") {
         send(res, 201, itdr.createDraft(session, id, await readJson(req).catch(() => ({}))));
+        return;
+      }
+      if (action === "plan" && method === "DELETE") {
+        send(res, 200, itdr.deleteDraft(session, id));
         return;
       }
       if (action === "new-draft" && method === "POST") {
